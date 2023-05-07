@@ -63,6 +63,21 @@ String^ UTF8Convert(string str) {
 }
 
 
+Classes FindClass(String^ id) {
+	for (size_t n = 0;n < classes.size();n++) {
+		if (id == StringConvert(to_string(classes.at(n).getID())))
+			return classes.at(n);
+	}
+}
+
+Lessons FindLesson(String^ id) {
+	for (size_t n = 0;n < lessons.size();n++) {
+		if (id == StringConvert(lessons.at(n).getID()))
+			return lessons.at(n);
+	}
+}
+
+
 String^ NumPerConvert(int Num) {
 
 	int s = to_string(Num).size();
@@ -461,6 +476,25 @@ void AutoSetLocation(vector<Lessons>& lessons, vector<Classes> classes) {
 
 
 }
+
+
+bool CheckTimeInterference(Lessons less) {
+	
+	for (size_t n = 0; n < lessons.size(); n++)
+	{
+
+		MessageBox::Show(StringConvert(to_string(lessons.at(n).PlaceInterference(less))));
+		MessageBox::Show(StringConvert(to_string(lessons.at(n).DataInterference(less))));
+		MessageBox::Show(StringConvert(to_string(lessons.at(n).ClockInterference(less))));
+		if (lessons.at(n).PlaceInterference(less) && lessons.at(n).DataInterference(less) && lessons.at(n).ClockInterference(less)) 
+			return true;
+	
+			}
+
+	return false;
+
+		}
+	
 
 
 void ToSplitExtraClass(vector <ExtraLessons> extraclass, vector <Lessons>& Gextraclass) {

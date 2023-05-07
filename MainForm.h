@@ -333,7 +333,7 @@ private: System::Windows::Forms::Button^ BTBazgashtTable;
 private: System::Windows::Forms::Button^ BTBishtarImTable;
 private: System::Windows::Forms::Label^ LATanzimLessonInfo;
 private: System::Windows::Forms::Label^ LATanzimClassInfo;
-private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
+
 
 
 
@@ -432,7 +432,6 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->BTBishtarImTable = (gcnew System::Windows::Forms::Button());
             this->LATanzimLessonInfo = (gcnew System::Windows::Forms::Label());
             this->LATanzimClassInfo = (gcnew System::Windows::Forms::Label());
-            this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAJalaseFoq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAM1Foq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAH1Foq))->BeginInit();
@@ -449,11 +448,10 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->TXWeekDayFoq->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXWeekDayFoq->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->TXWeekDayFoq->Location = System::Drawing::Point(251, 380);
-            this->TXWeekDayFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->TXWeekDayFoq->Location = System::Drawing::Point(188, 309);
             this->TXWeekDayFoq->Name = L"TXWeekDayFoq";
             this->TXWeekDayFoq->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->TXWeekDayFoq->Size = System::Drawing::Size(120, 19);
+            this->TXWeekDayFoq->Size = System::Drawing::Size(90, 15);
             this->TXWeekDayFoq->TabIndex = 172;
             this->TXWeekDayFoq->Text = L"شنبه";
             this->TXWeekDayFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -464,10 +462,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LAWeekDayFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 26, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LAWeekDayFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LAWeekDayFoq->Location = System::Drawing::Point(368, 337);
-            this->LAWeekDayFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LAWeekDayFoq->Location = System::Drawing::Point(276, 274);
             this->LAWeekDayFoq->Name = L"LAWeekDayFoq";
-            this->LAWeekDayFoq->Size = System::Drawing::Size(131, 85);
+            this->LAWeekDayFoq->Size = System::Drawing::Size(102, 67);
             this->LAWeekDayFoq->TabIndex = 171;
             this->LAWeekDayFoq->Text = L" :  روز شروع";
             // 
@@ -477,11 +474,10 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->TXStNumFoq->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXStNumFoq->Font = (gcnew System::Drawing::Font(L"Eras Demi ITC", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->TXStNumFoq->Location = System::Drawing::Point(244, 345);
-            this->TXStNumFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->TXStNumFoq->Location = System::Drawing::Point(183, 280);
             this->TXStNumFoq->Name = L"TXStNumFoq";
             this->TXStNumFoq->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->TXStNumFoq->Size = System::Drawing::Size(441, 22);
+            this->TXStNumFoq->Size = System::Drawing::Size(331, 18);
             this->TXStNumFoq->TabIndex = 170;
             this->TXStNumFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             // 
@@ -491,11 +487,10 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->TXStNameFoq->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXStNameFoq->Font = (gcnew System::Drawing::Font(L"Eras Demi ITC", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->TXStNameFoq->Location = System::Drawing::Point(244, 241);
-            this->TXStNameFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->TXStNameFoq->Location = System::Drawing::Point(183, 196);
             this->TXStNameFoq->Name = L"TXStNameFoq";
             this->TXStNameFoq->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->TXStNameFoq->Size = System::Drawing::Size(441, 22);
+            this->TXStNameFoq->Size = System::Drawing::Size(331, 18);
             this->TXStNameFoq->TabIndex = 169;
             this->TXStNameFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             // 
@@ -507,10 +502,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->BTAfzodanFoq->Font = (gcnew System::Drawing::Font(L"Impact", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
             this->BTAfzodanFoq->ForeColor = System::Drawing::SystemColors::Info;
-            this->BTAfzodanFoq->Location = System::Drawing::Point(472, 539);
-            this->BTAfzodanFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->BTAfzodanFoq->Location = System::Drawing::Point(354, 438);
             this->BTAfzodanFoq->Name = L"BTAfzodanFoq";
-            this->BTAfzodanFoq->Size = System::Drawing::Size(213, 43);
+            this->BTAfzodanFoq->Size = System::Drawing::Size(160, 35);
             this->BTAfzodanFoq->TabIndex = 168;
             this->BTAfzodanFoq->Text = L"افزودن";
             this->BTAfzodanFoq->UseVisualStyleBackColor = false;
@@ -518,19 +512,17 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             // PAStNumFoq
             // 
             this->PAStNumFoq->BackColor = System::Drawing::Color::DarkGreen;
-            this->PAStNumFoq->Location = System::Drawing::Point(244, 367);
-            this->PAStNumFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->PAStNumFoq->Location = System::Drawing::Point(183, 298);
             this->PAStNumFoq->Name = L"PAStNumFoq";
-            this->PAStNumFoq->Size = System::Drawing::Size(441, 4);
+            this->PAStNumFoq->Size = System::Drawing::Size(331, 3);
             this->PAStNumFoq->TabIndex = 167;
             // 
             // PAStNameFoq
             // 
             this->PAStNameFoq->BackColor = System::Drawing::Color::DarkGreen;
-            this->PAStNameFoq->Location = System::Drawing::Point(244, 263);
-            this->PAStNameFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->PAStNameFoq->Location = System::Drawing::Point(183, 214);
             this->PAStNameFoq->Name = L"PAStNameFoq";
-            this->PAStNameFoq->Size = System::Drawing::Size(441, 4);
+            this->PAStNameFoq->Size = System::Drawing::Size(331, 3);
             this->PAStNameFoq->TabIndex = 166;
             // 
             // BTTaiid3Foq
@@ -541,10 +533,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->BTTaiid3Foq->Font = (gcnew System::Drawing::Font(L"Impact", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
             this->BTTaiid3Foq->ForeColor = System::Drawing::SystemColors::Info;
-            this->BTTaiid3Foq->Location = System::Drawing::Point(244, 539);
-            this->BTTaiid3Foq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->BTTaiid3Foq->Location = System::Drawing::Point(183, 438);
             this->BTTaiid3Foq->Name = L"BTTaiid3Foq";
-            this->BTTaiid3Foq->Size = System::Drawing::Size(213, 43);
+            this->BTTaiid3Foq->Size = System::Drawing::Size(160, 35);
             this->BTTaiid3Foq->TabIndex = 165;
             this->BTTaiid3Foq->Text = L"تایید";
             this->BTTaiid3Foq->UseVisualStyleBackColor = false;
@@ -555,10 +546,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LAStNumFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 34, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LAStNumFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LAStNumFoq->Location = System::Drawing::Point(681, 306);
-            this->LAStNumFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LAStNumFoq->Location = System::Drawing::Point(511, 249);
             this->LAStNumFoq->Name = L"LAStNumFoq";
-            this->LAStNumFoq->Size = System::Drawing::Size(183, 109);
+            this->LAStNumFoq->Size = System::Drawing::Size(150, 89);
             this->LAStNumFoq->TabIndex = 164;
             this->LAStNumFoq->Text = L" : شماره دانشجویی ";
             // 
@@ -568,10 +558,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LAStNameFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 34, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LAStNameFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LAStNameFoq->Location = System::Drawing::Point(681, 185);
-            this->LAStNameFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LAStNameFoq->Location = System::Drawing::Point(511, 150);
             this->LAStNameFoq->Name = L"LAStNameFoq";
-            this->LAStNameFoq->Size = System::Drawing::Size(228, 109);
+            this->LAStNameFoq->Size = System::Drawing::Size(189, 89);
             this->LAStNameFoq->TabIndex = 163;
             this->LAStNameFoq->Text = L" : نام و نام خانوادگی    ";
             // 
@@ -581,10 +570,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LADaneshjoFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LADaneshjoFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LADaneshjoFoq->Location = System::Drawing::Point(680, 41);
-            this->LADaneshjoFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LADaneshjoFoq->Location = System::Drawing::Point(510, 33);
             this->LADaneshjoFoq->Name = L"LADaneshjoFoq";
-            this->LADaneshjoFoq->Size = System::Drawing::Size(239, 116);
+            this->LADaneshjoFoq->Size = System::Drawing::Size(194, 92);
             this->LADaneshjoFoq->TabIndex = 162;
             this->LADaneshjoFoq->Text = L" :  افزودن دانشجویان   ";
             // 
@@ -596,10 +584,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->BTTaiidFoq->Font = (gcnew System::Drawing::Font(L"Impact", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
             this->BTTaiidFoq->ForeColor = System::Drawing::SystemColors::Info;
-            this->BTTaiidFoq->Location = System::Drawing::Point(251, 539);
-            this->BTTaiidFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->BTTaiidFoq->Location = System::Drawing::Point(188, 438);
             this->BTTaiidFoq->Name = L"BTTaiidFoq";
-            this->BTTaiidFoq->Size = System::Drawing::Size(213, 43);
+            this->BTTaiidFoq->Size = System::Drawing::Size(160, 35);
             this->BTTaiidFoq->TabIndex = 161;
             this->BTTaiidFoq->Text = L"تایید";
             this->BTTaiidFoq->UseVisualStyleBackColor = false;
@@ -607,10 +594,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             // VAJalaseFoq
             // 
             this->VAJalaseFoq->BackColor = System::Drawing::Color::MediumAquamarine;
-            this->VAJalaseFoq->Location = System::Drawing::Point(535, 374);
-            this->VAJalaseFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->VAJalaseFoq->Location = System::Drawing::Point(401, 304);
             this->VAJalaseFoq->Name = L"VAJalaseFoq";
-            this->VAJalaseFoq->Size = System::Drawing::Size(120, 22);
+            this->VAJalaseFoq->Size = System::Drawing::Size(90, 20);
             this->VAJalaseFoq->TabIndex = 160;
             // 
             // LAJalaseFoq
@@ -619,29 +605,26 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LAJalaseFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 34, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LAJalaseFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LAJalaseFoq->Location = System::Drawing::Point(645, 322);
-            this->LAJalaseFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LAJalaseFoq->Location = System::Drawing::Point(484, 262);
             this->LAJalaseFoq->Name = L"LAJalaseFoq";
-            this->LAJalaseFoq->Size = System::Drawing::Size(189, 109);
+            this->LAJalaseFoq->Size = System::Drawing::Size(154, 89);
             this->LAJalaseFoq->TabIndex = 159;
             this->LAJalaseFoq->Text = L" : تعداد جلسات ";
             // 
             // VAM1Foq
             // 
             this->VAM1Foq->BackColor = System::Drawing::Color::MediumAquamarine;
-            this->VAM1Foq->Location = System::Drawing::Point(251, 277);
-            this->VAM1Foq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->VAM1Foq->Location = System::Drawing::Point(188, 225);
             this->VAM1Foq->Name = L"VAM1Foq";
-            this->VAM1Foq->Size = System::Drawing::Size(120, 22);
+            this->VAM1Foq->Size = System::Drawing::Size(90, 20);
             this->VAM1Foq->TabIndex = 158;
             // 
             // VAH1Foq
             // 
             this->VAH1Foq->BackColor = System::Drawing::Color::MediumAquamarine;
-            this->VAH1Foq->Location = System::Drawing::Point(447, 276);
-            this->VAH1Foq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->VAH1Foq->Location = System::Drawing::Point(335, 224);
             this->VAH1Foq->Name = L"VAH1Foq";
-            this->VAH1Foq->Size = System::Drawing::Size(120, 22);
+            this->VAH1Foq->Size = System::Drawing::Size(90, 20);
             this->VAH1Foq->TabIndex = 157;
             // 
             // LAM1Foq
@@ -650,10 +633,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LAM1Foq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 26, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LAM1Foq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LAM1Foq->Location = System::Drawing::Point(368, 240);
-            this->LAM1Foq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LAM1Foq->Location = System::Drawing::Point(276, 195);
             this->LAM1Foq->Name = L"LAM1Foq";
-            this->LAM1Foq->Size = System::Drawing::Size(82, 85);
+            this->LAM1Foq->Size = System::Drawing::Size(64, 67);
             this->LAM1Foq->TabIndex = 156;
             this->LAM1Foq->Text = L" : دقیقه";
             // 
@@ -662,10 +644,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LAH1Foq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 26, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LAH1Foq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LAH1Foq->Location = System::Drawing::Point(563, 240);
-            this->LAH1Foq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LAH1Foq->Location = System::Drawing::Point(422, 195);
             this->LAH1Foq->Name = L"LAH1Foq";
-            this->LAH1Foq->Size = System::Drawing::Size(113, 82);
+            this->LAH1Foq->Size = System::Drawing::Size(85, 67);
             this->LAH1Foq->TabIndex = 155;
             this->LAH1Foq->Text = L" : ساعت";
             // 
@@ -675,47 +656,42 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LATimeToolFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 34, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LATimeToolFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LATimeToolFoq->Location = System::Drawing::Point(648, 226);
-            this->LATimeToolFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LATimeToolFoq->Location = System::Drawing::Point(486, 184);
             this->LATimeToolFoq->Name = L"LATimeToolFoq";
-            this->LATimeToolFoq->Size = System::Drawing::Size(192, 109);
+            this->LATimeToolFoq->Size = System::Drawing::Size(157, 89);
             this->LATimeToolFoq->TabIndex = 154;
             this->LATimeToolFoq->Text = L" : مدت برگزاری";
             // 
             // VAMFoq
             // 
             this->VAMFoq->BackColor = System::Drawing::Color::MediumAquamarine;
-            this->VAMFoq->Location = System::Drawing::Point(251, 187);
-            this->VAMFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->VAMFoq->Location = System::Drawing::Point(188, 152);
             this->VAMFoq->Name = L"VAMFoq";
-            this->VAMFoq->Size = System::Drawing::Size(120, 22);
+            this->VAMFoq->Size = System::Drawing::Size(90, 20);
             this->VAMFoq->TabIndex = 153;
             // 
             // VAHFoq
             // 
             this->VAHFoq->BackColor = System::Drawing::Color::MediumAquamarine;
-            this->VAHFoq->Location = System::Drawing::Point(447, 186);
-            this->VAHFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->VAHFoq->Location = System::Drawing::Point(335, 151);
             this->VAHFoq->Name = L"VAHFoq";
-            this->VAHFoq->Size = System::Drawing::Size(120, 22);
+            this->VAHFoq->Size = System::Drawing::Size(90, 20);
             this->VAHFoq->TabIndex = 152;
             // 
             // VARozFoq
             // 
             this->VARozFoq->BackColor = System::Drawing::Color::MediumAquamarine;
-            this->VARozFoq->Location = System::Drawing::Point(251, 97);
-            this->VARozFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->VARozFoq->Location = System::Drawing::Point(188, 79);
             this->VARozFoq->Name = L"VARozFoq";
-            this->VARozFoq->Size = System::Drawing::Size(120, 22);
+            this->VARozFoq->Size = System::Drawing::Size(90, 20);
             this->VARozFoq->TabIndex = 151;
             // 
             // VAMahFoq
             // 
             this->VAMahFoq->BackColor = System::Drawing::Color::MediumAquamarine;
-            this->VAMahFoq->Location = System::Drawing::Point(447, 97);
-            this->VAMahFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->VAMahFoq->Location = System::Drawing::Point(335, 79);
             this->VAMahFoq->Name = L"VAMahFoq";
-            this->VAMahFoq->Size = System::Drawing::Size(120, 22);
+            this->VAMahFoq->Size = System::Drawing::Size(90, 20);
             this->VAMahFoq->TabIndex = 150;
             // 
             // LAMFoq
@@ -724,10 +700,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LAMFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 26, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LAMFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LAMFoq->Location = System::Drawing::Point(368, 150);
-            this->LAMFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LAMFoq->Location = System::Drawing::Point(276, 122);
             this->LAMFoq->Name = L"LAMFoq";
-            this->LAMFoq->Size = System::Drawing::Size(82, 85);
+            this->LAMFoq->Size = System::Drawing::Size(64, 67);
             this->LAMFoq->TabIndex = 149;
             this->LAMFoq->Text = L" : دقیقه";
             // 
@@ -736,10 +711,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LAHFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 26, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LAHFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LAHFoq->Location = System::Drawing::Point(563, 150);
-            this->LAHFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LAHFoq->Location = System::Drawing::Point(422, 122);
             this->LAHFoq->Name = L"LAHFoq";
-            this->LAHFoq->Size = System::Drawing::Size(113, 82);
+            this->LAHFoq->Size = System::Drawing::Size(85, 67);
             this->LAHFoq->TabIndex = 148;
             this->LAHFoq->Text = L" : ساعت";
             // 
@@ -749,10 +723,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LATimeFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 34, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LATimeFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LATimeFoq->Location = System::Drawing::Point(648, 137);
-            this->LATimeFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LATimeFoq->Location = System::Drawing::Point(486, 111);
             this->LATimeFoq->Name = L"LATimeFoq";
-            this->LATimeFoq->Size = System::Drawing::Size(221, 109);
+            this->LATimeFoq->Size = System::Drawing::Size(181, 89);
             this->LATimeFoq->TabIndex = 147;
             this->LATimeFoq->Text = L" : ساعت برگزاری    ";
             // 
@@ -762,10 +735,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LARozFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 26, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LARozFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LARozFoq->Location = System::Drawing::Point(365, 64);
-            this->LARozFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LARozFoq->Location = System::Drawing::Point(274, 52);
             this->LARozFoq->Name = L"LARozFoq";
-            this->LARozFoq->Size = System::Drawing::Size(78, 85);
+            this->LARozFoq->Size = System::Drawing::Size(60, 67);
             this->LARozFoq->TabIndex = 146;
             this->LARozFoq->Text = L" : روز";
             // 
@@ -775,10 +747,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LAMahFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 26, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LAMahFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LAMahFoq->Location = System::Drawing::Point(571, 64);
-            this->LAMahFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LAMahFoq->Location = System::Drawing::Point(428, 52);
             this->LAMahFoq->Name = L"LAMahFoq";
-            this->LAMahFoq->Size = System::Drawing::Size(68, 85);
+            this->LAMahFoq->Size = System::Drawing::Size(53, 67);
             this->LAMahFoq->TabIndex = 145;
             this->LAMahFoq->Text = L" : ماه";
             // 
@@ -788,10 +759,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LADateFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LADateFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LADateFoq->Location = System::Drawing::Point(644, 41);
-            this->LADateFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LADateFoq->Location = System::Drawing::Point(483, 33);
             this->LADateFoq->Name = L"LADateFoq";
-            this->LADateFoq->Size = System::Drawing::Size(195, 116);
+            this->LADateFoq->Size = System::Drawing::Size(157, 92);
             this->LADateFoq->TabIndex = 144;
             this->LADateFoq->Text = L" : تاریخ شروع  ";
             // 
@@ -803,11 +773,11 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LAErorFoq->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->LAErorFoq->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-            this->LAErorFoq->Location = System::Drawing::Point(-1, 416);
-            this->LAErorFoq->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
+            this->LAErorFoq->Location = System::Drawing::Point(-1, 338);
+            this->LAErorFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
             this->LAErorFoq->Name = L"LAErorFoq";
             this->LAErorFoq->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->LAErorFoq->Size = System::Drawing::Size(852, 108);
+            this->LAErorFoq->Size = System::Drawing::Size(639, 88);
             this->LAErorFoq->TabIndex = 143;
             this->LAErorFoq->Text = L"این درس نیاز به ویدیو پرژکتور دارد!";
             this->LAErorFoq->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -818,10 +788,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->BOVideoProjectorFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->BOVideoProjectorFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->BOVideoProjectorFoq->Location = System::Drawing::Point(691, 370);
-            this->BOVideoProjectorFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->BOVideoProjectorFoq->Location = System::Drawing::Point(518, 301);
             this->BOVideoProjectorFoq->Name = L"BOVideoProjectorFoq";
-            this->BOVideoProjectorFoq->Size = System::Drawing::Size(116, 76);
+            this->BOVideoProjectorFoq->Size = System::Drawing::Size(95, 60);
             this->BOVideoProjectorFoq->TabIndex = 142;
             this->BOVideoProjectorFoq->Text = L"ویدئوپرژکتور";
             this->BOVideoProjectorFoq->UseVisualStyleBackColor = true;
@@ -832,11 +801,10 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->TXLessonNameFoq->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXLessonNameFoq->Font = (gcnew System::Drawing::Font(L"Eras Demi ITC", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->TXLessonNameFoq->Location = System::Drawing::Point(232, 201);
-            this->TXLessonNameFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->TXLessonNameFoq->Location = System::Drawing::Point(174, 163);
             this->TXLessonNameFoq->Name = L"TXLessonNameFoq";
             this->TXLessonNameFoq->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->TXLessonNameFoq->Size = System::Drawing::Size(441, 22);
+            this->TXLessonNameFoq->Size = System::Drawing::Size(331, 18);
             this->TXLessonNameFoq->TabIndex = 140;
             this->TXLessonNameFoq->Text = L" ";
             this->TXLessonNameFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -847,11 +815,10 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->TXLessonIDFoq->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXLessonIDFoq->Font = (gcnew System::Drawing::Font(L"Eras Demi ITC", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->TXLessonIDFoq->Location = System::Drawing::Point(232, 127);
-            this->TXLessonIDFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->TXLessonIDFoq->Location = System::Drawing::Point(174, 103);
             this->TXLessonIDFoq->Name = L"TXLessonIDFoq";
             this->TXLessonIDFoq->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->TXLessonIDFoq->Size = System::Drawing::Size(441, 22);
+            this->TXLessonIDFoq->Size = System::Drawing::Size(331, 18);
             this->TXLessonIDFoq->TabIndex = 139;
             this->TXLessonIDFoq->Text = L" ";
             this->TXLessonIDFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -862,20 +829,18 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LALessonNameFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LALessonNameFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LALessonNameFoq->Location = System::Drawing::Point(667, 159);
-            this->LALessonNameFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LALessonNameFoq->Location = System::Drawing::Point(500, 129);
             this->LALessonNameFoq->Name = L"LALessonNameFoq";
-            this->LALessonNameFoq->Size = System::Drawing::Size(155, 116);
+            this->LALessonNameFoq->Size = System::Drawing::Size(126, 92);
             this->LALessonNameFoq->TabIndex = 141;
             this->LALessonNameFoq->Text = L" : نام درس";
             // 
             // PALessonNameFoq
             // 
             this->PALessonNameFoq->BackColor = System::Drawing::Color::DarkGreen;
-            this->PALessonNameFoq->Location = System::Drawing::Point(232, 229);
-            this->PALessonNameFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->PALessonNameFoq->Location = System::Drawing::Point(174, 186);
             this->PALessonNameFoq->Name = L"PALessonNameFoq";
-            this->PALessonNameFoq->Size = System::Drawing::Size(441, 4);
+            this->PALessonNameFoq->Size = System::Drawing::Size(331, 3);
             this->PALessonNameFoq->TabIndex = 138;
             // 
             // LALessonIDFoq
@@ -884,20 +849,18 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LALessonIDFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LALessonIDFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LALessonIDFoq->Location = System::Drawing::Point(669, 71);
-            this->LALessonIDFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LALessonIDFoq->Location = System::Drawing::Point(502, 58);
             this->LALessonIDFoq->Name = L"LALessonIDFoq";
-            this->LALessonIDFoq->Size = System::Drawing::Size(169, 116);
+            this->LALessonIDFoq->Size = System::Drawing::Size(136, 92);
             this->LALessonIDFoq->TabIndex = 137;
             this->LALessonIDFoq->Text = L" : نشانی درس";
             // 
             // PALessonIDFoq
             // 
             this->PALessonIDFoq->BackColor = System::Drawing::Color::DarkGreen;
-            this->PALessonIDFoq->Location = System::Drawing::Point(232, 151);
-            this->PALessonIDFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->PALessonIDFoq->Location = System::Drawing::Point(174, 123);
             this->PALessonIDFoq->Name = L"PALessonIDFoq";
-            this->PALessonIDFoq->Size = System::Drawing::Size(441, 4);
+            this->PALessonIDFoq->Size = System::Drawing::Size(331, 3);
             this->PALessonIDFoq->TabIndex = 136;
             // 
             // TXTeacherNameFoq
@@ -906,11 +869,10 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->TXTeacherNameFoq->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXTeacherNameFoq->Font = (gcnew System::Drawing::Font(L"Eras Demi ITC", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->TXTeacherNameFoq->Location = System::Drawing::Point(232, 298);
-            this->TXTeacherNameFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->TXTeacherNameFoq->Location = System::Drawing::Point(174, 242);
             this->TXTeacherNameFoq->Name = L"TXTeacherNameFoq";
             this->TXTeacherNameFoq->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->TXTeacherNameFoq->Size = System::Drawing::Size(441, 22);
+            this->TXTeacherNameFoq->Size = System::Drawing::Size(331, 18);
             this->TXTeacherNameFoq->TabIndex = 135;
             this->TXTeacherNameFoq->Text = L" ";
             this->TXTeacherNameFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -923,10 +885,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->BTTaiid1Foq->Font = (gcnew System::Drawing::Font(L"Impact", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
             this->BTTaiid1Foq->ForeColor = System::Drawing::SystemColors::Info;
-            this->BTTaiid1Foq->Location = System::Drawing::Point(251, 505);
-            this->BTTaiid1Foq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->BTTaiid1Foq->Location = System::Drawing::Point(188, 410);
             this->BTTaiid1Foq->Name = L"BTTaiid1Foq";
-            this->BTTaiid1Foq->Size = System::Drawing::Size(213, 43);
+            this->BTTaiid1Foq->Size = System::Drawing::Size(160, 35);
             this->BTTaiid1Foq->TabIndex = 134;
             this->BTTaiid1Foq->Text = L"تایید";
             this->BTTaiid1Foq->UseVisualStyleBackColor = false;
@@ -937,20 +898,18 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LATeacherNameFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LATeacherNameFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LATeacherNameFoq->Location = System::Drawing::Point(669, 242);
-            this->LATeacherNameFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LATeacherNameFoq->Location = System::Drawing::Point(502, 197);
             this->LATeacherNameFoq->Name = L"LATeacherNameFoq";
-            this->LATeacherNameFoq->Size = System::Drawing::Size(148, 116);
+            this->LATeacherNameFoq->Size = System::Drawing::Size(120, 92);
             this->LATeacherNameFoq->TabIndex = 133;
             this->LATeacherNameFoq->Text = L" : نام استاد";
             // 
             // PATeacherNameFoq
             // 
             this->PATeacherNameFoq->BackColor = System::Drawing::Color::DarkGreen;
-            this->PATeacherNameFoq->Location = System::Drawing::Point(233, 322);
-            this->PATeacherNameFoq->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->PATeacherNameFoq->Location = System::Drawing::Point(175, 262);
             this->PATeacherNameFoq->Name = L"PATeacherNameFoq";
-            this->PATeacherNameFoq->Size = System::Drawing::Size(441, 4);
+            this->PATeacherNameFoq->Size = System::Drawing::Size(331, 3);
             this->PATeacherNameFoq->TabIndex = 132;
             // 
             // TXClassID
@@ -960,10 +919,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->TXClassID->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXClassID->Font = (gcnew System::Drawing::Font(L"Eras Demi ITC", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->TXClassID->Location = System::Drawing::Point(257, 255);
-            this->TXClassID->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->TXClassID->Location = System::Drawing::Point(193, 207);
             this->TXClassID->Name = L"TXClassID";
-            this->TXClassID->Size = System::Drawing::Size(441, 22);
+            this->TXClassID->Size = System::Drawing::Size(331, 18);
             this->TXClassID->TabIndex = 130;
             this->TXClassID->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             this->TXClassID->TextChanged += gcnew System::EventHandler(this, &MainForm::TXClassID_TextChanged);
@@ -975,10 +933,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->TXLessonID->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXLessonID->Font = (gcnew System::Drawing::Font(L"Eras Demi ITC", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->TXLessonID->Location = System::Drawing::Point(257, 127);
-            this->TXLessonID->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->TXLessonID->Location = System::Drawing::Point(193, 103);
             this->TXLessonID->Name = L"TXLessonID";
-            this->TXLessonID->Size = System::Drawing::Size(441, 22);
+            this->TXLessonID->Size = System::Drawing::Size(331, 18);
             this->TXLessonID->TabIndex = 129;
             this->TXLessonID->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             this->TXLessonID->TextChanged += gcnew System::EventHandler(this, &MainForm::TXLessonID_TextChanged);
@@ -991,11 +948,11 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LAEror->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->LAEror->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-            this->LAEror->Location = System::Drawing::Point(33, 325);
-            this->LAEror->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
+            this->LAEror->Location = System::Drawing::Point(25, 264);
+            this->LAEror->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
             this->LAEror->Name = L"LAEror";
             this->LAEror->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->LAEror->Size = System::Drawing::Size(852, 113);
+            this->LAEror->Size = System::Drawing::Size(639, 92);
             this->LAEror->TabIndex = 128;
             this->LAEror->Text = L" ";
             this->LAEror->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1009,10 +966,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->BTTaiid->Font = (gcnew System::Drawing::Font(L"B Nazanin", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
             this->BTTaiid->ForeColor = System::Drawing::SystemColors::Info;
-            this->BTTaiid->Location = System::Drawing::Point(232, 505);
-            this->BTTaiid->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->BTTaiid->Location = System::Drawing::Point(174, 410);
             this->BTTaiid->Name = L"BTTaiid";
-            this->BTTaiid->Size = System::Drawing::Size(656, 43);
+            this->BTTaiid->Size = System::Drawing::Size(492, 35);
             this->BTTaiid->TabIndex = 127;
             this->BTTaiid->Text = L"تایید";
             this->BTTaiid->UseVisualStyleBackColor = false;
@@ -1025,10 +981,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LACassID->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LACassID->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LACassID->Location = System::Drawing::Point(707, 212);
-            this->LACassID->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LACassID->Location = System::Drawing::Point(530, 172);
             this->LACassID->Name = L"LACassID";
-            this->LACassID->Size = System::Drawing::Size(171, 116);
+            this->LACassID->Size = System::Drawing::Size(138, 92);
             this->LACassID->TabIndex = 126;
             this->LACassID->Text = L" : شماره کلاس";
             // 
@@ -1036,10 +991,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             // 
             this->PAClassID->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->PAClassID->BackColor = System::Drawing::Color::DarkGreen;
-            this->PAClassID->Location = System::Drawing::Point(257, 283);
-            this->PAClassID->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->PAClassID->Location = System::Drawing::Point(193, 230);
             this->PAClassID->Name = L"PAClassID";
-            this->PAClassID->Size = System::Drawing::Size(441, 4);
+            this->PAClassID->Size = System::Drawing::Size(331, 3);
             this->PAClassID->TabIndex = 125;
             // 
             // LALessonID
@@ -1049,10 +1003,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LALessonID->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LALessonID->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LALessonID->Location = System::Drawing::Point(707, 85);
-            this->LALessonID->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LALessonID->Location = System::Drawing::Point(530, 69);
             this->LALessonID->Name = L"LALessonID";
-            this->LALessonID->Size = System::Drawing::Size(169, 116);
+            this->LALessonID->Size = System::Drawing::Size(136, 92);
             this->LALessonID->TabIndex = 124;
             this->LALessonID->Text = L" : نشانی درس";
             // 
@@ -1060,10 +1013,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             // 
             this->PALessonID->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->PALessonID->BackColor = System::Drawing::Color::DarkGreen;
-            this->PALessonID->Location = System::Drawing::Point(257, 156);
-            this->PALessonID->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->PALessonID->Location = System::Drawing::Point(193, 127);
             this->PALessonID->Name = L"PALessonID";
-            this->PALessonID->Size = System::Drawing::Size(441, 4);
+            this->PALessonID->Size = System::Drawing::Size(331, 3);
             this->PALessonID->TabIndex = 123;
             // 
             // Tabel
@@ -1097,8 +1049,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
             this->Tabel->DefaultCellStyle = dataGridViewCellStyle2;
             this->Tabel->GridColor = System::Drawing::Color::DarkKhaki;
-            this->Tabel->Location = System::Drawing::Point(-8, 37);
-            this->Tabel->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->Tabel->Location = System::Drawing::Point(-6, 30);
             this->Tabel->Name = L"Tabel";
             this->Tabel->ReadOnly = true;
             this->Tabel->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
@@ -1112,7 +1063,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
             this->Tabel->RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this->Tabel->RowHeadersWidth = 51;
-            this->Tabel->Size = System::Drawing::Size(1017, 594);
+            this->Tabel->Size = System::Drawing::Size(763, 483);
             this->Tabel->TabIndex = 122;
             // 
             // Column
@@ -1180,10 +1131,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->BTFoqBarname->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 28.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->BTFoqBarname->ForeColor = System::Drawing::SystemColors::Info;
-            this->BTFoqBarname->Location = System::Drawing::Point(296, 378);
-            this->BTFoqBarname->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->BTFoqBarname->Location = System::Drawing::Point(222, 307);
             this->BTFoqBarname->Name = L"BTFoqBarname";
-            this->BTFoqBarname->Size = System::Drawing::Size(339, 107);
+            this->BTFoqBarname->Size = System::Drawing::Size(254, 87);
             this->BTFoqBarname->TabIndex = 121;
             this->BTFoqBarname->Text = L"ایجاد درس فوق برنامه";
             this->BTFoqBarname->UseVisualStyleBackColor = false;
@@ -1197,10 +1147,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->BTTanzinBarname->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 28.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->BTTanzinBarname->ForeColor = System::Drawing::SystemColors::Info;
-            this->BTTanzinBarname->Location = System::Drawing::Point(296, 254);
-            this->BTTanzinBarname->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->BTTanzinBarname->Location = System::Drawing::Point(222, 206);
             this->BTTanzinBarname->Name = L"BTTanzinBarname";
-            this->BTTanzinBarname->Size = System::Drawing::Size(339, 107);
+            this->BTTanzinBarname->Size = System::Drawing::Size(254, 87);
             this->BTTanzinBarname->TabIndex = 120;
             this->BTTanzinBarname->Text = L"تنظیم دستی   برنامه";
             this->BTTanzinBarname->UseVisualStyleBackColor = false;
@@ -1215,10 +1164,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->BTBarnameDarsi->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 28.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->BTBarnameDarsi->ForeColor = System::Drawing::SystemColors::Info;
-            this->BTBarnameDarsi->Location = System::Drawing::Point(296, 123);
-            this->BTBarnameDarsi->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->BTBarnameDarsi->Location = System::Drawing::Point(222, 100);
             this->BTBarnameDarsi->Name = L"BTBarnameDarsi";
-            this->BTBarnameDarsi->Size = System::Drawing::Size(339, 107);
+            this->BTBarnameDarsi->Size = System::Drawing::Size(254, 87);
             this->BTBarnameDarsi->TabIndex = 119;
             this->BTBarnameDarsi->Text = L"برنامه  درسی";
             this->BTBarnameDarsi->UseVisualStyleBackColor = false;
@@ -1232,9 +1180,10 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LAXmlFile->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LAXmlFile->ForeColor = System::Drawing::Color::DarkCyan;
-            this->LAXmlFile->Location = System::Drawing::Point(179, 383);
+            this->LAXmlFile->Location = System::Drawing::Point(134, 311);
+            this->LAXmlFile->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->LAXmlFile->Name = L"LAXmlFile";
-            this->LAXmlFile->Size = System::Drawing::Size(114, 25);
+            this->LAXmlFile->Size = System::Drawing::Size(91, 20);
             this->LAXmlFile->TabIndex = 118;
             this->LAXmlFile->Text = L"(XML FILE)";
             // 
@@ -1246,10 +1195,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->BTImportFile->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 28.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->BTImportFile->ForeColor = System::Drawing::Color::DarkCyan;
-            this->BTImportFile->Location = System::Drawing::Point(175, 244);
-            this->BTImportFile->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->BTImportFile->Location = System::Drawing::Point(131, 198);
             this->BTImportFile->Name = L"BTImportFile";
-            this->BTImportFile->Size = System::Drawing::Size(553, 106);
+            this->BTImportFile->Size = System::Drawing::Size(415, 86);
             this->BTImportFile->TabIndex = 117;
             this->BTImportFile->Text = L"برای وارد کردن فایل اطلاعات کلیک کنید";
             this->BTImportFile->UseVisualStyleBackColor = false;
@@ -1263,11 +1211,11 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->LAErorIm->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->LAErorIm->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-            this->LAErorIm->Location = System::Drawing::Point(-108, 370);
-            this->LAErorIm->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
+            this->LAErorIm->Location = System::Drawing::Point(-81, 320);
+            this->LAErorIm->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
             this->LAErorIm->Name = L"LAErorIm";
             this->LAErorIm->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->LAErorIm->Size = System::Drawing::Size(852, 261);
+            this->LAErorIm->Size = System::Drawing::Size(639, 212);
             this->LAErorIm->TabIndex = 173;
             this->LAErorIm->Text = L"ارور";
             this->LAErorIm->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1281,10 +1229,10 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->BTAuto->Font = (gcnew System::Drawing::Font(L"B Nazanin", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
             this->BTAuto->ForeColor = System::Drawing::Color::DarkGoldenrod;
-            this->BTAuto->Location = System::Drawing::Point(447, -4);
+            this->BTAuto->Location = System::Drawing::Point(335, -3);
             this->BTAuto->Margin = System::Windows::Forms::Padding(1);
             this->BTAuto->Name = L"BTAuto";
-            this->BTAuto->Size = System::Drawing::Size(511, 41);
+            this->BTAuto->Size = System::Drawing::Size(383, 33);
             this->BTAuto->TabIndex = 175;
             this->BTAuto->TabStop = false;
             this->BTAuto->Text = L"تنظیم خودکار";
@@ -1301,10 +1249,10 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->BTSave->Font = (gcnew System::Drawing::Font(L"B Nazanin", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
             this->BTSave->ForeColor = System::Drawing::Color::DarkGoldenrod;
-            this->BTSave->Location = System::Drawing::Point(-8, -4);
+            this->BTSave->Location = System::Drawing::Point(-6, -3);
             this->BTSave->Margin = System::Windows::Forms::Padding(1);
             this->BTSave->Name = L"BTSave";
-            this->BTSave->Size = System::Drawing::Size(472, 41);
+            this->BTSave->Size = System::Drawing::Size(354, 33);
             this->BTSave->TabIndex = 176;
             this->BTSave->TabStop = false;
             this->BTSave->Text = L"ذخیره اطلاعات";
@@ -1319,10 +1267,10 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->BTBazgashtTable->Font = (gcnew System::Drawing::Font(L"B Nazanin", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
             this->BTBazgashtTable->ForeColor = System::Drawing::Color::DarkGoldenrod;
-            this->BTBazgashtTable->Location = System::Drawing::Point(829, 42);
+            this->BTBazgashtTable->Location = System::Drawing::Point(622, 34);
             this->BTBazgashtTable->Margin = System::Windows::Forms::Padding(1);
             this->BTBazgashtTable->Name = L"BTBazgashtTable";
-            this->BTBazgashtTable->Size = System::Drawing::Size(108, 38);
+            this->BTBazgashtTable->Size = System::Drawing::Size(81, 31);
             this->BTBazgashtTable->TabIndex = 177;
             this->BTBazgashtTable->TabStop = false;
             this->BTBazgashtTable->Text = L"بازگشت";
@@ -1338,10 +1286,10 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->BTBishtarImTable->Font = (gcnew System::Drawing::Font(L"B Nazanin", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
             this->BTBishtarImTable->ForeColor = System::Drawing::Color::DarkGoldenrod;
-            this->BTBishtarImTable->Location = System::Drawing::Point(829, 82);
+            this->BTBishtarImTable->Location = System::Drawing::Point(622, 67);
             this->BTBishtarImTable->Margin = System::Windows::Forms::Padding(1);
             this->BTBishtarImTable->Name = L"BTBishtarImTable";
-            this->BTBishtarImTable->Size = System::Drawing::Size(108, 38);
+            this->BTBishtarImTable->Size = System::Drawing::Size(81, 31);
             this->BTBishtarImTable->TabIndex = 178;
             this->BTBishtarImTable->TabStop = false;
             this->BTBishtarImTable->Text = L"...بیشتر";
@@ -1352,11 +1300,10 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             // 
             this->LATanzimLessonInfo->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
-            this->LATanzimLessonInfo->Location = System::Drawing::Point(-1, 110);
-            this->LATanzimLessonInfo->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LATanzimLessonInfo->Location = System::Drawing::Point(-1, 89);
             this->LATanzimLessonInfo->Name = L"LATanzimLessonInfo";
             this->LATanzimLessonInfo->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->LATanzimLessonInfo->Size = System::Drawing::Size(231, 59);
+            this->LATanzimLessonInfo->Size = System::Drawing::Size(173, 48);
             this->LATanzimLessonInfo->TabIndex = 179;
             this->LATanzimLessonInfo->Text = L" ";
             // 
@@ -1364,29 +1311,19 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             // 
             this->LATanzimClassInfo->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
-            this->LATanzimClassInfo->Location = System::Drawing::Point(-1, 244);
-            this->LATanzimClassInfo->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LATanzimClassInfo->Location = System::Drawing::Point(-1, 198);
             this->LATanzimClassInfo->Name = L"LATanzimClassInfo";
             this->LATanzimClassInfo->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->LATanzimClassInfo->Size = System::Drawing::Size(231, 59);
+            this->LATanzimClassInfo->Size = System::Drawing::Size(173, 48);
             this->LATanzimClassInfo->TabIndex = 180;
             this->LATanzimClassInfo->Text = L" ";
             // 
-            // flowLayoutPanel1
-            // 
-            this->flowLayoutPanel1->Location = System::Drawing::Point(255, 550);
-            this->flowLayoutPanel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-            this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
-            this->flowLayoutPanel1->Size = System::Drawing::Size(267, 123);
-            this->flowLayoutPanel1->TabIndex = 181;
-            // 
             // MainForm
             // 
-            this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+            this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::Aquamarine;
-            this->ClientSize = System::Drawing::Size(939, 630);
-            this->Controls->Add(this->flowLayoutPanel1);
+            this->ClientSize = System::Drawing::Size(704, 512);
             this->Controls->Add(this->LATanzimClassInfo);
             this->Controls->Add(this->LATanzimLessonInfo);
             this->Controls->Add(this->BTBishtarImTable);
@@ -1449,7 +1386,6 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
             this->Controls->Add(this->BTBarnameDarsi);
             this->Controls->Add(this->LAXmlFile);
             this->Controls->Add(this->BTImportFile);
-            this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->MaximizeBox = false;
             this->Name = L"MainForm";
             this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -1579,6 +1515,10 @@ private: System::Void BTTanzinBarname_Click(System::Object^ sender, System::Even
     HideMeno();
     ShowTanzimBarname();
 }
+
+       private: bool Bles = false, Bcla = false;
+
+
 private: System::Void TXClassID_TextChanged(System::Object^ sender, System::EventArgs^ e) {
     
     if (StringConvert(TXLessonID->Text).size() > 1 && StringConvert(TXClassID->Text).size() > 1) LAEror->Text = "";
@@ -1589,9 +1529,11 @@ private: System::Void TXClassID_TextChanged(System::Object^ sender, System::Even
     //}//LAEror->Text = L"لطفا در فیلد کلاس رقم شماره کلاس را وارد کنید."; return; }
     if (StringConvert(TXClassID->Text).size()>1) {
 
+        Bcla = false;
 
         for (size_t n = 0;n < classes.size();n++) {
             if (stoi(StringConvert(TXClassID->Text)) == classes.at(n).getID()) {
+                Bcla = true;
                 if (classes.at(n).getVideoProjector())
                     LATanzimClassInfo->Text = L"🎦  (ظرفیت : " + NumPerConvert(classes.at(n).getCapacity()) + " )";
                 else
@@ -1606,19 +1548,28 @@ private: System::Void TXClassID_TextChanged(System::Object^ sender, System::Even
     else
         LATanzimClassInfo->Text = "";
 }
+
+
+
+
 private: System::Void TXLessonID_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 
     if (StringConvert(TXLessonID->Text).size() > 1 && StringConvert(TXClassID->Text).size() > 1) LAEror->Text = "";
 
     if (StringConvert(TXLessonID->Text).size() > 1) {
 
-
+        Bles = false;
         for (size_t n = 0;n < lessons.size();n++) {
             if (TXLessonID->Text == StringConvert( lessons.at(n).getID() )) {
+
+                Bles = true;
+
                 if (lessons.at(n).getVideoProjector())
-                    LATanzimLessonInfo->Text = L"🎦  "+UTF8Convert(lessons.at(n).getName()) + L" (دانشجویان : " + NumPerConvert(lessons.at(n).getStudents().size()) + ")";
-                else
+                    LATanzimLessonInfo->Text = L"🎦  " + UTF8Convert(lessons.at(n).getName()) + L" (دانشجویان : " + NumPerConvert(lessons.at(n).getStudents().size()) + ")";
+                
+                else 
                     LATanzimLessonInfo->Text = UTF8Convert(lessons.at(n).getName()) + L" (دانشجویان : " + NumPerConvert(lessons.at(n).getStudents().size()) + ")";
+                
 
                 break;
             }
@@ -1635,27 +1586,29 @@ private: System::Void BTTaiid_Click(System::Object^ sender, System::EventArgs^ e
 
     if (TXClassID->Text == "" || TXLessonID->Text == "") { LAEror->Text = L"لطفا فیلد ها را پر کنید !"; return; }
 
+    if (!Bles)
+    {
+        LAEror->Text = L"درس مورد نظر یافت نشد !"; return;
+    }
+    else if (!Bcla)
+    {
+        LAEror->Text = L"کلاس مورد نظر یافت نشد !"; return;
+    }
 
+    if(FindLesson(TXLessonID->Text).OverCapacity( FindClass(TXClassID->Text)))
+    {
+        LAEror->Text = L"ظرفیت کلاس کافی نیست !"; return;
+    }
 
-    //int z = 0;
+    if(FindLesson(TXLessonID->Text).getVideoProjector()&&!FindClass(TXClassID->Text).getVideoProjector())
+    {
+        LAEror->Text = L"این درس نیاز به ویدیوپرژکتور دارد !"; return;
+    }
 
-
-
-    //for (size_t n = 0;n < classes.size();n++) {
-    //    if (stoi(StringConvert(TXClassID->Text)) == classes.at(n).getID())
-    //    {
-    //         break;
-    //    }
-    //    LAEror->Text = L"کلاس مورد نظر یافت نشد !";
-    //}
-
-    //for (size_t n = 0;n < lessons.size();n++) {
-    //    if (TXLessonID->Text == StringConvert(lessons.at(n).getID()))
-    //    {
-    //         break;
-    //    }
-    //    LAEror->Text = L"درس مورد نظر یافت نشد !";
-    //}
+    if(CheckTimeInterference(FindLesson(TXLessonID->Text)))
+    {
+        LAEror->Text = L"تداخل ساعات دروس در کلاس وجود دارد  !"; return;
+    }
 }
 };
 }

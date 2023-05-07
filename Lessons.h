@@ -127,6 +127,7 @@ public:
 
 	bool DataInterference(Lessons less)
 	{
+		
 		if ((StartDay.WeekDay == less.StartDay.WeekDay) && (StartDay.Day == less.StartDay.Day) && (StartDay.Month == less.StartDay.Month) && (StartDay.Year == less.StartDay.Year))
 			return true;
 		else
