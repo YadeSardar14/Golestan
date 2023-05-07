@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Lessons>
+
+
+    <Lesson>
+
+        <id>125h5</id>
+        <Name>Advanced Programming</Name>
+
+        <Time>
+
+            <start>
+                <hour>8</hour>
+                <minute>30</minute>
+            </start>
+
+            <duration>
+                <hour>2</hour>
+                <minute>0</minute>
+            </duration>
+
+        </Time>
+
+        <VideoProjector>1</VideoProjector>
+
+        <StudentList>
+            <Student>
+                <name>ali</name>
+                <id>125468</id>
+            </Student>
+            <Student>
+                <name>dsa</name>
+                <id>985412</id>
+            </Student>
+        </StudentList>
+
+        <Teacher>lotfi</Teacher>
+    </Lesson>
+
+
+
+
+
+
+
+
+    <Lesson>
+
+        <id>45h0w</id>
+        <Name>Fizik</Name>
+
+        <Time>
+
+            <start>
+                <hour>11</hour>
+                <minute>0</minute>
+            </start>
+
+            <duration>
+                <hour>1</hour>
+                <minute>30</minute>
+            </duration>
+
+        </Time>
+
+        <VideoProjector>0</VideoProjector>
+
+        <StudentList>
+            <Student>
+                <name>bosh</name>
+                <id>154786</id>
+            </Student>
+            <Student>
+                <name>ali</name>
+                <id>986542</id>
+            </Student>
+             <Student>
+                <name>ahmad</name>
+                <id>122456</id>
+            </Student>
+             <Student>
+                <name>fatem</name>
+                <id>865427</id>
+            </Student>
+        </StudentList>
+
+        <Teacher>fatemi</Teacher>
+    </Lesson>
+
+
+
+    </Lessons>
+
+
+
+
+
+
+
+
+        <classes>
+
+            <Class>
+
+                <id>104</id>
+                <Capacity>35</Capacity>
+                <VideoProjector>1</VideoProjector>
+
+            </Class>
+
+
+            <Class>
+
+                <id>20</id>
+                <Capacity>30</Capacity>
+                <VideoProjector>0</VideoProjector>
+
+            </Class>
+
+
+        </classes>
