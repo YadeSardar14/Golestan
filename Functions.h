@@ -482,10 +482,10 @@ bool CheckTimeInterference(Lessons less) {
 	
 	for (size_t n = 0; n < lessons.size(); n++)
 	{
+		if (lessons.at(n).getID() == less.getID())
+			continue;
 
-		MessageBox::Show(StringConvert(to_string(lessons.at(n).PlaceInterference(less))));
-		MessageBox::Show(StringConvert(to_string(lessons.at(n).DataInterference(less))));
-		MessageBox::Show(StringConvert(to_string(lessons.at(n).ClockInterference(less))));
+		cout << "salam";
 		if (lessons.at(n).PlaceInterference(less) && lessons.at(n).DataInterference(less) && lessons.at(n).ClockInterference(less)) 
 			return true;
 	
