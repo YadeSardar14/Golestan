@@ -117,6 +117,7 @@ namespace Golestan {
         void ShowTanzimBarname() {
 
             BTTaiid->Show();
+            BTBazgasht->Show();
             PAClassID->Show();
             TXClassID->Show();
             LACassID->Show();
@@ -131,6 +132,7 @@ namespace Golestan {
         void HideTanzimBarname() {
 
             BTTaiid->Hide();
+            BTBazgasht->Hide();
             PAClassID->Hide();
             TXClassID->Hide();
             LACassID->Hide();
@@ -140,6 +142,7 @@ namespace Golestan {
             LAEror->Hide();
             LATanzimLessonInfo->Hide();
             LATanzimClassInfo->Hide();
+
         }
 
         void ShowFoq1() {
@@ -260,6 +263,69 @@ namespace Golestan {
 
 
 
+        void SetTable(vector <Lessons> lessons, vector <Classes> classes) {
+
+            for (size_t n = 0;n < classes.size();n++) {
+                for (size_t m = 1;m < lessons.size();m++)
+                    Tabel->Rows[n]->Cells[m]->Value = "";
+            }
+
+            for (size_t n = 0;n < classes.size();n++) {
+                for (size_t m = 0;m < lessons.size();m++) {
+
+                    if (lessons.at(m).getClassLocation() == classes.at(n).getID()) {
+
+                        switch (lessons.at(m).getData().WeekDay) {
+
+                        case 0:
+                            if (Tabel->Rows[n]->Cells[1]->Value)
+                                Tabel->Rows[n]->Cells[1]->Value += "\n";
+                            Tabel->Rows[n]->Cells[1]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            break;
+                        case 1:
+                            if (Tabel->Rows[n]->Cells[2]->Value)
+                                Tabel->Rows[n]->Cells[2]->Value += "\n";
+                            Tabel->Rows[n]->Cells[2]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            break;
+                        case 2:
+                            if (Tabel->Rows[n]->Cells[3]->Value)
+                                Tabel->Rows[n]->Cells[3]->Value += "\n";
+                            Tabel->Rows[n]->Cells[3]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            break;
+                        case 3:
+                            if (Tabel->Rows[n]->Cells[4]->Value)
+                                Tabel->Rows[n]->Cells[4]->Value += "\n";
+                            Tabel->Rows[n]->Cells[4]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            break;
+                        case 4:
+                            if (Tabel->Rows[n]->Cells[5]->Value)
+                                Tabel->Rows[n]->Cells[5]->Value += "\n";
+                            Tabel->Rows[n]->Cells[5]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            break;
+                        case 5:
+                            if (Tabel->Rows[n]->Cells[6]->Value)
+                                Tabel->Rows[n]->Cells[6]->Value += "\n";
+                            Tabel->Rows[n]->Cells[6]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            break;
+
+
+                        }
+                    }
+                }
+            }
+        }
+
+        void SetTable_ClassName() { 
+
+            for (size_t n = 0;n < classes.size();n++) {
+                Tabel->Rows->Add();
+                Tabel->Rows[n]->Cells[0]->Value = L"کلاس " + NumPerConvert(classes.at(n).getID());
+                if (classes.at(n).getVideoProjector())
+                    Tabel->Rows[n]->Cells[0]->Value += L"📽";
+
+            }
+        }
+
     private: System::Windows::Forms::TextBox^ TXWeekDayFoq;
     protected:
     private: System::Windows::Forms::Label^ LAWeekDayFoq;
@@ -333,6 +399,9 @@ private: System::Windows::Forms::Button^ BTBazgashtTable;
 private: System::Windows::Forms::Button^ BTBishtarImTable;
 private: System::Windows::Forms::Label^ LATanzimLessonInfo;
 private: System::Windows::Forms::Label^ LATanzimClassInfo;
+private: System::Windows::Forms::Button^ BTBazgasht;
+
+
 
 
 
@@ -360,9 +429,9 @@ private: System::Windows::Forms::Label^ LATanzimClassInfo;
 		/// </summary>
 		void InitializeComponent(void)
 		{
-            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle7 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle8 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle9 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
             this->TXWeekDayFoq = (gcnew System::Windows::Forms::TextBox());
             this->LAWeekDayFoq = (gcnew System::Windows::Forms::Label());
             this->TXStNumFoq = (gcnew System::Windows::Forms::TextBox());
@@ -432,6 +501,7 @@ private: System::Windows::Forms::Label^ LATanzimClassInfo;
             this->BTBishtarImTable = (gcnew System::Windows::Forms::Button());
             this->LATanzimLessonInfo = (gcnew System::Windows::Forms::Label());
             this->LATanzimClassInfo = (gcnew System::Windows::Forms::Label());
+            this->BTBazgasht = (gcnew System::Windows::Forms::Button());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAJalaseFoq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAM1Foq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAH1Foq))->BeginInit();
@@ -966,9 +1036,9 @@ private: System::Windows::Forms::Label^ LATanzimClassInfo;
             this->BTTaiid->Font = (gcnew System::Drawing::Font(L"B Nazanin", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
             this->BTTaiid->ForeColor = System::Drawing::SystemColors::Info;
-            this->BTTaiid->Location = System::Drawing::Point(174, 410);
+            this->BTTaiid->Location = System::Drawing::Point(415, 410);
             this->BTTaiid->Name = L"BTTaiid";
-            this->BTTaiid->Size = System::Drawing::Size(492, 35);
+            this->BTTaiid->Size = System::Drawing::Size(206, 35);
             this->BTTaiid->TabIndex = 127;
             this->BTTaiid->Text = L"تایید";
             this->BTTaiid->UseVisualStyleBackColor = false;
@@ -1023,45 +1093,45 @@ private: System::Windows::Forms::Label^ LATanzimClassInfo;
             this->Tabel->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->Tabel->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
             this->Tabel->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
-            dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleRight;
-            dataGridViewCellStyle1->BackColor = System::Drawing::Color::MediumAquamarine;
-            dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle7->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleRight;
+            dataGridViewCellStyle7->BackColor = System::Drawing::Color::MediumAquamarine;
+            dataGridViewCellStyle7->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            dataGridViewCellStyle1->ForeColor = System::Drawing::Color::ForestGreen;
-            dataGridViewCellStyle1->NullValue = nullptr;
-            dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::Aquamarine;
-            dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::Desktop;
-            dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->Tabel->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7->ForeColor = System::Drawing::Color::ForestGreen;
+            dataGridViewCellStyle7->NullValue = nullptr;
+            dataGridViewCellStyle7->SelectionBackColor = System::Drawing::Color::Aquamarine;
+            dataGridViewCellStyle7->SelectionForeColor = System::Drawing::SystemColors::Desktop;
+            dataGridViewCellStyle7->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->Tabel->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this->Tabel->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
             this->Tabel->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
                 this->Column, this->R0,
                     this->R1, this->R2, this->R3, this->R4, this->R5
             });
             this->Tabel->Cursor = System::Windows::Forms::Cursors::Cross;
-            dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-            dataGridViewCellStyle2->BackColor = System::Drawing::Color::Beige;
-            dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle8->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+            dataGridViewCellStyle8->BackColor = System::Drawing::Color::Beige;
+            dataGridViewCellStyle8->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
-            dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::Desktop;
-            dataGridViewCellStyle2->SelectionBackColor = System::Drawing::Color::DarkKhaki;
-            dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-            dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->Tabel->DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8->ForeColor = System::Drawing::SystemColors::Desktop;
+            dataGridViewCellStyle8->SelectionBackColor = System::Drawing::Color::DarkKhaki;
+            dataGridViewCellStyle8->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+            dataGridViewCellStyle8->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->Tabel->DefaultCellStyle = dataGridViewCellStyle8;
             this->Tabel->GridColor = System::Drawing::Color::DarkKhaki;
             this->Tabel->Location = System::Drawing::Point(-6, 30);
             this->Tabel->Name = L"Tabel";
             this->Tabel->ReadOnly = true;
             this->Tabel->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-            dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
-            dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle9->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+            dataGridViewCellStyle9->BackColor = System::Drawing::SystemColors::Control;
+            dataGridViewCellStyle9->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
-            dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-            dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-            dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->Tabel->RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9->ForeColor = System::Drawing::SystemColors::WindowText;
+            dataGridViewCellStyle9->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+            dataGridViewCellStyle9->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+            dataGridViewCellStyle9->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->Tabel->RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this->Tabel->RowHeadersWidth = 51;
             this->Tabel->Size = System::Drawing::Size(763, 483);
             this->Tabel->TabIndex = 122;
@@ -1318,12 +1388,30 @@ private: System::Windows::Forms::Label^ LATanzimClassInfo;
             this->LATanzimClassInfo->TabIndex = 180;
             this->LATanzimClassInfo->Text = L" ";
             // 
+            // BTBazgasht
+            // 
+            this->BTBazgasht->Anchor = System::Windows::Forms::AnchorStyles::None;
+            this->BTBazgasht->AutoEllipsis = true;
+            this->BTBazgasht->BackColor = System::Drawing::Color::LightSeaGreen;
+            this->BTBazgasht->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->BTBazgasht->Font = (gcnew System::Drawing::Font(L"B Nazanin", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(178)));
+            this->BTBazgasht->ForeColor = System::Drawing::SystemColors::Info;
+            this->BTBazgasht->Location = System::Drawing::Point(193, 410);
+            this->BTBazgasht->Name = L"BTBazgasht";
+            this->BTBazgasht->Size = System::Drawing::Size(206, 35);
+            this->BTBazgasht->TabIndex = 181;
+            this->BTBazgasht->Text = L"بازگشت";
+            this->BTBazgasht->UseVisualStyleBackColor = false;
+            this->BTBazgasht->Click += gcnew System::EventHandler(this, &MainForm::BTBazgasht_Click);
+            // 
             // MainForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::Aquamarine;
             this->ClientSize = System::Drawing::Size(704, 512);
+            this->Controls->Add(this->BTBazgasht);
             this->Controls->Add(this->LATanzimClassInfo);
             this->Controls->Add(this->LATanzimLessonInfo);
             this->Controls->Add(this->BTBishtarImTable);
@@ -1434,13 +1522,7 @@ private: System::Windows::Forms::Label^ LATanzimClassInfo;
         		ShowMeno();
 
 
-                for (size_t n = 0;n < classes.size();n++) {
-                    Tabel->Rows->Add();
-                    Tabel->Rows[n]->Cells[0]->Value = L"کلاس " + NumPerConvert(classes.at(n).getID());
-                    if (classes.at(n).getVideoProjector())
-                        Tabel->Rows[n]->Cells[0]->Value += L"📽";
-                   
-                }
+                SetTable_ClassName();
 
 
 
@@ -1458,49 +1540,7 @@ private: System::Void BTAuto_Click(System::Object^ sender, System::EventArgs^ e)
    
     AutoSetLocation(lessons,classes);
  
-    for (size_t n = 0;n < classes.size();n++) {
-        for (size_t m = 0;m < lessons.size();m++) {
-
-            if (lessons.at(m).getClassLocation() == classes.at(n).getID()) {
-               
-                switch (lessons.at(m).getData().WeekDay) {
-
-                case 0:
-                    if (Tabel->Rows[n]->Cells[1]->Value)
-                        Tabel->Rows[n]->Cells[1]->Value += "\n";
-                    Tabel->Rows[n]->Cells[1]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Huor) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
-                    break;
-                case 1:
-                    if (Tabel->Rows[n]->Cells[2]->Value)
-                        Tabel->Rows[n]->Cells[2]->Value += "\n";
-                    Tabel->Rows[n]->Cells[2]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Huor) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
-                    break;
-                case 2:
-                    if (Tabel->Rows[n]->Cells[3]->Value)
-                        Tabel->Rows[n]->Cells[3]->Value += "\n";
-                    Tabel->Rows[n]->Cells[3]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Huor) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
-                    break;
-                case 3:
-                    if (Tabel->Rows[n]->Cells[4]->Value)
-                        Tabel->Rows[n]->Cells[4]->Value += "\n";
-                    Tabel->Rows[n]->Cells[4]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Huor) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
-                    break;
-                case 4:
-                    if (Tabel->Rows[n]->Cells[5]->Value)
-                        Tabel->Rows[n]->Cells[5]->Value += "\n";
-                    Tabel->Rows[n]->Cells[5]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Huor) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
-                    break;
-                case 5:
-                    if (Tabel->Rows[n]->Cells[6]->Value)
-                        Tabel->Rows[n]->Cells[6]->Value += "\n";
-                    Tabel->Rows[n]->Cells[6]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Huor) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
-                    break;
-
-
-                }
-            }
-        }
-    }
+    SetTable(lessons,classes);
    
 
 
@@ -1580,6 +1620,14 @@ private: System::Void TXLessonID_TextChanged(System::Object^ sender, System::Eve
     else
         LATanzimLessonInfo->Text = "";
 }
+
+
+
+
+
+
+
+
 private: System::Void BTTaiid_Click(System::Object^ sender, System::EventArgs^ e) {
     LAEror->Text = "";
 
@@ -1605,10 +1653,30 @@ private: System::Void BTTaiid_Click(System::Object^ sender, System::EventArgs^ e
         LAEror->Text = L"این درس نیاز به ویدیوپرژکتور دارد !"; return;
     }
 
-    if(CheckTimeInterference(FindLesson(TXLessonID->Text)))
+    if(CheckTimeInterference(FindLesson(TXLessonID->Text), FindClass(TXClassID->Text))&&FindLesson(TXLessonID->Text).getClassLocation()!=0)
     {
         LAEror->Text = L"تداخل ساعات دروس در کلاس وجود دارد  !"; return;
+
     }
+
+    lessons.at(FindLessonIndex(TXLessonID->Text)).setClassLocation(FindClass(TXClassID->Text));
+    SetTable(lessons,classes);
+
+    HideTanzimBarname();
+    ShowMeno();
+
+}
+
+
+
+
+private: System::Void BTBazgasht_Click(System::Object^ sender, System::EventArgs^ e) {
+
+    //for (auto x : lessons)
+    //    MessageBox::Show(UTF8Convert(x.getName())+" : "+StringConvert(to_string(x.getClassLocation())));
+
+    HideTanzimBarname();
+    ShowMeno();
 }
 };
 }

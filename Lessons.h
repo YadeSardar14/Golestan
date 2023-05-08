@@ -68,9 +68,9 @@ public:
 
 
 
-	void setClassLocation(int classnum)
+	void setClassLocation(Classes cl)
 	{
-		ClassLocation = classnum;
+		ClassLocation = cl.getID();
 	}
 
 	void setStartTime(int h, int m = 0) { Start.Huor = h; Start.Minute = m; }
@@ -101,8 +101,6 @@ public:
 		else if (time1_start > time2_start && time1_start < time2_finaly)
 			return true;
 		else if (time1_finaly > time2_start && time1_finaly < time2_finaly)
-			return true;
-		if (time2_start == time1_start && time1_finaly == time2_finaly)
 			return true;
 		else
 			return false;

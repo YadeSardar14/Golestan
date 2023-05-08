@@ -78,6 +78,21 @@ Lessons FindLesson(String^ id) {
 }
 
 
+int FindClassIndex(String^ id) {
+	for (size_t n = 0;n < classes.size();n++) {
+		if (id == StringConvert(to_string(classes.at(n).getID())))
+			return n;
+	}
+}
+
+int FindLessonIndex(String^ id) {
+	for (size_t n = 0;n < lessons.size();n++) {
+		if (id == StringConvert(lessons.at(n).getID()))
+			return n;
+	}
+}
+
+
 String^ NumPerConvert(int Num) {
 
 	int s = to_string(Num).size();
@@ -172,7 +187,7 @@ bool ClockInterference(Lessons less1, Lessons less2)
 	int time1_finaly = FinalTime(less1).Huor * 60 + FinalTime(less1).Minute;
 	int time2_finaly = FinalTime(less2).Huor * 60 + FinalTime(less2).Minute;
 
-	if (time2_start > time1_start && time2_start < time1_finaly)
+	if (time2_start >= time1_start && time2_start < time1_finaly)
 		return true;
 	else if (time2_finaly > time1_start && time2_finaly < time1_finaly)
 		return true;
@@ -429,7 +444,7 @@ void AutoSetLocation(vector<Lessons>& lessons, vector<Classes> classes) {
 			if (Interference)
 				continue;
 
-			lessons.at(n).setClassLocation(classes.at(m).getID());
+			lessons.at(n).setClassLocation(classes.at(m));
 
 
 		}
@@ -468,7 +483,7 @@ void AutoSetLocation(vector<Lessons>& lessons, vector<Classes> classes) {
 			if (Interference)
 				continue;
 
-			lessons.at(n).setClassLocation(classes.at(m).getID());
+			lessons.at(n).setClassLocation(classes.at(m));
 
 
 		}
@@ -478,15 +493,14 @@ void AutoSetLocation(vector<Lessons>& lessons, vector<Classes> classes) {
 }
 
 
-bool CheckTimeInterference(Lessons less) {
+bool CheckTimeInterference(Lessons less, Classes cla) {
 	
 	for (size_t n = 0; n < lessons.size(); n++)
 	{
 		if (lessons.at(n).getID() == less.getID())
 			continue;
-
-		cout << "salam";
-		if (lessons.at(n).PlaceInterference(less) && lessons.at(n).DataInterference(less) && lessons.at(n).ClockInterference(less)) 
+		//MessageBox::Show(UTF8Convert(lessons.at(n).getName()) + "   " + StringConvert(to_string(lessons.at(n).PlaceInterference(cla))+" "+ to_string(lessons.at(n).DataInterference(less))+" "+ to_string(lessons.at(n).ClockInterference(less))));
+		if (lessons.at(n).PlaceInterference(cla) && lessons.at(n).DataInterference(less) && lessons.at(n).ClockInterference(less)) 
 			return true;
 	
 			}
