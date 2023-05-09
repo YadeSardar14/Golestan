@@ -94,7 +94,7 @@ public:
 		int time1_finaly = time1_start + Duration.Huor * 60 + Duration.Minute;
 		int time2_finaly = time2_start + less2.Duration.Huor * 60 + less2.Duration.Minute;
 
-		if (time2_start > time1_start && time2_start < time1_finaly)
+		if (time2_start >= time1_start && time2_start < time1_finaly)
 			return true;
 		else if (time2_finaly > time1_start && time2_finaly < time1_finaly)
 			return true;

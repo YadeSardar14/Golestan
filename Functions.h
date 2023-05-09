@@ -32,7 +32,7 @@ vector<Classes> classes;
 vector<ExtraLessons> extraclass;
 vector<Lessons> Gextraclass;
 vector<Student> students;
-vector<string> teacher;
+vector<string> teachers;
 
 
 #ifndef FUNCTION_H
@@ -508,7 +508,7 @@ bool CheckTimeInterference(Lessons less, Classes cla) {
 	return false;
 
 		}
-	
+
 
 
 void ToSplitExtraClass(vector <ExtraLessons> extraclass, vector <Lessons>& Gextraclass) {
@@ -533,12 +533,74 @@ void ToSplitExtraClass(vector <ExtraLessons> extraclass, vector <Lessons>& Gextr
 		}
 	}
 
-
-
 }
 
 
+void TextSave(String^ FilePatch) {
 
+	ofstream File(StringConvert(FilePatch) + "//Golestan.txt", ios::out);
+
+	File << "Students List :\n\n\n";
+	File << "ID" << setw(25) << "Name\n\n";
+	for (auto st : students) {
+
+		if(st.Name.at(0)>= 97 && st.Name.at(0) <= 122)
+		File << left << setw(20) << st.ID << setw(20) << st.Name << endl;
+		else
+		{
+			File <<endl<<left<< setw(20) << st.ID << setw(20+st.Name.size()) << st.Name<<endl;
+		}
+	}
+
+
+	File << "\n\n\n\n\n\nTeachers List :\n\n\n";
+	
+	for (auto te : teachers)
+		File << te << endl;
+
+
+	File << "\n\n\n\n\n\nLessons List :\n\n\n";
+
+
+	File << setw(25)<< "ID" << setw(25) << "WeekDay" << setw(25) << "Time" << setw(25) << "Class" << setw(25) << "StudentNumber" << setw(25) << "VideoProjector" << setw(25) << "Teacher" << setw(25) << "Name"<<"\n\n\n";
+	
+	
+	for (auto less : lessons)
+	{
+		string WeekDay = "";
+
+		switch (less.getData().WeekDay) {
+
+		case 0:
+			WeekDay = "Saturday";
+			break;
+		case 1:
+			WeekDay = "Sunday";
+			break;
+		case 2:
+			WeekDay = "Monday";
+			break;
+		case 3:
+			WeekDay = "Tuesday";
+			break;
+		case 4:
+			WeekDay = "Wednesday";
+			break;
+		case 5:
+			WeekDay = "Thursday";
+			break;
+
+		}
+		string VideoProjector = "NO";
+		if (less.getVideoProjector())
+			VideoProjector = "YES";
+
+		File <<endl<< setw(25) << less.getID() << setw(25) << WeekDay << setw(25) << to_string(less.getStartTime().Huor)+":"+ to_string(less.getStartTime().Minute)+"|"+ to_string(FinalTime(less).Huor)+":"+ to_string(FinalTime(less).Minute) << setw(25) << less.getClassLocation() << setw(25) << less.getStudents().size() << setw(25) << VideoProjector << setw(25+ less.getName().size()) << less.getName() << setw(25 + less.getTeacherName().size()) << less.getTeacherName() + "\n";
+		
+
+	}
+
+}
   
 
 #endif

@@ -20,6 +20,7 @@ namespace Golestan {
 	{
 
     private: OpenFileDialog^ XmlAdres;
+    private: FolderBrowserDialog^  TxtSave;
 
 	public:
 		MainForm(void)
@@ -32,6 +33,11 @@ namespace Golestan {
             XmlAdres->Title = "Select a File";
             XmlAdres->RestoreDirectory = true;
 
+            TxtSave = gcnew FolderBrowserDialog();
+            TxtSave->Description = "Select A Folder";
+            TxtSave->ShowNewFolderButton = false;
+            //TxtSave->RootFolder = Environment::SpecialFolder::MyComputer;
+           
 
 			//
 			//TODO: Add the constructor code here
@@ -429,9 +435,9 @@ private: System::Windows::Forms::Button^ BTBazgasht;
 		/// </summary>
 		void InitializeComponent(void)
 		{
-            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle7 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle8 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle9 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
             this->TXWeekDayFoq = (gcnew System::Windows::Forms::TextBox());
             this->LAWeekDayFoq = (gcnew System::Windows::Forms::Label());
             this->TXStNumFoq = (gcnew System::Windows::Forms::TextBox());
@@ -1093,45 +1099,45 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->Tabel->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->Tabel->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
             this->Tabel->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
-            dataGridViewCellStyle7->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleRight;
-            dataGridViewCellStyle7->BackColor = System::Drawing::Color::MediumAquamarine;
-            dataGridViewCellStyle7->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleRight;
+            dataGridViewCellStyle1->BackColor = System::Drawing::Color::MediumAquamarine;
+            dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            dataGridViewCellStyle7->ForeColor = System::Drawing::Color::ForestGreen;
-            dataGridViewCellStyle7->NullValue = nullptr;
-            dataGridViewCellStyle7->SelectionBackColor = System::Drawing::Color::Aquamarine;
-            dataGridViewCellStyle7->SelectionForeColor = System::Drawing::SystemColors::Desktop;
-            dataGridViewCellStyle7->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->Tabel->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1->ForeColor = System::Drawing::Color::ForestGreen;
+            dataGridViewCellStyle1->NullValue = nullptr;
+            dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::Aquamarine;
+            dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::Desktop;
+            dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->Tabel->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this->Tabel->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
             this->Tabel->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
                 this->Column, this->R0,
                     this->R1, this->R2, this->R3, this->R4, this->R5
             });
             this->Tabel->Cursor = System::Windows::Forms::Cursors::Cross;
-            dataGridViewCellStyle8->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-            dataGridViewCellStyle8->BackColor = System::Drawing::Color::Beige;
-            dataGridViewCellStyle8->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+            dataGridViewCellStyle2->BackColor = System::Drawing::Color::Beige;
+            dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
-            dataGridViewCellStyle8->ForeColor = System::Drawing::SystemColors::Desktop;
-            dataGridViewCellStyle8->SelectionBackColor = System::Drawing::Color::DarkKhaki;
-            dataGridViewCellStyle8->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-            dataGridViewCellStyle8->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->Tabel->DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::Desktop;
+            dataGridViewCellStyle2->SelectionBackColor = System::Drawing::Color::DarkKhaki;
+            dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+            dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->Tabel->DefaultCellStyle = dataGridViewCellStyle2;
             this->Tabel->GridColor = System::Drawing::Color::DarkKhaki;
             this->Tabel->Location = System::Drawing::Point(-6, 30);
             this->Tabel->Name = L"Tabel";
             this->Tabel->ReadOnly = true;
             this->Tabel->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            dataGridViewCellStyle9->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-            dataGridViewCellStyle9->BackColor = System::Drawing::SystemColors::Control;
-            dataGridViewCellStyle9->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+            dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
+            dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            dataGridViewCellStyle9->ForeColor = System::Drawing::SystemColors::WindowText;
-            dataGridViewCellStyle9->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-            dataGridViewCellStyle9->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-            dataGridViewCellStyle9->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->Tabel->RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
+            dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+            dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+            dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->Tabel->RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this->Tabel->RowHeadersWidth = 51;
             this->Tabel->Size = System::Drawing::Size(763, 483);
             this->Tabel->TabIndex = 122;
@@ -1207,6 +1213,7 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->BTFoqBarname->TabIndex = 121;
             this->BTFoqBarname->Text = L"ایجاد درس فوق برنامه";
             this->BTFoqBarname->UseVisualStyleBackColor = false;
+            this->BTFoqBarname->Click += gcnew System::EventHandler(this, &MainForm::BTFoqBarname_Click);
             // 
             // BTTanzinBarname
             // 
@@ -1328,6 +1335,7 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->BTSave->Text = L"ذخیره اطلاعات";
             this->BTSave->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
             this->BTSave->UseVisualStyleBackColor = false;
+            this->BTSave->Click += gcnew System::EventHandler(this, &MainForm::BTSave_Click);
             // 
             // BTBazgashtTable
             // 
@@ -1506,7 +1514,7 @@ private: System::Windows::Forms::Button^ BTBazgasht;
 
         	String^ FilePath = XmlAdres->FileName;
 
-        	ReadFileLessons(lessons,students, teacher, StringConvert(FilePath));
+        	ReadFileLessons(lessons,students, teachers, StringConvert(FilePath));
         	ReadFileClasses(classes, StringConvert(FilePath));
 
 
@@ -1677,6 +1685,21 @@ private: System::Void BTBazgasht_Click(System::Object^ sender, System::EventArgs
 
     HideTanzimBarname();
     ShowMeno();
+}
+private: System::Void BTSave_Click(System::Object^ sender, System::EventArgs^ e) {
+
+    if (TxtSave->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+    {
+        String^ FilePatch= TxtSave->SelectedPath;
+        
+        TextSave(FilePatch);
+    }
+
+}
+private: System::Void BTFoqBarname_Click(System::Object^ sender, System::EventArgs^ e) {
+
+    HideMeno();
+    ShowFoq1();
 }
 };
 }
