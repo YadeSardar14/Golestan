@@ -20,7 +20,12 @@ namespace Golestan {
 	{
 
     private: OpenFileDialog^ XmlAdres;
-    private: FolderBrowserDialog^  TxtSave;
+    private: System::Windows::Forms::Button^ BTBazgashtFog;
+    private: System::Windows::Forms::Label^ LAErorFoq2;
+    private: System::Windows::Forms::Button^ BTBazgasht2Foq;
+
+
+    private: FolderBrowserDialog^ TxtSave;
 
 	public:
 		MainForm(void)
@@ -154,6 +159,7 @@ namespace Golestan {
         void ShowFoq1() {
 
             BTTaiid1Foq->Show();
+            BTBazgashtFog->Show();
             LALessonIDFoq->Show();
             LALessonNameFoq->Show();
             LATeacherNameFoq->Show();
@@ -164,7 +170,7 @@ namespace Golestan {
             TXLessonNameFoq->Show();
             TXTeacherNameFoq->Show();
             BOVideoProjectorFoq->Show();
-            LAErorFoq->Show();
+           LAErorFoq->Show();
 
         }
 
@@ -182,6 +188,7 @@ namespace Golestan {
             TXTeacherNameFoq->Hide();
             BOVideoProjectorFoq->Hide();
             LAErorFoq->Hide();
+            BTBazgashtFog->Hide();
 
         }
 
@@ -190,8 +197,9 @@ namespace Golestan {
             LADateFoq->Show();
             LATimeFoq->Show();
             LATimeToolFoq->Show();
-            LAErorFoq->Show();
-            BTTaiidFoq->Show();
+            LAErorFoq2->Show();
+            BTTaiid2Foq->Show();
+            BTBazgasht2Foq->Show();
             LAHFoq->Show();
             LAH1Foq->Show();
             LAMFoq->Show();
@@ -217,8 +225,9 @@ namespace Golestan {
             LADateFoq->Hide();
             LATimeFoq->Hide();
             LATimeToolFoq->Hide();
-            LAErorFoq->Hide();
-            BTTaiidFoq->Hide();
+            LAErorFoq2->Hide();
+            BTTaiid2Foq->Hide();
+            BTBazgasht2Foq->Hide();
             LAHFoq->Hide();
             LAH1Foq->Hide();
             LAMFoq->Hide();
@@ -284,32 +293,32 @@ namespace Golestan {
                         switch (lessons.at(m).getData().WeekDay) {
 
                         case 0:
-                            if (Tabel->Rows[n]->Cells[1]->Value)
+                            if (!Tabel->Rows[n]->Cells[1]->Value)
                                 Tabel->Rows[n]->Cells[1]->Value += "\n";
                             Tabel->Rows[n]->Cells[1]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
                             break;
                         case 1:
-                            if (Tabel->Rows[n]->Cells[2]->Value)
+                            if (!Tabel->Rows[n]->Cells[2]->Value)
                                 Tabel->Rows[n]->Cells[2]->Value += "\n";
                             Tabel->Rows[n]->Cells[2]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
                             break;
                         case 2:
-                            if (Tabel->Rows[n]->Cells[3]->Value)
+                            if (!Tabel->Rows[n]->Cells[3]->Value)
                                 Tabel->Rows[n]->Cells[3]->Value += "\n";
                             Tabel->Rows[n]->Cells[3]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
                             break;
                         case 3:
-                            if (Tabel->Rows[n]->Cells[4]->Value)
+                            if (!Tabel->Rows[n]->Cells[4]->Value)
                                 Tabel->Rows[n]->Cells[4]->Value += "\n";
                             Tabel->Rows[n]->Cells[4]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
                             break;
                         case 4:
-                            if (Tabel->Rows[n]->Cells[5]->Value)
+                            if (!Tabel->Rows[n]->Cells[5]->Value)
                                 Tabel->Rows[n]->Cells[5]->Value += "\n";
                             Tabel->Rows[n]->Cells[5]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
                             break;
                         case 5:
-                            if (Tabel->Rows[n]->Cells[6]->Value)
+                            if (!Tabel->Rows[n]->Cells[6]->Value)
                                 Tabel->Rows[n]->Cells[6]->Value += "\n";
                             Tabel->Rows[n]->Cells[6]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
                             break;
@@ -344,7 +353,9 @@ namespace Golestan {
     private: System::Windows::Forms::Label^ LAStNumFoq;
     private: System::Windows::Forms::Label^ LAStNameFoq;
     private: System::Windows::Forms::Label^ LADaneshjoFoq;
-    private: System::Windows::Forms::Button^ BTTaiidFoq;
+private: System::Windows::Forms::Button^ BTTaiid2Foq;
+
+
     private: System::Windows::Forms::NumericUpDown^ VAJalaseFoq;
     private: System::Windows::Forms::Label^ LAJalaseFoq;
     private: System::Windows::Forms::NumericUpDown^ VAM1Foq;
@@ -435,9 +446,9 @@ private: System::Windows::Forms::Button^ BTBazgasht;
 		/// </summary>
 		void InitializeComponent(void)
 		{
-            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
             this->TXWeekDayFoq = (gcnew System::Windows::Forms::TextBox());
             this->LAWeekDayFoq = (gcnew System::Windows::Forms::Label());
             this->TXStNumFoq = (gcnew System::Windows::Forms::TextBox());
@@ -449,7 +460,7 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->LAStNumFoq = (gcnew System::Windows::Forms::Label());
             this->LAStNameFoq = (gcnew System::Windows::Forms::Label());
             this->LADaneshjoFoq = (gcnew System::Windows::Forms::Label());
-            this->BTTaiidFoq = (gcnew System::Windows::Forms::Button());
+            this->BTTaiid2Foq = (gcnew System::Windows::Forms::Button());
             this->VAJalaseFoq = (gcnew System::Windows::Forms::NumericUpDown());
             this->LAJalaseFoq = (gcnew System::Windows::Forms::Label());
             this->VAM1Foq = (gcnew System::Windows::Forms::NumericUpDown());
@@ -508,6 +519,9 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->LATanzimLessonInfo = (gcnew System::Windows::Forms::Label());
             this->LATanzimClassInfo = (gcnew System::Windows::Forms::Label());
             this->BTBazgasht = (gcnew System::Windows::Forms::Button());
+            this->BTBazgashtFog = (gcnew System::Windows::Forms::Button());
+            this->LAErorFoq2 = (gcnew System::Windows::Forms::Label());
+            this->BTBazgasht2Foq = (gcnew System::Windows::Forms::Button());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAJalaseFoq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAM1Foq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAH1Foq))->BeginInit();
@@ -522,12 +536,12 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             // 
             this->TXWeekDayFoq->BackColor = System::Drawing::Color::MediumAquamarine;
             this->TXWeekDayFoq->BorderStyle = System::Windows::Forms::BorderStyle::None;
-            this->TXWeekDayFoq->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->TXWeekDayFoq->Location = System::Drawing::Point(188, 309);
+            this->TXWeekDayFoq->Font = (gcnew System::Drawing::Font(L"B Nazanin", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(178)));
+            this->TXWeekDayFoq->Location = System::Drawing::Point(188, 302);
             this->TXWeekDayFoq->Name = L"TXWeekDayFoq";
             this->TXWeekDayFoq->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->TXWeekDayFoq->Size = System::Drawing::Size(90, 15);
+            this->TXWeekDayFoq->Size = System::Drawing::Size(90, 26);
             this->TXWeekDayFoq->TabIndex = 172;
             this->TXWeekDayFoq->Text = L"شنبه";
             this->TXWeekDayFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -652,28 +666,33 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->LADaneshjoFoq->TabIndex = 162;
             this->LADaneshjoFoq->Text = L" :  افزودن دانشجویان   ";
             // 
-            // BTTaiidFoq
+            // BTTaiid2Foq
             // 
-            this->BTTaiidFoq->AutoEllipsis = true;
-            this->BTTaiidFoq->BackColor = System::Drawing::Color::LightSeaGreen;
-            this->BTTaiidFoq->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->BTTaiidFoq->Font = (gcnew System::Drawing::Font(L"Impact", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+            this->BTTaiid2Foq->AutoEllipsis = true;
+            this->BTTaiid2Foq->BackColor = System::Drawing::Color::LightSeaGreen;
+            this->BTTaiid2Foq->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->BTTaiid2Foq->Font = (gcnew System::Drawing::Font(L"Impact", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
-            this->BTTaiidFoq->ForeColor = System::Drawing::SystemColors::Info;
-            this->BTTaiidFoq->Location = System::Drawing::Point(188, 438);
-            this->BTTaiidFoq->Name = L"BTTaiidFoq";
-            this->BTTaiidFoq->Size = System::Drawing::Size(160, 35);
-            this->BTTaiidFoq->TabIndex = 161;
-            this->BTTaiidFoq->Text = L"تایید";
-            this->BTTaiidFoq->UseVisualStyleBackColor = false;
+            this->BTTaiid2Foq->ForeColor = System::Drawing::SystemColors::Info;
+            this->BTTaiid2Foq->Location = System::Drawing::Point(405, 438);
+            this->BTTaiid2Foq->Name = L"BTTaiid2Foq";
+            this->BTTaiid2Foq->Size = System::Drawing::Size(217, 35);
+            this->BTTaiid2Foq->TabIndex = 161;
+            this->BTTaiid2Foq->Text = L"تایید";
+            this->BTTaiid2Foq->UseVisualStyleBackColor = false;
+            this->BTTaiid2Foq->Click += gcnew System::EventHandler(this, &MainForm::BTTaiid2Foq_Click);
             // 
             // VAJalaseFoq
             // 
             this->VAJalaseFoq->BackColor = System::Drawing::Color::MediumAquamarine;
             this->VAJalaseFoq->Location = System::Drawing::Point(401, 304);
+            this->VAJalaseFoq->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 50, 0, 0, 0 });
+            this->VAJalaseFoq->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
             this->VAJalaseFoq->Name = L"VAJalaseFoq";
             this->VAJalaseFoq->Size = System::Drawing::Size(90, 20);
             this->VAJalaseFoq->TabIndex = 160;
+            this->VAJalaseFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+            this->VAJalaseFoq->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
             // 
             // LAJalaseFoq
             // 
@@ -691,17 +710,21 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             // 
             this->VAM1Foq->BackColor = System::Drawing::Color::MediumAquamarine;
             this->VAM1Foq->Location = System::Drawing::Point(188, 225);
+            this->VAM1Foq->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 59, 0, 0, 0 });
             this->VAM1Foq->Name = L"VAM1Foq";
             this->VAM1Foq->Size = System::Drawing::Size(90, 20);
             this->VAM1Foq->TabIndex = 158;
+            this->VAM1Foq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             // 
             // VAH1Foq
             // 
             this->VAH1Foq->BackColor = System::Drawing::Color::MediumAquamarine;
             this->VAH1Foq->Location = System::Drawing::Point(335, 224);
+            this->VAH1Foq->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 10, 0, 0, 0 });
             this->VAH1Foq->Name = L"VAH1Foq";
             this->VAH1Foq->Size = System::Drawing::Size(90, 20);
             this->VAH1Foq->TabIndex = 157;
+            this->VAH1Foq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             // 
             // LAM1Foq
             // 
@@ -742,33 +765,45 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             // 
             this->VAMFoq->BackColor = System::Drawing::Color::MediumAquamarine;
             this->VAMFoq->Location = System::Drawing::Point(188, 152);
+            this->VAMFoq->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 59, 0, 0, 0 });
             this->VAMFoq->Name = L"VAMFoq";
             this->VAMFoq->Size = System::Drawing::Size(90, 20);
             this->VAMFoq->TabIndex = 153;
+            this->VAMFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             // 
             // VAHFoq
             // 
             this->VAHFoq->BackColor = System::Drawing::Color::MediumAquamarine;
             this->VAHFoq->Location = System::Drawing::Point(335, 151);
+            this->VAHFoq->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 23, 0, 0, 0 });
             this->VAHFoq->Name = L"VAHFoq";
             this->VAHFoq->Size = System::Drawing::Size(90, 20);
             this->VAHFoq->TabIndex = 152;
+            this->VAHFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             // 
             // VARozFoq
             // 
             this->VARozFoq->BackColor = System::Drawing::Color::MediumAquamarine;
             this->VARozFoq->Location = System::Drawing::Point(188, 79);
+            this->VARozFoq->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 31, 0, 0, 0 });
+            this->VARozFoq->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
             this->VARozFoq->Name = L"VARozFoq";
             this->VARozFoq->Size = System::Drawing::Size(90, 20);
             this->VARozFoq->TabIndex = 151;
+            this->VARozFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+            this->VARozFoq->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
             // 
             // VAMahFoq
             // 
             this->VAMahFoq->BackColor = System::Drawing::Color::MediumAquamarine;
             this->VAMahFoq->Location = System::Drawing::Point(335, 79);
+            this->VAMahFoq->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 12, 0, 0, 0 });
+            this->VAMahFoq->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
             this->VAMahFoq->Name = L"VAMahFoq";
             this->VAMahFoq->Size = System::Drawing::Size(90, 20);
             this->VAMahFoq->TabIndex = 150;
+            this->VAMahFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+            this->VAMahFoq->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
             // 
             // LAMFoq
             // 
@@ -790,7 +825,7 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->LAHFoq->Location = System::Drawing::Point(422, 122);
             this->LAHFoq->Name = L"LAHFoq";
             this->LAHFoq->Size = System::Drawing::Size(85, 67);
-            this->LAHFoq->TabIndex = 148;
+            this->LAHFoq->TabIndex = 149;
             this->LAHFoq->Text = L" : ساعت";
             // 
             // LATimeFoq
@@ -849,13 +884,12 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->LAErorFoq->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->LAErorFoq->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-            this->LAErorFoq->Location = System::Drawing::Point(-1, 338);
+            this->LAErorFoq->Location = System::Drawing::Point(-1, 296);
             this->LAErorFoq->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
             this->LAErorFoq->Name = L"LAErorFoq";
             this->LAErorFoq->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->LAErorFoq->Size = System::Drawing::Size(639, 88);
+            this->LAErorFoq->Size = System::Drawing::Size(482, 77);
             this->LAErorFoq->TabIndex = 143;
-            this->LAErorFoq->Text = L"این درس نیاز به ویدیو پرژکتور دارد!";
             this->LAErorFoq->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
             // 
             // BOVideoProjectorFoq
@@ -882,8 +916,8 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->TXLessonNameFoq->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
             this->TXLessonNameFoq->Size = System::Drawing::Size(331, 18);
             this->TXLessonNameFoq->TabIndex = 140;
-            this->TXLessonNameFoq->Text = L" ";
             this->TXLessonNameFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+            this->TXLessonNameFoq->TextChanged += gcnew System::EventHandler(this, &MainForm::TXLessonNameFoq_TextChanged);
             // 
             // TXLessonIDFoq
             // 
@@ -893,11 +927,10 @@ private: System::Windows::Forms::Button^ BTBazgasht;
                 static_cast<System::Byte>(0)));
             this->TXLessonIDFoq->Location = System::Drawing::Point(174, 103);
             this->TXLessonIDFoq->Name = L"TXLessonIDFoq";
-            this->TXLessonIDFoq->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
             this->TXLessonIDFoq->Size = System::Drawing::Size(331, 18);
             this->TXLessonIDFoq->TabIndex = 139;
-            this->TXLessonIDFoq->Text = L" ";
             this->TXLessonIDFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+            this->TXLessonIDFoq->TextChanged += gcnew System::EventHandler(this, &MainForm::TXLessonIDFoq_TextChanged);
             // 
             // LALessonNameFoq
             // 
@@ -945,28 +978,29 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->TXTeacherNameFoq->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXTeacherNameFoq->Font = (gcnew System::Drawing::Font(L"Eras Demi ITC", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->TXTeacherNameFoq->Location = System::Drawing::Point(174, 242);
+            this->TXTeacherNameFoq->Location = System::Drawing::Point(174, 235);
             this->TXTeacherNameFoq->Name = L"TXTeacherNameFoq";
             this->TXTeacherNameFoq->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
             this->TXTeacherNameFoq->Size = System::Drawing::Size(331, 18);
             this->TXTeacherNameFoq->TabIndex = 135;
-            this->TXTeacherNameFoq->Text = L" ";
             this->TXTeacherNameFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+            this->TXTeacherNameFoq->TextChanged += gcnew System::EventHandler(this, &MainForm::TXTeacherNameFoq_TextChanged);
             // 
             // BTTaiid1Foq
             // 
             this->BTTaiid1Foq->AutoEllipsis = true;
             this->BTTaiid1Foq->BackColor = System::Drawing::Color::LightSeaGreen;
             this->BTTaiid1Foq->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->BTTaiid1Foq->Font = (gcnew System::Drawing::Font(L"Impact", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+            this->BTTaiid1Foq->Font = (gcnew System::Drawing::Font(L"B Nazanin", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
             this->BTTaiid1Foq->ForeColor = System::Drawing::SystemColors::Info;
-            this->BTTaiid1Foq->Location = System::Drawing::Point(188, 410);
+            this->BTTaiid1Foq->Location = System::Drawing::Point(390, 410);
             this->BTTaiid1Foq->Name = L"BTTaiid1Foq";
-            this->BTTaiid1Foq->Size = System::Drawing::Size(160, 35);
+            this->BTTaiid1Foq->Size = System::Drawing::Size(204, 35);
             this->BTTaiid1Foq->TabIndex = 134;
             this->BTTaiid1Foq->Text = L"تایید";
             this->BTTaiid1Foq->UseVisualStyleBackColor = false;
+            this->BTTaiid1Foq->Click += gcnew System::EventHandler(this, &MainForm::BTTaiid1Foq_Click);
             // 
             // LATeacherNameFoq
             // 
@@ -983,7 +1017,7 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             // PATeacherNameFoq
             // 
             this->PATeacherNameFoq->BackColor = System::Drawing::Color::DarkGreen;
-            this->PATeacherNameFoq->Location = System::Drawing::Point(175, 262);
+            this->PATeacherNameFoq->Location = System::Drawing::Point(175, 255);
             this->PATeacherNameFoq->Name = L"PATeacherNameFoq";
             this->PATeacherNameFoq->Size = System::Drawing::Size(331, 3);
             this->PATeacherNameFoq->TabIndex = 132;
@@ -1099,45 +1133,45 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->Tabel->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->Tabel->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
             this->Tabel->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
-            dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleRight;
-            dataGridViewCellStyle1->BackColor = System::Drawing::Color::MediumAquamarine;
-            dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleRight;
+            dataGridViewCellStyle4->BackColor = System::Drawing::Color::MediumAquamarine;
+            dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            dataGridViewCellStyle1->ForeColor = System::Drawing::Color::ForestGreen;
-            dataGridViewCellStyle1->NullValue = nullptr;
-            dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::Aquamarine;
-            dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::Desktop;
-            dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->Tabel->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4->ForeColor = System::Drawing::Color::ForestGreen;
+            dataGridViewCellStyle4->NullValue = nullptr;
+            dataGridViewCellStyle4->SelectionBackColor = System::Drawing::Color::Aquamarine;
+            dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::Desktop;
+            dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->Tabel->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this->Tabel->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
             this->Tabel->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
                 this->Column, this->R0,
                     this->R1, this->R2, this->R3, this->R4, this->R5
             });
             this->Tabel->Cursor = System::Windows::Forms::Cursors::Cross;
-            dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-            dataGridViewCellStyle2->BackColor = System::Drawing::Color::Beige;
-            dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+            dataGridViewCellStyle5->BackColor = System::Drawing::Color::Beige;
+            dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
-            dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::Desktop;
-            dataGridViewCellStyle2->SelectionBackColor = System::Drawing::Color::DarkKhaki;
-            dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-            dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->Tabel->DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5->ForeColor = System::Drawing::SystemColors::Desktop;
+            dataGridViewCellStyle5->SelectionBackColor = System::Drawing::Color::DarkKhaki;
+            dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+            dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->Tabel->DefaultCellStyle = dataGridViewCellStyle5;
             this->Tabel->GridColor = System::Drawing::Color::DarkKhaki;
             this->Tabel->Location = System::Drawing::Point(-6, 30);
             this->Tabel->Name = L"Tabel";
             this->Tabel->ReadOnly = true;
             this->Tabel->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-            dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
-            dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+            dataGridViewCellStyle6->BackColor = System::Drawing::SystemColors::Control;
+            dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
-            dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-            dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-            dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->Tabel->RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6->ForeColor = System::Drawing::SystemColors::WindowText;
+            dataGridViewCellStyle6->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+            dataGridViewCellStyle6->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+            dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->Tabel->RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this->Tabel->RowHeadersWidth = 51;
             this->Tabel->Size = System::Drawing::Size(763, 483);
             this->Tabel->TabIndex = 122;
@@ -1257,7 +1291,7 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->LAXmlFile->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LAXmlFile->ForeColor = System::Drawing::Color::DarkCyan;
-            this->LAXmlFile->Location = System::Drawing::Point(134, 311);
+            this->LAXmlFile->Location = System::Drawing::Point(134, 320);
             this->LAXmlFile->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->LAXmlFile->Name = L"LAXmlFile";
             this->LAXmlFile->Size = System::Drawing::Size(91, 20);
@@ -1413,12 +1447,64 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->BTBazgasht->UseVisualStyleBackColor = false;
             this->BTBazgasht->Click += gcnew System::EventHandler(this, &MainForm::BTBazgasht_Click);
             // 
+            // BTBazgashtFog
+            // 
+            this->BTBazgashtFog->Anchor = System::Windows::Forms::AnchorStyles::None;
+            this->BTBazgashtFog->AutoEllipsis = true;
+            this->BTBazgashtFog->BackColor = System::Drawing::Color::LightSeaGreen;
+            this->BTBazgashtFog->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->BTBazgashtFog->Font = (gcnew System::Drawing::Font(L"B Nazanin", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(178)));
+            this->BTBazgashtFog->ForeColor = System::Drawing::SystemColors::Info;
+            this->BTBazgashtFog->Location = System::Drawing::Point(174, 410);
+            this->BTBazgashtFog->Name = L"BTBazgashtFog";
+            this->BTBazgashtFog->Size = System::Drawing::Size(204, 35);
+            this->BTBazgashtFog->TabIndex = 182;
+            this->BTBazgashtFog->Text = L"بازگشت";
+            this->BTBazgashtFog->UseVisualStyleBackColor = false;
+            this->BTBazgashtFog->Click += gcnew System::EventHandler(this, &MainForm::BTBazgashtFog_Click);
+            // 
+            // LAErorFoq2
+            // 
+            this->LAErorFoq2->Anchor = System::Windows::Forms::AnchorStyles::None;
+            this->LAErorFoq2->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 26.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->LAErorFoq2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+            this->LAErorFoq2->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+            this->LAErorFoq2->Location = System::Drawing::Point(156, 341);
+            this->LAErorFoq2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LAErorFoq2->Name = L"LAErorFoq2";
+            this->LAErorFoq2->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
+            this->LAErorFoq2->Size = System::Drawing::Size(482, 79);
+            this->LAErorFoq2->TabIndex = 183;
+            this->LAErorFoq2->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+            // 
+            // BTBazgasht2Foq
+            // 
+            this->BTBazgasht2Foq->AutoEllipsis = true;
+            this->BTBazgasht2Foq->BackColor = System::Drawing::Color::LightSeaGreen;
+            this->BTBazgasht2Foq->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->BTBazgasht2Foq->Font = (gcnew System::Drawing::Font(L"Impact", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(178)));
+            this->BTBazgasht2Foq->ForeColor = System::Drawing::SystemColors::Info;
+            this->BTBazgasht2Foq->Location = System::Drawing::Point(175, 438);
+            this->BTBazgasht2Foq->Name = L"BTBazgasht2Foq";
+            this->BTBazgasht2Foq->Size = System::Drawing::Size(217, 35);
+            this->BTBazgasht2Foq->TabIndex = 184;
+            this->BTBazgasht2Foq->Text = L"بازگشت";
+            this->BTBazgasht2Foq->UseVisualStyleBackColor = false;
+            this->BTBazgasht2Foq->Click += gcnew System::EventHandler(this, &MainForm::BTBazgasht2Foq_Click);
+            // 
             // MainForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::Aquamarine;
             this->ClientSize = System::Drawing::Size(704, 512);
+            this->Controls->Add(this->BTBazgasht2Foq);
+            this->Controls->Add(this->LAErorFoq2);
+            this->Controls->Add(this->BTBazgashtFog);
             this->Controls->Add(this->BTBazgasht);
             this->Controls->Add(this->LATanzimClassInfo);
             this->Controls->Add(this->LATanzimLessonInfo);
@@ -1438,7 +1524,7 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->Controls->Add(this->LAStNumFoq);
             this->Controls->Add(this->LAStNameFoq);
             this->Controls->Add(this->LADaneshjoFoq);
-            this->Controls->Add(this->BTTaiidFoq);
+            this->Controls->Add(this->BTTaiid2Foq);
             this->Controls->Add(this->VAJalaseFoq);
             this->Controls->Add(this->LAJalaseFoq);
             this->Controls->Add(this->VAM1Foq);
@@ -1505,6 +1591,9 @@ private: System::Windows::Forms::Button^ BTBazgasht;
 	private: System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
     private: System::Void BTImportFile_Click(System::Object^ sender, System::EventArgs^ e) {
+
+        //MessageBox::Show(StringConvert(to_string(isintiger("55123"))));
+
         
         LAErorIm->Hide();
         lessons.clear();
@@ -1570,11 +1659,11 @@ private: System::Void BTTanzinBarname_Click(System::Object^ sender, System::Even
 private: System::Void TXClassID_TextChanged(System::Object^ sender, System::EventArgs^ e) {
     
     if (StringConvert(TXLessonID->Text).size() > 1 && StringConvert(TXClassID->Text).size() > 1) LAEror->Text = "";
-    
-    if (isInteger(StringConvert("hg"))) {
-        MessageBox::Show("");
-    }
-    //}//LAEror->Text = L"لطفا در فیلد کلاس رقم شماره کلاس را وارد کنید."; return; }
+   
+    if(!isintiger(StringConvert(TXClassID->Text))) { LAEror->Text = L"لطفا در فیلد کلاس تنها رقم شماره کلاس را وارد کنید."; return; }
+    else
+        LAEror->Text = "";
+
     if (StringConvert(TXClassID->Text).size()>1) {
 
         Bcla = false;
@@ -1602,7 +1691,7 @@ private: System::Void TXClassID_TextChanged(System::Object^ sender, System::Even
 
 private: System::Void TXLessonID_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 
-    if (StringConvert(TXLessonID->Text).size() > 1 && StringConvert(TXClassID->Text).size() > 1) LAEror->Text = "";
+    if (TXLessonID->Text != "" && TXClassID->Text != "") LAEror->Text = "";
 
     if (StringConvert(TXLessonID->Text).size() > 1) {
 
@@ -1700,6 +1789,77 @@ private: System::Void BTFoqBarname_Click(System::Object^ sender, System::EventAr
 
     HideMeno();
     ShowFoq1();
+}
+private: System::Void BTBazgashtFog_Click(System::Object^ sender, System::EventArgs^ e) {
+
+    HideFoq1();
+    ShowMeno();
+}
+private: System::Void BTTaiid1Foq_Click(System::Object^ sender, System::EventArgs^ e) {
+
+
+    //if (!(TXLessonIDFoq->Text == "" || TXLessonNameFoq->Text == "" || TXTeacherNameFoq->Text == "")) LAEror->Text = "";
+
+    if (TXLessonIDFoq->Text == "" || TXLessonNameFoq->Text == "" || TXTeacherNameFoq->Text == "") { LAErorFoq->Text = L"لطفا همه فیلد ها را پر کنید !"; return; }
+
+    else
+        LAErorFoq->Text = "";
+
+    if (isintiger(StringConvert(TXTeacherNameFoq->Text))) { LAErorFoq->Text = L"لطفا نام استاد را به درستی وارد کنید ."; return; }
+
+
+    VARozFoq->BringToFront();
+    LATimeToolFoq->SendToBack();
+    LATimeFoq->SendToBack();
+    VAHFoq->BringToFront();
+    VAH1Foq->BringToFront();
+    LAJalaseFoq->SendToBack();
+    LAErorFoq2->SendToBack();
+    LATimeFoq->SendToBack();
+    LADateFoq->SendToBack();
+
+
+    LAErorFoq2->Text = "";
+    HideFoq1();
+    ShowFoq2();
+
+
+}
+private: System::Void TXLessonIDFoq_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+
+    if (!(TXLessonIDFoq->Text == "" || TXLessonNameFoq->Text == "" || TXTeacherNameFoq->Text == "")) LAErorFoq->Text = "";
+}
+private: System::Void TXLessonNameFoq_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+
+    if (!(TXLessonIDFoq->Text == "" || TXLessonNameFoq->Text == "" || TXTeacherNameFoq->Text == "")) LAErorFoq->Text = "";if (!(TXLessonIDFoq->Text == "" || TXLessonNameFoq->Text == "" || TXTeacherNameFoq->Text == "")) LAEror->Text = "";
+}
+private: System::Void TXTeacherNameFoq_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+
+    if (!(TXLessonIDFoq->Text == "" || TXLessonNameFoq->Text == "" || TXTeacherNameFoq->Text == "")) LAErorFoq->Text = "";
+
+}
+
+
+
+
+      
+private: System::Void BTBazgasht2Foq_Click(System::Object^ sender, System::EventArgs^ e) {
+
+    HideFoq2();
+    ShowFoq1();
+
+}
+private: System::Void BTTaiid2Foq_Click(System::Object^ sender, System::EventArgs^ e) {
+
+    LAErorFoq2->Text = "";
+   // if (VAMahFoq->Value == 0 || VARozFoq->Value == 0 || VAMahFoq->Value >12 || VARozFoq->Value > 31) { LAErorFoq2->Text = L"لطفا تاریخ شروع کلاس را به درستی وارد کنید."; return; }
+
+    if(VAMahFoq->Value > 6 && VARozFoq->Value == 31) { LAErorFoq2->Text = L" این ماه کمتر از ۳۱ روز دارد!"; return; }
+
+    if(VAH1Foq->Value == 0 && VAM1Foq->Value == 0) { LAErorFoq2->Text = L"مدت زمان کلاس نمی تواند صفر باشد!"; return; }
+
+    if (VAH1Foq->Value ==0 && VAM1Foq->Value < 15) { LAErorFoq2->Text = L"مدت زمان کلاس باید بیشتر از ۱۵ دقیقه باشد."; return; }
+
 }
 };
 }
