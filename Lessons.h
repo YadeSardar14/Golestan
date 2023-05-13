@@ -62,6 +62,9 @@ public:
 		StartDay.Year = StartDay_y;
 		StartDay.Month = StartDay_m;
 		StartDay.Day = StartDay_d;
+		this->ID = ID;
+		this->Name = Name;
+		this->Teacher = Teacher;
 
 
 	}
@@ -105,6 +108,27 @@ public:
 		else
 			return false;
 	}
+
+	bool ClockInterference(int hs, int ms, int htool, int mtool)
+	{
+		int time1_start = Start.Huor * 60 + Start.Minute;
+		int time2_start = hs * 60 + ms;
+		int time1_finaly = time1_start + Duration.Huor * 60 + Duration.Minute;
+		int time2_finaly = time2_start + htool * 60 + mtool;
+
+		if (time2_start >= time1_start && time2_start < time1_finaly)
+			return true;
+		else if (time2_finaly > time1_start && time2_finaly < time1_finaly)
+			return true;
+		else if (time1_start > time2_start && time1_start < time2_finaly)
+			return true;
+		else if (time1_finaly > time2_start && time1_finaly < time2_finaly)
+			return true;
+		else
+			return false;
+	}
+
+
 
 	bool PlaceInterference(Lessons less)
 	{

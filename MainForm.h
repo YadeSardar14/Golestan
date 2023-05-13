@@ -23,6 +23,8 @@ namespace Golestan {
     private: System::Windows::Forms::Button^ BTBazgashtFog;
     private: System::Windows::Forms::Label^ LAErorFoq2;
     private: System::Windows::Forms::Button^ BTBazgasht2Foq;
+    private: System::Windows::Forms::Label^ LAErorFoq3;
+    private: System::Windows::Forms::Button^ BTBazgasht3Foq;
 
 
     private: FolderBrowserDialog^ TxtSave;
@@ -42,7 +44,7 @@ namespace Golestan {
             TxtSave->Description = "Select A Folder";
             TxtSave->ShowNewFolderButton = false;
             //TxtSave->RootFolder = Environment::SpecialFolder::MyComputer;
-           
+          
 
 			//
 			//TODO: Add the constructor code here
@@ -257,9 +259,10 @@ namespace Golestan {
             PAStNumFoq->Show();
             BTTaiid3Foq->Show();
             BTAfzodanFoq->Show();
+            BTBazgasht3Foq->Show();
             TXStNameFoq->Show();
             TXStNumFoq->Show();
-            LAErorFoq->Show();
+            LAErorFoq3->Show();
         }
 
         void HideFoq3() {
@@ -271,9 +274,10 @@ namespace Golestan {
             PAStNumFoq->Hide();
             BTTaiid3Foq->Hide();
             BTAfzodanFoq->Hide();
+            BTBazgasht3Foq->Hide();
             TXStNameFoq->Hide();
             TXStNumFoq->Hide();
-            LAErorFoq->Hide();
+            LAErorFoq3->Hide();
         }
 
 
@@ -522,6 +526,8 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->BTBazgashtFog = (gcnew System::Windows::Forms::Button());
             this->LAErorFoq2 = (gcnew System::Windows::Forms::Label());
             this->BTBazgasht2Foq = (gcnew System::Windows::Forms::Button());
+            this->LAErorFoq3 = (gcnew System::Windows::Forms::Label());
+            this->BTBazgasht3Foq = (gcnew System::Windows::Forms::Button());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAJalaseFoq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAM1Foq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAH1Foq))->BeginInit();
@@ -542,7 +548,7 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->TXWeekDayFoq->Name = L"TXWeekDayFoq";
             this->TXWeekDayFoq->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
             this->TXWeekDayFoq->Size = System::Drawing::Size(90, 26);
-            this->TXWeekDayFoq->TabIndex = 172;
+            this->TXWeekDayFoq->TabIndex = 161;
             this->TXWeekDayFoq->Text = L"شنبه";
             this->TXWeekDayFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             // 
@@ -564,7 +570,7 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->TXStNumFoq->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXStNumFoq->Font = (gcnew System::Drawing::Font(L"Eras Demi ITC", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->TXStNumFoq->Location = System::Drawing::Point(183, 280);
+            this->TXStNumFoq->Location = System::Drawing::Point(183, 278);
             this->TXStNumFoq->Name = L"TXStNumFoq";
             this->TXStNumFoq->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
             this->TXStNumFoq->Size = System::Drawing::Size(331, 18);
@@ -577,7 +583,7 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->TXStNameFoq->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXStNameFoq->Font = (gcnew System::Drawing::Font(L"Eras Demi ITC", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->TXStNameFoq->Location = System::Drawing::Point(183, 196);
+            this->TXStNameFoq->Location = System::Drawing::Point(183, 194);
             this->TXStNameFoq->Name = L"TXStNameFoq";
             this->TXStNameFoq->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
             this->TXStNameFoq->Size = System::Drawing::Size(331, 18);
@@ -618,16 +624,16 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             // BTTaiid3Foq
             // 
             this->BTTaiid3Foq->AutoEllipsis = true;
-            this->BTTaiid3Foq->BackColor = System::Drawing::Color::LightSeaGreen;
+            this->BTTaiid3Foq->BackColor = System::Drawing::Color::ForestGreen;
             this->BTTaiid3Foq->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->BTTaiid3Foq->Font = (gcnew System::Drawing::Font(L"Impact", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
             this->BTTaiid3Foq->ForeColor = System::Drawing::SystemColors::Info;
-            this->BTTaiid3Foq->Location = System::Drawing::Point(183, 438);
+            this->BTTaiid3Foq->Location = System::Drawing::Point(525, 438);
             this->BTTaiid3Foq->Name = L"BTTaiid3Foq";
             this->BTTaiid3Foq->Size = System::Drawing::Size(160, 35);
             this->BTTaiid3Foq->TabIndex = 165;
-            this->BTTaiid3Foq->Text = L"تایید";
+            this->BTTaiid3Foq->Text = L"ثبت درس";
             this->BTTaiid3Foq->UseVisualStyleBackColor = false;
             // 
             // LAStNumFoq
@@ -657,14 +663,14 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             // LADaneshjoFoq
             // 
             this->LADaneshjoFoq->AutoSize = true;
-            this->LADaneshjoFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            this->LADaneshjoFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 38, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->LADaneshjoFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
-            this->LADaneshjoFoq->Location = System::Drawing::Point(510, 33);
+            this->LADaneshjoFoq->ForeColor = System::Drawing::Color::OliveDrab;
+            this->LADaneshjoFoq->Location = System::Drawing::Point(506, 39);
             this->LADaneshjoFoq->Name = L"LADaneshjoFoq";
-            this->LADaneshjoFoq->Size = System::Drawing::Size(194, 92);
+            this->LADaneshjoFoq->Size = System::Drawing::Size(194, 98);
             this->LADaneshjoFoq->TabIndex = 162;
-            this->LADaneshjoFoq->Text = L" :  افزودن دانشجویان   ";
+            this->LADaneshjoFoq->Text = L"  افزودن دانشجویان   ";
             // 
             // BTTaiid2Foq
             // 
@@ -901,7 +907,7 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->BOVideoProjectorFoq->Location = System::Drawing::Point(518, 301);
             this->BOVideoProjectorFoq->Name = L"BOVideoProjectorFoq";
             this->BOVideoProjectorFoq->Size = System::Drawing::Size(95, 60);
-            this->BOVideoProjectorFoq->TabIndex = 142;
+            this->BOVideoProjectorFoq->TabIndex = 4;
             this->BOVideoProjectorFoq->Text = L"ویدئوپرژکتور";
             this->BOVideoProjectorFoq->UseVisualStyleBackColor = true;
             // 
@@ -982,7 +988,7 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->TXTeacherNameFoq->Name = L"TXTeacherNameFoq";
             this->TXTeacherNameFoq->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
             this->TXTeacherNameFoq->Size = System::Drawing::Size(331, 18);
-            this->TXTeacherNameFoq->TabIndex = 135;
+            this->TXTeacherNameFoq->TabIndex = 3;
             this->TXTeacherNameFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             this->TXTeacherNameFoq->TextChanged += gcnew System::EventHandler(this, &MainForm::TXTeacherNameFoq_TextChanged);
             // 
@@ -1032,7 +1038,7 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->TXClassID->Location = System::Drawing::Point(193, 207);
             this->TXClassID->Name = L"TXClassID";
             this->TXClassID->Size = System::Drawing::Size(331, 18);
-            this->TXClassID->TabIndex = 130;
+            this->TXClassID->TabIndex = 2;
             this->TXClassID->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             this->TXClassID->TextChanged += gcnew System::EventHandler(this, &MainForm::TXClassID_TextChanged);
             // 
@@ -1046,7 +1052,7 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->TXLessonID->Location = System::Drawing::Point(193, 103);
             this->TXLessonID->Name = L"TXLessonID";
             this->TXLessonID->Size = System::Drawing::Size(331, 18);
-            this->TXLessonID->TabIndex = 129;
+            this->TXLessonID->TabIndex = 1;
             this->TXLessonID->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             this->TXLessonID->TextChanged += gcnew System::EventHandler(this, &MainForm::TXLessonID_TextChanged);
             // 
@@ -1459,7 +1465,7 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->BTBazgashtFog->Location = System::Drawing::Point(174, 410);
             this->BTBazgashtFog->Name = L"BTBazgashtFog";
             this->BTBazgashtFog->Size = System::Drawing::Size(204, 35);
-            this->BTBazgashtFog->TabIndex = 182;
+            this->BTBazgashtFog->TabIndex = 5;
             this->BTBazgashtFog->Text = L"بازگشت";
             this->BTBazgashtFog->UseVisualStyleBackColor = false;
             this->BTBazgashtFog->Click += gcnew System::EventHandler(this, &MainForm::BTBazgashtFog_Click);
@@ -1496,12 +1502,45 @@ private: System::Windows::Forms::Button^ BTBazgasht;
             this->BTBazgasht2Foq->UseVisualStyleBackColor = false;
             this->BTBazgasht2Foq->Click += gcnew System::EventHandler(this, &MainForm::BTBazgasht2Foq_Click);
             // 
+            // LAErorFoq3
+            // 
+            this->LAErorFoq3->Anchor = System::Windows::Forms::AnchorStyles::None;
+            this->LAErorFoq3->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 26.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->LAErorFoq3->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+            this->LAErorFoq3->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+            this->LAErorFoq3->Location = System::Drawing::Point(156, 341);
+            this->LAErorFoq3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LAErorFoq3->Name = L"LAErorFoq3";
+            this->LAErorFoq3->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
+            this->LAErorFoq3->Size = System::Drawing::Size(482, 79);
+            this->LAErorFoq3->TabIndex = 185;
+            this->LAErorFoq3->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+            // 
+            // BTBazgasht3Foq
+            // 
+            this->BTBazgasht3Foq->AutoEllipsis = true;
+            this->BTBazgasht3Foq->BackColor = System::Drawing::Color::LightSeaGreen;
+            this->BTBazgasht3Foq->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->BTBazgasht3Foq->Font = (gcnew System::Drawing::Font(L"Impact", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(178)));
+            this->BTBazgasht3Foq->ForeColor = System::Drawing::SystemColors::Info;
+            this->BTBazgasht3Foq->Location = System::Drawing::Point(183, 438);
+            this->BTBazgasht3Foq->Name = L"BTBazgasht3Foq";
+            this->BTBazgasht3Foq->Size = System::Drawing::Size(160, 35);
+            this->BTBazgasht3Foq->TabIndex = 186;
+            this->BTBazgasht3Foq->Text = L"بازگشت";
+            this->BTBazgasht3Foq->UseVisualStyleBackColor = false;
+            // 
             // MainForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::Aquamarine;
             this->ClientSize = System::Drawing::Size(704, 512);
+            this->Controls->Add(this->BTBazgasht3Foq);
+            this->Controls->Add(this->LAErorFoq3);
             this->Controls->Add(this->BTBazgasht2Foq);
             this->Controls->Add(this->LAErorFoq2);
             this->Controls->Add(this->BTBazgashtFog);
@@ -1795,6 +1834,10 @@ private: System::Void BTBazgashtFog_Click(System::Object^ sender, System::EventA
     HideFoq1();
     ShowMeno();
 }
+
+
+       
+
 private: System::Void BTTaiid1Foq_Click(System::Object^ sender, System::EventArgs^ e) {
 
 
@@ -1806,6 +1849,7 @@ private: System::Void BTTaiid1Foq_Click(System::Object^ sender, System::EventArg
         LAErorFoq->Text = "";
 
     if (isintiger(StringConvert(TXTeacherNameFoq->Text))) { LAErorFoq->Text = L"لطفا نام استاد را به درستی وارد کنید ."; return; }
+
 
 
     VARozFoq->BringToFront();
@@ -1849,6 +1893,8 @@ private: System::Void BTBazgasht2Foq_Click(System::Object^ sender, System::Event
     ShowFoq1();
 
 }
+
+private: int WeekDay = 7;
 private: System::Void BTTaiid2Foq_Click(System::Object^ sender, System::EventArgs^ e) {
 
     LAErorFoq2->Text = "";
@@ -1859,6 +1905,63 @@ private: System::Void BTTaiid2Foq_Click(System::Object^ sender, System::EventArg
     if(VAH1Foq->Value == 0 && VAM1Foq->Value == 0) { LAErorFoq2->Text = L"مدت زمان کلاس نمی تواند صفر باشد!"; return; }
 
     if (VAH1Foq->Value ==0 && VAM1Foq->Value < 15) { LAErorFoq2->Text = L"مدت زمان کلاس باید بیشتر از ۱۵ دقیقه باشد."; return; }
+
+    if (TXWeekDayFoq->Text=="") { LAErorFoq2->Text = L"لطفا روز شروع را وارد کنید."; return; }
+
+    if (TXWeekDayFoq->Text == L"جمعه") { LAErorFoq2->Text = L"کلاس نمیتواند در روز تعطیل برگزار شود!"; return; }
+
+
+
+    switch (TXWeekDayFoq->Text[0])
+    {
+    case L'ش':
+        WeekDay=0;
+        break;
+    case L'ی':
+        WeekDay = 1;
+        break;
+    case L'د':
+        WeekDay = 2;
+        break;
+    case L'س':
+        WeekDay = 3;
+        break;
+    case L'چ':
+        WeekDay = 4;
+        break;
+    case L'پ':
+        WeekDay = 5;
+        break;
+
+    default:
+
+        LAErorFoq2->Text = L"لطفا روز هفته را با حروف فارسی بدون حرف یا فاصله اضافی، وارد کنید.";
+        return;
+
+        break;
+    }
+
+    
+
+    for (auto less : lessons) {
+        
+        if (TXTeacherNameFoq->Text == UTF8Convert(less.getTeacherName())) {
+           
+            if (less.getData().WeekDay == WeekDay)
+               
+            if (less.getData().WeekDay == WeekDay && less.ClockInterference((int)VAHFoq->Value, (int)VAMFoq->Value, (int)VAH1Foq->Value, (int)VAM1Foq->Value))
+            {
+               
+                LAErorFoq2->Text = L"استاد مورد نظر در این بازه زمانی، کلاس دیگری دارد!";
+                return;
+            }
+        }
+
+    }
+
+
+    HideFoq2();
+    ShowFoq3();
 
 }
 };

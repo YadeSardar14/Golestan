@@ -145,23 +145,25 @@ String^ NumPerConvert(int Num) {
 }
 
 
-bool isInteger(string str)
+bool isintiger(string str)
 {
 	int count = 0;
 	for (int n=0;n<str.size();n++)
 	{
 		int test = str[n];
 		
-		if ((test < 58 && test>48))
-		{
-			count++;
-		}
+		if ((test < 58 && test>=48))
+			continue;
+
+		return false;
+		
 	}
 
-	if (count == str.size())
-		return true;
-	else
-		return false;
+	return true;
+	//if (count == str.size())
+	//	return true;
+	//else
+	//	return false;
 
 }
 
@@ -179,6 +181,23 @@ Time FinalTime(Lessons less)
 
 	return fainaly;
 }
+
+
+Time FinalTime(int hs,int ms, int htool , int mtool)
+{
+	Time fainaly;
+	int time = 0;
+	time = (hs + htool) * 60 + ms + mtool;
+
+	fainaly.Minute = time % 60;
+	if (time / 60 > 24)
+		fainaly.Huor = time / 60 - 24;
+	else
+		fainaly.Huor = time / 60;
+
+	return fainaly;
+}
+
 
 bool ClockInterference(Lessons less1, Lessons less2)
 {
@@ -199,6 +218,25 @@ bool ClockInterference(Lessons less1, Lessons less2)
 		return false;
 }
 
+
+bool ClockInterference(int hs, int ms, int htool, int mtool, Lessons less2)
+{
+	int time1_start = hs * 60 + ms;
+	int time2_start = less2.getStartTime().Huor * 60 + less2.getStartTime().Minute;
+	int time1_finaly = FinalTime(hs,ms,htool,mtool).Huor * 60 + FinalTime(hs, ms, htool, mtool).Minute;
+	int time2_finaly = FinalTime(less2).Huor * 60 + FinalTime(less2).Minute;
+
+	if (time2_start >= time1_start && time2_start < time1_finaly)
+		return true;
+	else if (time2_finaly > time1_start && time2_finaly < time1_finaly)
+		return true;
+	else if (time1_start > time2_start && time1_start < time2_finaly)
+		return true;
+	else if (time1_finaly > time2_start && time1_finaly < time2_finaly)
+		return true;
+	else
+		return false;
+}
 void SetStudent(vector<Student>& students, Lessons less)
 {
 	bool repet = false;
