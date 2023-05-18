@@ -178,9 +178,10 @@ public:
 
 
 
-class ExtraLessons :Lessons {
+class ExtraLessons : public Lessons {
 
-	friend void ToSplitExtraClass(vector <ExtraLessons> extraclass, vector <Lessons>& Gextraclass);
+	friend vector <Lessons> ToSplitExtraClass(vector <ExtraLessons> extraclass);
+
 
 private:
 

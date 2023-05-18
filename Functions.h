@@ -549,7 +549,9 @@ bool CheckTimeInterference(Lessons less, Classes cla) {
 
 
 
-void ToSplitExtraClass(vector <ExtraLessons> extraclass, vector <Lessons>& Gextraclass) {
+vector <Lessons> ToSplitExtraClass(vector <ExtraLessons> extraclass) {
+
+	vector <Lessons> Gextraclass;
 
 	for (int n = 0;n < extraclass.size();n++) {
 
@@ -571,7 +573,36 @@ void ToSplitExtraClass(vector <ExtraLessons> extraclass, vector <Lessons>& Gextr
 		}
 	}
 
+	return Gextraclass;
+
 }
+
+
+vector <Lessons> ToSplitExtraClass(ExtraLessons ex) {
+
+
+	vector <Lessons> Gextraclass;
+
+		for (int m = 0; m <ex.getMeetingsNum();m++) {
+			int D = ex.getData().Day;
+			int M = ex.getData().Month;
+			int Y = ex.getData().Year;
+
+			D += 7 * m;
+			if (M < 7 && D>31) { M++; D -= 31; }
+			else if (M > 6 && M != 12 && D > 30) { M++; D -= 30; }
+			else if (M == 12 && D > 29) { Y++; M = 1; D -= 29; }
+
+			Lessons less(ex.getID(),ex.getName(), ex.getTeacherName(), ex.getStudents(), ex.getStartTime().Huor, ex.getStartTime().Minute, ex.getDurationTime().Huor, ex.getDurationTime().Minute, ex.getData().WeekDay, ex.getVideoProjector(), Y, M, D);
+
+			Gextraclass.push_back(less);
+
+		}
+
+		return Gextraclass;
+	}
+
+
 
 
 void TextSave(String^ FilePatch) {
