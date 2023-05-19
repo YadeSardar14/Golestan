@@ -14,8 +14,19 @@ namespace Golestan {
 	using namespace System::Drawing;
     using namespace std;
     
+    //List of student in foq temporarily
     vector <Student> StList;
-	/// <summary>
+	
+    //List of extraLessons
+    vector <Lessons> SplitEX;
+
+    //List of All lessons
+    vector <Lessons> SumLess;
+
+    //Save Start Date
+    vector <Date> SaveStartDate;
+    
+    /// <summary>
 	/// Summary for MainForm
 	/// </summary>
 	public ref class MainForm : public System::Windows::Forms::Form
@@ -28,10 +39,19 @@ namespace Golestan {
     private: System::Windows::Forms::Label^ LAErorFoq3;
     private: System::Windows::Forms::Button^ BTBazgasht3Foq;
     private: System::Windows::Forms::Timer^ TimeEror;
+    private: System::Windows::Forms::Label^ LAWeekCycle;
+
+    private: System::Windows::Forms::Button^ BTNext;
+
+
+    private: System::Windows::Forms::Button^ BTBack;
+
 
 
 
     private: FolderBrowserDialog^ TxtSave;
+
+
 
 	public:
 
@@ -115,12 +135,21 @@ namespace Golestan {
 
         void ShowTable() {
 
+            BTBack->BringToFront();
+            BTNext->BringToFront();
+            LAWeekCycle->BringToFront();
+
             
             BTAuto->Show();
             BTSave->Show();
             BTBazgashtTable->Show();
             BTBishtarImTable->Show();
+            if(Week_Cycle)
+            BTBack->Show();
+            BTNext->Show();
+            LAWeekCycle->Show();
             Tabel->Show();
+            
         }
 
         void HideTable() {
@@ -130,6 +159,9 @@ namespace Golestan {
             BTSave->Hide();
             BTBazgashtTable->Hide();
             BTBishtarImTable->Hide();
+            BTBack->Hide();
+            BTNext->Hide();
+            LAWeekCycle->Hide();
         }
 
         void ShowTanzimBarname() {
@@ -286,58 +318,364 @@ namespace Golestan {
         }
 
 
-
-        void SetTable(vector <Lessons> lessons, vector <Classes> classes) {
+        void EmptyTable() {
 
             for (size_t n = 0;n < classes.size();n++) {
-                for (size_t m = 1;m < lessons.size();m++)
+                for (size_t m = 1;m < 7;m++)
                     Tabel->Rows[n]->Cells[m]->Value = "";
             }
+        }
+
+
+        private: int Week_Cycle = 0;
+
+        void SetTable(vector <Lessons> lessons, vector <Classes> classes, int WeekCycle , bool Manual) {
+
+            EmptyTable();
+            //MessageBox::Show(StringConvert(to_string(StartDayLesson(lessons).getData().WeekDay) + " :  "+ to_string(StartDayLesson(lessons).getData().Month) + " / " + to_string(StartDayLesson(lessons).getData().Day)));
+           
+            int ScoopStart = DayCount(StartDayLesson(lessons, Manual));
+
+            int ScoopEnd = ScoopStart + 7;
+
+            if (StartDayLesson(lessons, Manual).getData().WeekDay != 0 && StartDayLesson(lessons, Manual).getData().WeekDay != 6) {
+
+                if (WeekCycle == 0) {
+                    ScoopStart = DayCount(StartDayLesson(lessons, Manual));
+                    ScoopEnd = ScoopStart + (7 - (StartDayLesson(lessons, Manual).getData().WeekDay));
+
+                }
+
+                else
+                {
+                   
+                   ScoopStart = DayCount(StartDayLesson(lessons, Manual)) + (7 - (StartDayLesson(lessons, Manual).getData().WeekDay)) + (WeekCycle - 1) * 7- 7 * WeekCycle;
+                    
+                   ScoopEnd = ScoopStart + 7;
+                   
+                }
+               
+           }
+
+            
+
+            //Start Set :
+
+           
 
             for (size_t n = 0;n < classes.size();n++) {
                 for (size_t m = 0;m < lessons.size();m++) {
+                    //MessageBox::Show(StringConvert(to_string(ScoopStart)+" < "+ to_string(DayCount(lessons.at(m)))));
+                    if (!(DayCount(lessons.at(m)) >= ScoopStart && DayCount(lessons.at(m)) < ScoopEnd))
+                        continue;
 
                     if (lessons.at(m).getClassLocation() == classes.at(n).getID()) {
+
 
                         switch (lessons.at(m).getData().WeekDay) {
 
                         case 0:
-                            if (!Tabel->Rows[n]->Cells[1]->Value)
-                                Tabel->Rows[n]->Cells[1]->Value += "\n";
-                            Tabel->Rows[n]->Cells[1]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+
+
+                            if (!(Tabel->Rows[n]->Cells[1]->Value == ""))
+                                Tabel->Rows[n]->Cells[1]->Value += " \n";
+                            if (lessons.at(m).getFoq())                        
+                                Tabel->Rows[n]->Cells[1]->Value +=lessons.at(m).getName_S() + L"، " + lessons.at(m).getTeacherName_S() + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[1]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
                             break;
+
+
                         case 1:
-                            if (!Tabel->Rows[n]->Cells[2]->Value)
-                                Tabel->Rows[n]->Cells[2]->Value += "\n";
-                            Tabel->Rows[n]->Cells[2]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+
+
+                            if (!(Tabel->Rows[n]->Cells[2]->Value == ""))
+                                Tabel->Rows[n]->Cells[2]->Value += " \n";
+                            if (lessons.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[2]->Value += lessons.at(m).getName_S() + L"، " + lessons.at(m).getTeacherName_S() + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[2]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
                             break;
+
+
                         case 2:
-                            if (!Tabel->Rows[n]->Cells[3]->Value)
-                                Tabel->Rows[n]->Cells[3]->Value += "\n";
-                            Tabel->Rows[n]->Cells[3]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+
+
+                            if (!(Tabel->Rows[n]->Cells[3]->Value == ""))
+                                Tabel->Rows[n]->Cells[3]->Value += " \n";
+                            if (lessons.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[3]->Value += (lessons.at(m).getName_S()) + L"، " + (lessons.at(m).getTeacherName_S()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[3]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
                             break;
+
+
                         case 3:
-                            if (!Tabel->Rows[n]->Cells[4]->Value)
-                                Tabel->Rows[n]->Cells[4]->Value += "\n";
-                            Tabel->Rows[n]->Cells[4]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+
+
+                            if (!(Tabel->Rows[n]->Cells[4]->Value == ""))
+                                Tabel->Rows[n]->Cells[4]->Value += " \n";
+                            if (lessons.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[4]->Value += (lessons.at(m).getName_S()) + L"، " + (lessons.at(m).getTeacherName_S()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[4]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
                             break;
+
+
                         case 4:
-                            if (!Tabel->Rows[n]->Cells[5]->Value)
-                                Tabel->Rows[n]->Cells[5]->Value += "\n";
-                            Tabel->Rows[n]->Cells[5]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+
+
+                            if (!(Tabel->Rows[n]->Cells[5]->Value == ""))
+                                Tabel->Rows[n]->Cells[5]->Value += " \n";
+                            if (lessons.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[5]->Value += (lessons.at(m).getName_S()) + L"، " + (lessons.at(m).getTeacherName_S()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[5]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            
                             break;
+
+
                         case 5:
-                            if (!Tabel->Rows[n]->Cells[6]->Value)
-                                Tabel->Rows[n]->Cells[6]->Value += "\n";
-                            Tabel->Rows[n]->Cells[6]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + "\n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+
+
+                            if (!(Tabel->Rows[n]->Cells[6]->Value == ""))
+                                Tabel->Rows[n]->Cells[6]->Value += " \n";
+                            if (lessons.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[6]->Value += (lessons.at(m).getName_S()) + L"، " + (lessons.at(m).getTeacherName_S()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[6]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
                             break;
 
 
                         }
+
+                       
                     }
                 }
             }
         }
+
+        void SetTable(vector <Lessons> lessons, vector <Lessons> lessons2, vector <Classes> classes, int WeekCycle, bool Manual) {
+
+         
+
+            EmptyTable();
+
+
+            int ScoopStart = DayCount(StartDayLesson(lessons, Manual));
+            int ScoopEnd = ScoopStart + 7;
+
+            if (StartDayLesson(lessons, Manual).getData().WeekDay != 0 && StartDayLesson(lessons, Manual).getData().WeekDay != 6) {
+
+                if (WeekCycle == 0) {
+                    ScoopStart = DayCount(StartDayLesson(lessons, Manual));
+                    ScoopEnd = ScoopStart + (7 - (StartDayLesson(lessons, Manual).getData().WeekDay));
+
+                }
+
+                else
+                {
+                    
+                    ScoopStart = DayCount(StartDayLesson(lessons, Manual)) + (7 - (StartDayLesson(lessons, Manual).getData().WeekDay)) + (WeekCycle - 1) * 7 - 7 * WeekCycle;
+                    ScoopEnd = ScoopStart + 7;
+                }
+
+
+            }
+
+
+            //Start Set :
+
+
+
+            for (size_t n = 0;n < classes.size();n++) {
+                for (size_t m = 0;m < lessons.size();m++) {
+
+                    if (!(DayCount(lessons.at(m)) >= ScoopStart && DayCount(lessons.at(m)) < ScoopEnd))
+                        continue;
+
+                    if (lessons.at(m).getClassLocation() == classes.at(n).getID()) {
+
+
+                        switch (lessons.at(m).getData().WeekDay) {
+
+                        case 0:
+
+
+                            if (!(Tabel->Rows[n]->Cells[1]->Value == ""))
+                                Tabel->Rows[n]->Cells[1]->Value += " \n";
+                            if (lessons.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[1]->Value += lessons.at(m).getName_S() + L"، " + lessons.at(m).getTeacherName_S() + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[1]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            break;
+
+
+                        case 1:
+
+
+                            if (!(Tabel->Rows[n]->Cells[2]->Value == ""))
+                                Tabel->Rows[n]->Cells[2]->Value += " \n";
+                            if (lessons.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[2]->Value += lessons.at(m).getName_S() + L"، " + lessons.at(m).getTeacherName_S() + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[2]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            break;
+
+
+                        case 2:
+
+
+                            if (!(Tabel->Rows[n]->Cells[3]->Value == ""))
+                                Tabel->Rows[n]->Cells[3]->Value += " \n";
+                            if (lessons.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[3]->Value += (lessons.at(m).getName_S()) + L"، " + (lessons.at(m).getTeacherName_S()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[3]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            break;
+
+
+                        case 3:
+
+
+                            if (!(Tabel->Rows[n]->Cells[4]->Value == ""))
+                                Tabel->Rows[n]->Cells[4]->Value += " \n";
+                            if (lessons.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[4]->Value += (lessons.at(m).getName_S()) + L"، " + (lessons.at(m).getTeacherName_S()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[4]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            break;
+
+
+                        case 4:
+
+
+                            if (!(Tabel->Rows[n]->Cells[5]->Value == ""))
+                                Tabel->Rows[n]->Cells[5]->Value += " \n";
+                            if (lessons.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[5]->Value += (lessons.at(m).getName_S()) + L"، " + (lessons.at(m).getTeacherName_S()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[5]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+
+                            break;
+
+
+                        case 5:
+
+
+                            if (!(Tabel->Rows[n]->Cells[6]->Value == ""))
+                                Tabel->Rows[n]->Cells[6]->Value += " \n";
+                            if (lessons.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[6]->Value += (lessons.at(m).getName_S()) + L"، " + (lessons.at(m).getTeacherName_S()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[6]->Value += UTF8Convert(lessons.at(m).getName()) + L"، " + UTF8Convert(lessons.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons.at(m).getStartTime().Huor) + " )";
+                            break;
+
+
+                        }
+
+
+                    }
+                }
+
+
+
+                for (size_t m = 0;m < lessons2.size();m++) {
+
+                    if (!(DayCount(lessons2.at(m)) >= ScoopStart && DayCount(lessons2.at(m)) < ScoopEnd))
+                        continue;
+                   
+                    if (lessons2.at(m).getClassLocation() == classes.at(n).getID()) {
+
+                       
+                        switch (lessons2.at(m).getData().WeekDay) {
+
+                        case 0:
+
+
+                            if (!(Tabel->Rows[n]->Cells[1]->Value == ""))
+                                Tabel->Rows[n]->Cells[1]->Value += " \n";
+                            if (lessons2.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[1]->Value += lessons2.at(m).getName_S() + L"، " + lessons2.at(m).getTeacherName_S() + " \n(" + NumPerConvert(lessons2.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons2.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[1]->Value += UTF8Convert(lessons2.at(m).getName()) + L"، " + UTF8Convert(lessons2.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons2.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons2.at(m).getStartTime().Huor) + " )";
+                            break;
+
+
+                        case 1:
+
+
+                            if (!(Tabel->Rows[n]->Cells[2]->Value == ""))
+                                Tabel->Rows[n]->Cells[2]->Value += " \n";
+                            if (lessons2.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[2]->Value += lessons2.at(m).getName_S() + L"، " + lessons2.at(m).getTeacherName_S() + " \n(" + NumPerConvert(lessons2.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons2.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[2]->Value += UTF8Convert(lessons2.at(m).getName()) + L"، " + UTF8Convert(lessons2.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons2.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons2.at(m).getStartTime().Huor) + " )";
+                            break;
+
+
+                        case 2:
+
+
+                            if (!(Tabel->Rows[n]->Cells[3]->Value == ""))
+                                Tabel->Rows[n]->Cells[3]->Value += " \n";
+                            if (lessons2.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[3]->Value += (lessons2.at(m).getName_S()) + L"، " + (lessons2.at(m).getTeacherName_S()) + " \n(" + NumPerConvert(lessons2.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons2.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[3]->Value += UTF8Convert(lessons2.at(m).getName()) + L"، " + UTF8Convert(lessons2.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons2.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons2.at(m).getStartTime().Huor) + " )";
+                            break;
+
+
+                        case 3:
+
+
+                            if (!(Tabel->Rows[n]->Cells[4]->Value == ""))
+                                Tabel->Rows[n]->Cells[4]->Value += " \n";
+                            if (lessons2.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[4]->Value += (lessons2.at(m).getName_S()) + L"، " + (lessons2.at(m).getTeacherName_S()) + " \n(" + NumPerConvert(lessons2.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons2.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[4]->Value += UTF8Convert(lessons2.at(m).getName()) + L"، " + UTF8Convert(lessons2.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons2.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons2.at(m).getStartTime().Huor) + " )";
+                            break;
+
+
+                        case 4:
+
+
+                            if (!(Tabel->Rows[n]->Cells[5]->Value == ""))
+                                Tabel->Rows[n]->Cells[5]->Value += " \n";
+                            if (lessons2.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[5]->Value += (lessons2.at(m).getName_S()) + L"، " + (lessons2.at(m).getTeacherName_S()) + " \n(" + NumPerConvert(lessons2.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons2.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[5]->Value += UTF8Convert(lessons2.at(m).getName()) + L"، " + UTF8Convert(lessons2.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons2.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons2.at(m).getStartTime().Huor) + " )";
+
+                            break;
+
+
+                        case 5:
+
+
+                            if (!(Tabel->Rows[n]->Cells[6]->Value == ""))
+                                Tabel->Rows[n]->Cells[6]->Value += " \n";
+                            if (lessons2.at(m).getFoq())
+                                Tabel->Rows[n]->Cells[6]->Value += (lessons2.at(m).getName_S()) + L"، " + (lessons2.at(m).getTeacherName_S()) + " \n(" + NumPerConvert(lessons2.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons2.at(m).getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[6]->Value += UTF8Convert(lessons2.at(m).getName()) + L"، " + UTF8Convert(lessons2.at(m).getTeacherName()) + " \n(" + NumPerConvert(lessons2.at(m).getStartTime().Minute) + " : " + NumPerConvert(lessons2.at(m).getStartTime().Huor) + " )";
+                            break;
+
+
+                        }
+
+
+                    }
+                }
+
+
+
+
+            }
+        }
+
+       
 
         void SetTable_ClassName() { 
 
@@ -351,7 +689,7 @@ namespace Golestan {
         }
 
 
-      
+     
 
     private: System::Windows::Forms::TextBox^ TXWeekDayFoq;
     protected:
@@ -539,6 +877,9 @@ private: System::ComponentModel::IContainer^ components;
             this->LAErorFoq3 = (gcnew System::Windows::Forms::Label());
             this->BTBazgasht3Foq = (gcnew System::Windows::Forms::Button());
             this->TimeEror = (gcnew System::Windows::Forms::Timer(this->components));
+            this->LAWeekCycle = (gcnew System::Windows::Forms::Label());
+            this->BTNext = (gcnew System::Windows::Forms::Button());
+            this->BTBack = (gcnew System::Windows::Forms::Button());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAJalaseFoq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAM1Foq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAH1Foq))->BeginInit();
@@ -1362,7 +1703,7 @@ private: System::ComponentModel::IContainer^ components;
             this->BTAuto->Margin = System::Windows::Forms::Padding(1);
             this->BTAuto->Name = L"BTAuto";
             this->BTAuto->Size = System::Drawing::Size(383, 33);
-            this->BTAuto->TabIndex = 175;
+            this->BTAuto->TabIndex = 1;
             this->BTAuto->TabStop = false;
             this->BTAuto->Text = L"تنظیم خودکار";
             this->BTAuto->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
@@ -1382,7 +1723,7 @@ private: System::ComponentModel::IContainer^ components;
             this->BTSave->Margin = System::Windows::Forms::Padding(1);
             this->BTSave->Name = L"BTSave";
             this->BTSave->Size = System::Drawing::Size(354, 33);
-            this->BTSave->TabIndex = 176;
+            this->BTSave->TabIndex = 2;
             this->BTSave->TabStop = false;
             this->BTSave->Text = L"ذخیره اطلاعات";
             this->BTSave->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
@@ -1401,7 +1742,7 @@ private: System::ComponentModel::IContainer^ components;
             this->BTBazgashtTable->Margin = System::Windows::Forms::Padding(1);
             this->BTBazgashtTable->Name = L"BTBazgashtTable";
             this->BTBazgashtTable->Size = System::Drawing::Size(81, 31);
-            this->BTBazgashtTable->TabIndex = 177;
+            this->BTBazgashtTable->TabIndex = 3;
             this->BTBazgashtTable->TabStop = false;
             this->BTBazgashtTable->Text = L"بازگشت";
             this->BTBazgashtTable->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
@@ -1420,7 +1761,7 @@ private: System::ComponentModel::IContainer^ components;
             this->BTBishtarImTable->Margin = System::Windows::Forms::Padding(1);
             this->BTBishtarImTable->Name = L"BTBishtarImTable";
             this->BTBishtarImTable->Size = System::Drawing::Size(81, 31);
-            this->BTBishtarImTable->TabIndex = 178;
+            this->BTBishtarImTable->TabIndex = 4;
             this->BTBishtarImTable->TabStop = false;
             this->BTBishtarImTable->Text = L"...بیشتر";
             this->BTBishtarImTable->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
@@ -1490,11 +1831,11 @@ private: System::ComponentModel::IContainer^ components;
             this->LAErorFoq2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->LAErorFoq2->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-            this->LAErorFoq2->Location = System::Drawing::Point(156, 341);
+            this->LAErorFoq2->Location = System::Drawing::Point(-1, 341);
             this->LAErorFoq2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
             this->LAErorFoq2->Name = L"LAErorFoq2";
             this->LAErorFoq2->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->LAErorFoq2->Size = System::Drawing::Size(482, 79);
+            this->LAErorFoq2->Size = System::Drawing::Size(639, 79);
             this->LAErorFoq2->TabIndex = 183;
             this->LAErorFoq2->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
             // 
@@ -1550,12 +1891,69 @@ private: System::ComponentModel::IContainer^ components;
             // 
             this->TimeEror->Tick += gcnew System::EventHandler(this, &MainForm::TimeEror_Tick);
             // 
+            // LAWeekCycle
+            // 
+            this->LAWeekCycle->BackColor = System::Drawing::Color::Goldenrod;
+            this->LAWeekCycle->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+            this->LAWeekCycle->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->LAWeekCycle->ForeColor = System::Drawing::Color::LightGoldenrodYellow;
+            this->LAWeekCycle->Location = System::Drawing::Point(319, -17);
+            this->LAWeekCycle->Name = L"LAWeekCycle";
+            this->LAWeekCycle->Size = System::Drawing::Size(48, 46);
+            this->LAWeekCycle->TabIndex = 187;
+            this->LAWeekCycle->Text = L"۱";
+            this->LAWeekCycle->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+            // 
+            // BTNext
+            // 
+            this->BTNext->AutoEllipsis = true;
+            this->BTNext->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+            this->BTNext->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->BTNext->Font = (gcnew System::Drawing::Font(L"B Nazanin", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(178)));
+            this->BTNext->ForeColor = System::Drawing::Color::DarkGoldenrod;
+            this->BTNext->Location = System::Drawing::Point(-1, -3);
+            this->BTNext->Margin = System::Windows::Forms::Padding(1);
+            this->BTNext->Name = L"BTNext";
+            this->BTNext->Size = System::Drawing::Size(29, 33);
+            this->BTNext->TabIndex = 6;
+            this->BTNext->TabStop = false;
+            this->BTNext->Text = L"◀";
+            this->BTNext->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
+            this->BTNext->UseVisualStyleBackColor = false;
+            this->BTNext->Click += gcnew System::EventHandler(this, &MainForm::BTNext_Click);
+            // 
+            // BTBack
+            // 
+            this->BTBack->AutoEllipsis = true;
+            this->BTBack->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+            this->BTBack->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->BTBack->Font = (gcnew System::Drawing::Font(L"B Nazanin", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(178)));
+            this->BTBack->ForeColor = System::Drawing::Color::DarkGoldenrod;
+            this->BTBack->Location = System::Drawing::Point(674, -3);
+            this->BTBack->Margin = System::Windows::Forms::Padding(1);
+            this->BTBack->Name = L"BTBack";
+            this->BTBack->Size = System::Drawing::Size(29, 33);
+            this->BTBack->TabIndex = 5;
+            this->BTBack->TabStop = false;
+            this->BTBack->Text = L"▶";
+            this->BTBack->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
+            this->BTBack->UseVisualStyleBackColor = false;
+            this->BTBack->Click += gcnew System::EventHandler(this, &MainForm::BTBack_Click);
+            // 
             // MainForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::Aquamarine;
             this->ClientSize = System::Drawing::Size(704, 512);
+            this->Controls->Add(this->BTBack);
+            this->Controls->Add(this->BTNext);
+            this->Controls->Add(this->LAWeekCycle);
             this->Controls->Add(this->BTBazgasht3Foq);
             this->Controls->Add(this->LAErorFoq3);
             this->Controls->Add(this->BTBazgasht2Foq);
@@ -1678,6 +2076,10 @@ private: System::ComponentModel::IContainer^ components;
                 SetTable_ClassName();
 
 
+                for (size_t n = 0; n < lessons.size(); n++)
+                    SaveStartDate.push_back(lessons.at(n).getData());
+                
+
 
         	}
 
@@ -1689,16 +2091,78 @@ private: System::Void BTBarnameDarsi_Click(System::Object^ sender, System::Event
     ShowTable();
 
 }
+
+
+
+private: int Auto_Set = 0;
+private: bool AutoSet = false;
+
+
 private: System::Void BTAuto_Click(System::Object^ sender, System::EventArgs^ e) {
    
-    AutoSetLocation(lessons,classes);
- 
-    SetTable(lessons,classes);
-    SetTable(ToSplitExtraClass(extraclass),classes);
-   
+    Auto_Set++;
 
+    if (Auto_Set % 2)
+        AutoSet = true;
+    else
+        AutoSet = false;
+
+    if (!AutoSet) { EmptyTable(); EmptyClassLocation(lessons); return; }
+    //MessageBox::Show(StringConvert(to_string(lessons.at(0).getData().WeekDay) + " :  " + to_string(lessons.at(0).getData().Month) + " / " + to_string(lessons.at(0).getData().Day)));
+
+    if (extraclass.size() == 0) {
+        AutoSetLocation_ByWDay(lessons, classes);
+        SetTable(lessons, classes, Week_Cycle, false);
+      
+    }
+    else {
+
+            vector <Lessons> SplitEX = ToSplitExtraClass(extraclass);
+            vector <Lessons> SumLess = lessons;
+
+            for (Lessons Sp : SplitEX)
+                SumLess.push_back(Sp);
+
+
+            SortLessons(SumLess);
+            AutoSetLocation_ByWDay(SumLess,classes);
+
+for each (auto var in SumLess)
+            {
+                MessageBox::Show(StringConvert(to_string(var.getClassLocation()) + " :  " + to_string(var.getData().Month) + " / " + to_string(var.getData().Day)));
+
+            }
+            vector <Lessons> SplitEX2;
+
+            for (Lessons sum : SumLess) {
+                if (sum.getFoq())
+                    SplitEX2.push_back(sum);
+            }
+
+            
+            for (Lessons sum : SumLess) {
+                for (size_t n = 0; n< lessons.size(); n++) {
+                    if (sum.getID() == lessons.at(n).getID()) 
+                        lessons.at(n).setClassLocation(sum.getClassLocation());
+                       
+                }
+            }
+
+            Golestan::SplitEX = SplitEX2;
+            Golestan::SumLess = SumLess;
+
+            EmptyTable();
+           
+            SetTable(lessons,SplitEX2, classes, Week_Cycle, false);
+           
+        }
 
 }
+
+
+
+
+
 private: System::Void BTBazgashtTable_Click(System::Object^ sender, System::EventArgs^ e) {
 
     HideTable();
@@ -1815,7 +2279,7 @@ private: System::Void BTTaiid_Click(System::Object^ sender, System::EventArgs^ e
     }
 
     lessons.at(FindLessonIndex(TXLessonID->Text)).setClassLocation(FindClass(TXClassID->Text));
-    SetTable(lessons,classes);
+    SetTable(lessons,classes,Week_Cycle,true);
 
     HideTanzimBarname();
     ShowMeno();
@@ -1859,7 +2323,7 @@ private: System::Void BTBazgashtFog_Click(System::Object^ sender, System::EventA
 
 private: System::Void BTTaiid1Foq_Click(System::Object^ sender, System::EventArgs^ e) {
 
-
+    //MessageBox::Show(UTF8Convert(StringConvert(TXLessonNameFoq->Text)));
     //if (!(TXLessonIDFoq->Text == "" || TXLessonNameFoq->Text == "" || TXTeacherNameFoq->Text == "")) LAEror->Text = "";
 
     if (TXLessonIDFoq->Text == "" || TXLessonNameFoq->Text == "" || TXTeacherNameFoq->Text == "") { LAErorFoq->Text = L"لطفا همه فیلد ها را پر کنید !"; return; }
@@ -1867,8 +2331,22 @@ private: System::Void BTTaiid1Foq_Click(System::Object^ sender, System::EventArg
     else
         LAErorFoq->Text = "";
 
+    if(isnot_ABC_or_123(TXLessonIDFoq->Text)) { LAErorFoq->Text = L"آدرس درس معتبر نیست !"; return; }
+
+    for (auto id : SumLess) {
+        if(id.getID()==StringConvert(TXLessonIDFoq->Text))
+        {
+            LAErorFoq->Text = L"نشانی وارد شده از قبل وجود دارد لطفا نشانی دیگری وارد کنید !"; return;
+        }
+    }
+
     if (isintiger(StringConvert(TXTeacherNameFoq->Text))) { LAErorFoq->Text = L"لطفا نام استاد را به درستی وارد کنید ."; return; }
 
+    if (isEnglishchar(TXLessonNameFoq->Text)) { LAErorFoq->Text = L"لطفا نام درس را فارسی وارد کنید ."; return; }
+
+    if(isEnglishchar(TXTeacherNameFoq->Text)) { LAErorFoq->Text = L"لطفا نام استاد را فارسی وارد کنید ."; return; }
+
+   
 
 
     VARozFoq->BringToFront();
@@ -1917,9 +2395,15 @@ private: int WeekDay = 7;
 private: System::Void BTTaiid2Foq_Click(System::Object^ sender, System::EventArgs^ e) {
 
     LAErorFoq2->Text = "";
+    LAErorFoq2->ForeColor = Color::FromArgb(255, 128, 128);
    // if (VAMahFoq->Value == 0 || VARozFoq->Value == 0 || VAMahFoq->Value >12 || VARozFoq->Value > 31) { LAErorFoq2->Text = L"لطفا تاریخ شروع کلاس را به درستی وارد کنید."; return; }
 
     if(VAMahFoq->Value > 6 && VARozFoq->Value == 31) { LAErorFoq2->Text = L" این ماه کمتر از ۳۱ روز دارد!"; return; }
+
+    if(VAMahFoq->Value<StartDayLesson(lessons).getData().Month||(VAMahFoq->Value == StartDayLesson(lessons).getData().Month && VARozFoq->Value < StartDayLesson(lessons).getData().Day))
+    {
+        LAErorFoq2->Text = L"    اولین کلاس اصلی در مرکز در تاریخ  " + NumPerConvert(StartDayLesson(lessons).getData().Day) + " / " + NumPerConvert(StartDayLesson(lessons).getData().Month) + L" برگزار میشود، لطفا تاریخ شروع را پس از این تاریخ وارد کنید    .";  return;
+    }
 
     if(VAH1Foq->Value == 0 && VAM1Foq->Value == 0) { LAErorFoq2->Text = L"مدت زمان کلاس نمی تواند صفر باشد!"; return; }
 
@@ -1977,33 +2461,60 @@ private: System::Void BTTaiid2Foq_Click(System::Object^ sender, System::EventArg
         }
 
     }
-
+   
 
     HideFoq2();
     ShowFoq3();
 
 }
 
+
+
+
 private: System::Void BTTaiid3Foq_Click(System::Object^ sender, System::EventArgs^ e) {
 
+    LAErorFoq3->ForeColor = Color::FromArgb(255, 128, 128);
     if(StList.size()<2) { LAErorFoq3->Text = L"کلاس باید حداقل ۲ دانشجو داشته باشد !"; return; }
     else
         LAErorFoq3->Text = "";
 
     
     ExtraLessons test((int)VAJalaseFoq->Value,StringConvert(TXLessonIDFoq->Text), StringConvert(TXLessonNameFoq->Text), StringConvert(TXTeacherNameFoq->Text),StList,(int)VAHFoq->Value, (int)VAMFoq->Value, (int)VAH1Foq->Value, (int)VAM1Foq->Value,WeekDay,BOVideoProjectorFoq->Checked,1402, (int)VAMahFoq->Value, (int)VARozFoq->Value);
+    test.setString(TXLessonNameFoq->Text, TXTeacherNameFoq->Text);
     extraclass.push_back(test);
+   
     StList.clear();
 
+    HideFoq3();
+    ShowMeno();
+
 }
+
+
+
+
+
 private: System::Void BTAfzodanFoq_Click(System::Object^ sender, System::EventArgs^ e) {
 
+    LAErorFoq3->ForeColor = Color::FromArgb(255, 128, 128);
+
+    if (StList.size() == 40) { LAErorFoq3->Text = L"اضافه کردن بیش از چهل دانشجو امکان پذیر نیست !"; return; }
 
     if (TXStNameFoq->Text == "" || TXStNumFoq->Text == "") { LAErorFoq3->Text = L"لطفا فیلد ها را پر کنید !"; return; }
 
     else if (!isintiger(StringConvert(TXStNumFoq->Text))) { LAErorFoq3->Text = L"لطفا شماره دانشجویی را به درستی وارد کنید."; return; }
     else
         LAErorFoq3->Text = "";
+
+
+    for (auto st : StList) {
+        if (StringConvert(TXStNumFoq->Text) == st.ID)
+        {
+            LAErorFoq3->Text = L"دانشجو قبلا افزوده شده است !"; return;
+        }
+    }
+
+
 
     for (auto less : lessons) {
 
@@ -2020,6 +2531,8 @@ private: System::Void BTAfzodanFoq_Click(System::Object^ sender, System::EventAr
 
     }
 
+    
+    
     Student test;
     test.Name = StringConvert(TXStNameFoq->Text);
     test.ID = StringConvert(TXStNumFoq->Text);
@@ -2027,17 +2540,26 @@ private: System::Void BTAfzodanFoq_Click(System::Object^ sender, System::EventAr
 
     
     LAErorFoq3->ForeColor = Color::Green;
-    LAErorFoq3->Text = L"✅ دانشجو افزوده شد.";
+    LAErorFoq3->Text = L" ✅ " + NumPerConvert(StList.size()) + L" دانشجو افزوده شد ";
     TimeEror->Enabled = true;
     
    
 
 }
+
+
+
+
 private: System::Void BTBazgasht3Foq_Click(System::Object^ sender, System::EventArgs^ e) {
 
     HideFoq3();
     ShowFoq2();
 }
+
+
+
+
+
 
 private: int timesikl = 0;
 
@@ -2045,13 +2567,92 @@ private: System::Void TimeEror_Tick(System::Object^ sender, System::EventArgs^ e
 
     timesikl++;
 
-    if (timesikl > 20) {
+    if (timesikl > 15) {
         LAErorFoq3->ForeColor = Color::FromArgb(255, 128, 128);
         LAErorFoq3->Text = "";
         TimeEror->Enabled = false;
         timesikl = 0;
     }
 }
+
+
+private: System::Void BTNext_Click(System::Object^ sender, System::EventArgs^ e) {
+
+    if (Week_Cycle == 99)
+        return;
+   
+    Week_Cycle++;
+
+
+    
+    int ScoopStart = 0;
+  
+  
+        ScoopStart = DayCount(StartDayLesson(lessons)) + 7;
+
+        if (StartDayLesson(lessons).getData().WeekDay != 0 && StartDayLesson(lessons).getData().WeekDay != 6)
+
+            ScoopStart = DayCount(StartDayLesson(lessons)) + (7 - (StartDayLesson(lessons).getData().WeekDay));
+
+       
+    for (size_t n = 0; n < lessons.size(); n++) {
+      
+        
+        if (ScoopStart > DayCount(lessons.at(n)) && !lessons.at(n).getFoq())
+            ++lessons.at(n);
+    }
+
+    LAWeekCycle->Text = NumPerConvert(Week_Cycle + 1);
+   
+
+    BTBack->Show();
+
+    if (AutoSet && extraclass.size() == 0)
+        SetTable(lessons, classes, Week_Cycle, false);
+    else if (AutoSet && extraclass.size() > 0)
+       SetTable(lessons, SplitEX, classes, Week_Cycle, false); 
+
+
+    
+
+  
+}
+private: System::Void BTBack_Click(System::Object^ sender, System::EventArgs^ e) {
+
+    if (Week_Cycle == 1)
+        BTBack->Hide();
+
+    Week_Cycle--;
+
+
+    int ScoopEnd = 0;
+
+
+    ScoopEnd = DayCount(StartDayLesson(lessons)) + 7;
+
+    if (StartDayLesson(lessons).getData().WeekDay != 0 && StartDayLesson(lessons).getData().WeekDay != 6)
+
+        ScoopEnd = DayCount(StartDayLesson(lessons)) - (StartDayLesson(lessons).getData().WeekDay) + 7;
+
+
+
+    for (size_t n = 0; n < lessons.size(); n++) {
+
+
+        if (ScoopEnd > DayCount(lessons.at(n)) && DayCount(SaveStartDate.at(n)) < DayCount(lessons.at(n)) && !lessons.at(n).getFoq())
+            --lessons.at(n);
+    }
+
+    LAWeekCycle->Text = NumPerConvert(Week_Cycle + 1);
+
+    if (AutoSet && extraclass.size() == 0)
+        SetTable(lessons, classes, Week_Cycle, false);
+    else if (AutoSet && extraclass.size() > 0)
+      SetTable(lessons, SplitEX, classes, Week_Cycle, false);
+
+
+}
 };
 }
 
+    

@@ -7,6 +7,7 @@
 #include <string>
 #include <algorithm>
 #include <vector>
+#include <vcclr.h>
 
 
 using namespace System;
@@ -33,14 +34,18 @@ protected:
 	string ID = "";
 	string Name = "";
 	string Teacher = "";
+	gcroot <String^> name;
+	gcroot <String^> teacher;
 	Date StartDay;
 	Time Start;
 	Time Duration;
 	bool VideoProjector = 0;
+	bool Foq = 0;
+	//bool FirstShow = false;
 
 
 public:
-
+	
 	Lessons(string ID, string Name, string Teacher,
 		vector<Student> students,
 		int StartTime_h, int StartTime_m,
@@ -76,19 +81,31 @@ public:
 		ClassLocation = cl.getID();
 	}
 
+	void setClassLocation(int cl_lo)
+	{
+		ClassLocation = cl_lo;
+	}
+
 	void setStartTime(int h, int m = 0) { Start.Huor = h; Start.Minute = m; }
 	void setDurationTime(int h, int m = 0) { Duration.Huor = h; Duration.Minute = m; }
 	void setData(int d, int m, int y) { StartDay.Day = d; StartDay.Month = m; StartDay.Year = y; }
+	void setFoq(bool foq) { Foq = foq; }
+	void setString(String^ Na, String^ Tich) { name = Na; teacher = Tich; }
+	//void setFirstShow(bool show) { FirstShow = show; }
 
 	string getName() { return Name; }
 	string getID() { return ID; }
 	string getTeacherName() { return Teacher; }
+	String^ getTeacherName_S() { return teacher; }
+	String^ getName_S() { return name; }
 	int getClassLocation() { return ClassLocation; }
 	bool getVideoProjector() { return VideoProjector; }
+	bool getFoq() { return Foq; }
 	Time getStartTime() { return Start; }
 	Time getDurationTime() { return Duration; }
 	Date getData() { return StartDay; }
 	vector<Student> getStudents() { return Students; }
+
 
 	bool ClockInterference(Lessons less2)
 	{
@@ -147,13 +164,29 @@ public:
 	}
 
 
-	bool DataInterference(Lessons less)
+	bool DataInterference(Lessons less, bool YearCheck)
 	{
-		
-		if ((StartDay.WeekDay == less.StartDay.WeekDay) && (StartDay.Day == less.StartDay.Day) && (StartDay.Month == less.StartDay.Month) && (StartDay.Year == less.StartDay.Year))
-			return true;
-		else
-			return false;
+		switch (YearCheck) {
+
+		case 1:
+
+			if ((StartDay.WeekDay == less.StartDay.WeekDay) && (StartDay.Day == less.StartDay.Day) && (StartDay.Month == less.StartDay.Month) && (StartDay.Year == less.StartDay.Year))
+				return true;
+			else
+				return false;
+
+			break;
+
+		case 0:
+
+			if ((StartDay.WeekDay == less.StartDay.WeekDay) && (StartDay.Day == less.StartDay.Day) && (StartDay.Month == less.StartDay.Month))
+				return true;
+			else
+				return false;
+
+			break;
+
+		}
 	}
 
 
@@ -174,6 +207,40 @@ public:
 			return false;
 
 	}
+
+
+	void operator ++() {
+
+			StartDay.Day += 7;
+			if (StartDay.Month < 7 && StartDay.Day>31) { StartDay.Month++; StartDay.Day -= 31; }
+			else if (StartDay.Month > 6 && StartDay.Month != 12 && StartDay.Day > 30) { StartDay.Month++; StartDay.Day -= 30; }
+			else if (StartDay.Month == 12 && StartDay.Day > 29) { StartDay.Year++; StartDay.Month = 1; StartDay.Day -= 29; }
+		
+	}
+
+
+	void operator --() {
+		int w = false;
+
+		StartDay.Day -= 7;
+		if (StartDay.Day < 1) {
+			StartDay.Month--;
+			w = true;
+		}
+		if (StartDay.Month == 0) {
+			StartDay.Year--;
+			StartDay.Month = 12;
+			w = true;
+		}
+		
+		if (w) {
+
+			if (StartDay.Month < 7) { StartDay.Day += 31; }
+			else if (StartDay.Month > 6 && StartDay.Month != 12 ) { StartDay.Day += 30; }
+			else if (StartDay.Month == 12) { StartDay.Day += 29; }
+		}
+	}
+
 };
 
 
@@ -189,6 +256,7 @@ private:
 
 public:
 
+	bool Fill = false;
 	ExtraLessons(int meetings, string ID, string Name, string Teacher,
 		vector<Student> students,
 		int StartTime_h, int StartTime_m,

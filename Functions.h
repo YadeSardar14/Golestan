@@ -17,6 +17,7 @@
 #include <cmath>
 
 
+
 using namespace System;
 using namespace System::ComponentModel;
 using namespace System::Collections;
@@ -160,12 +161,28 @@ bool isintiger(string str)
 	}
 
 	return true;
-	//if (count == str.size())
-	//	return true;
-	//else
-	//	return false;
+
 
 }
+
+
+bool isnot_ABC_or_123(String^ str){
+
+
+
+	string Str = StringConvert(str);
+	
+	for (auto ch : Str) {
+
+		if ((ch < 58 && ch >= 48) || (ch > 96 && ch < 123))
+			continue;
+			return true;
+	}
+	return false;
+
+
+}
+
 
 Time FinalTime(Lessons less)
 {
@@ -446,7 +463,7 @@ void SortClases(vector<Classes>& classes) {
 	}
 }
 
-void AutoSetLocation(vector<Lessons>& lessons, vector<Classes> classes) {
+void AutoSetLocation_ByData(vector<Lessons>& lessons, vector<Classes> classes) {
 
 
 
@@ -469,7 +486,7 @@ void AutoSetLocation(vector<Lessons>& lessons, vector<Classes> classes) {
 					continue;
 
 				if (lessons.at(f).PlaceInterference(classes.at(m))) {
-					if (lessons.at(f).DataInterference(lessons.at(n))) {
+					if (lessons.at(f).DataInterference(lessons.at(n),false)) {
 						if (lessons.at(f).ClockInterference(lessons.at(n)))
 						{
 							Interference = true; break;
@@ -508,7 +525,94 @@ void AutoSetLocation(vector<Lessons>& lessons, vector<Classes> classes) {
 					continue;
 
 				if (lessons.at(f).PlaceInterference(classes.at(m))) {
-					if (lessons.at(f).DataInterference(lessons.at(n))) {
+					if (lessons.at(f).DataInterference(lessons.at(n), false)) {
+						if (lessons.at(f).ClockInterference(lessons.at(n)))
+						{
+							Interference = true; break;
+						}
+					}
+				}
+			}
+
+
+			if (Interference)
+				continue;
+
+			lessons.at(n).setClassLocation(classes.at(m));
+
+
+		}
+	}
+
+
+}
+
+
+
+
+void AutoSetLocation_ByWDay(vector<Lessons>& lessons, vector<Classes> classes) {
+
+
+
+
+	for (size_t n = 0; n < lessons.size(); n++)
+	{
+
+		for (size_t m = 0; m < classes.size(); m++)
+		{
+
+			if (!(lessons.at(n).CheckVideoProjector(classes.at(m))))
+				continue;
+			if (lessons.at(n).OverCapacity(classes.at(m)))
+				continue;
+
+			bool Interference = false;
+			for (int f = 0;f < lessons.size();f++) {
+
+				if (f == n)
+					continue;
+
+				if (lessons.at(f).PlaceInterference(classes.at(m))) {
+					if (lessons.at(f).getData().WeekDay==lessons.at(n).getData().WeekDay) {
+						if (lessons.at(f).ClockInterference(lessons.at(n)))
+						{
+							Interference = true; break;
+						}
+					}
+				}
+			}
+
+
+			if (Interference)
+				continue;
+
+			lessons.at(n).setClassLocation(classes.at(m));
+
+
+		}
+	}
+
+	for (size_t n = 0; n < lessons.size(); n++) {
+
+		if (lessons.at(n).getClassLocation() != 0)
+			continue;
+
+		for (size_t m = 0; m < classes.size(); m++)
+		{
+
+			if (lessons.at(n).getVideoProjector() && !classes.at(m).getVideoProjector())
+				continue;
+			if (lessons.at(n).OverCapacity(classes.at(m)))
+				continue;
+
+			bool Interference = false;
+			for (int f = 0;f < lessons.size();f++) {
+
+				if (f == n)
+					continue;
+
+				if (lessons.at(f).PlaceInterference(classes.at(m))) {
+					if (lessons.at(f).getData().WeekDay == lessons.at(n).getData().WeekDay) {
 						if (lessons.at(f).ClockInterference(lessons.at(n)))
 						{
 							Interference = true; break;
@@ -538,7 +642,7 @@ bool CheckTimeInterference(Lessons less, Classes cla) {
 		if (lessons.at(n).getID() == less.getID())
 			continue;
 		//MessageBox::Show(UTF8Convert(lessons.at(n).getName()) + "   " + StringConvert(to_string(lessons.at(n).PlaceInterference(cla))+" "+ to_string(lessons.at(n).DataInterference(less))+" "+ to_string(lessons.at(n).ClockInterference(less))));
-		if (lessons.at(n).PlaceInterference(cla) && lessons.at(n).DataInterference(less) && lessons.at(n).ClockInterference(less)) 
+		if (lessons.at(n).PlaceInterference(cla) && lessons.at(n).DataInterference(less,false) && lessons.at(n).ClockInterference(less)) 
 			return true;
 	
 			}
@@ -548,28 +652,86 @@ bool CheckTimeInterference(Lessons less, Classes cla) {
 		}
 
 
+vector <Lessons> EmptyClassLocation(vector <Lessons>& lessons) {
+
+	for (size_t n = 0; n < lessons.size(); n++)
+		lessons.at(n).setClassLocation(0);
+
+	return lessons;
+
+}
+
+int DayCount(Lessons less) {
+
+
+	if (less.getData().Month < 7)
+		return ((less.getData().Month - 1) * 31 + less.getData().Day);
+	else if (less.getData().Month > 6)
+		return (6 * 31 + (less.getData().Month - 6 - 1) * 30 + less.getData().Day);
+
+}
+
+
+int DayCount(Date date) {
+
+
+	if (date.Month < 7)
+		return ((date.Month - 1) * 31 + date.Day);
+	else if (date.Month > 6)
+		return (6 * 31 + (date.Month - 6 - 1) * 30 + date.Day);
+
+}
+
+Lessons StartDayLesson(vector <Lessons> lessons , bool manual=false) {
+
+	Lessons LSmall = lessons.at(0);
+
+	for (size_t n = 1; n < lessons.size(); n++)
+	{
+		//if(lessons.at(n).getData().Year<LSmall.getData().Year) 
+		//{
+		//	LSmall = lessons.at(n); continue;
+		//}
+		//MessageBox::Show(StringConvert(to_string(lessons.at(n).getClassLocation())));
+
+		//if (lessons.at(n).getClassLocation() == 0 && manual)
+			//continue;
+
+		
+		 if ((lessons.at(n).getData().Month < LSmall.getData().Month) ||((lessons.at(n).getData().Month == LSmall.getData().Month) &&(lessons.at(n).getData().Day < LSmall.getData().Day)))
+		{
+			LSmall = lessons.at(n);
+		}
+	}
+
+	return LSmall;
+
+}
 
 vector <Lessons> ToSplitExtraClass(vector <ExtraLessons> extraclass) {
 
 	vector <Lessons> Gextraclass;
 
-	for (int n = 0;n < extraclass.size();n++) {
+	for (size_t n = 0;n < extraclass.size();n++) {
 
+		int D = extraclass.at(n).StartDay.Day;
+		int M = extraclass.at(n).StartDay.Month;
+		int Y = extraclass.at(n).StartDay.Year;
 
-		for (int m = 0; m < extraclass.at(n).getMeetingsNum();m++) {
-			int D = extraclass.at(n).StartDay.Day;
-			int M = extraclass.at(n).StartDay.Month;
-			int Y = extraclass.at(n).StartDay.Year;
-
-			D += 7 * m;
+		for (size_t m = 0; m < extraclass.at(n).getMeetingsNum();m++) {
+			
+		
+			
 			if (M < 7 && D>31) { M++; D -= 31; }
-			else if (M > 6 && M != 12 && D > 30) { M++; D -= 30; }
+			else if (M > 6 && M < 12 && D > 30) { M++; D -= 30; }
 			else if (M == 12 && D > 29) { Y++; M = 1; D -= 29; }
-
+			
+	
 			Lessons less(extraclass.at(n).ID, extraclass.at(n).Name, extraclass.at(n).Teacher, extraclass.at(n).Students, extraclass.at(n).Start.Huor, extraclass.at(n).Start.Minute, extraclass.at(n).Duration.Huor, extraclass.at(n).Duration.Minute, extraclass.at(n).StartDay.WeekDay, extraclass.at(n).VideoProjector, Y, M, D);
-
+			less.setString(extraclass.at(n).getName_S(), extraclass.at(n).getTeacherName_S());
+			less.setFoq(true);
 			Gextraclass.push_back(less);
-
+			D += 7;
 		}
 	}
 
@@ -583,19 +745,25 @@ vector <Lessons> ToSplitExtraClass(ExtraLessons ex) {
 
 	vector <Lessons> Gextraclass;
 
-		for (int m = 0; m <ex.getMeetingsNum();m++) {
-			int D = ex.getData().Day;
-			int M = ex.getData().Month;
-			int Y = ex.getData().Year;
+	int D = ex.getData().Day;
+	int M = ex.getData().Month;
+	int Y = ex.getData().Year;
 
-			D += 7 * m;
+
+		for (int m = 0; m <ex.getMeetingsNum();m++) {
+			
+
+		
 			if (M < 7 && D>31) { M++; D -= 31; }
-			else if (M > 6 && M != 12 && D > 30) { M++; D -= 30; }
-			else if (M == 12 && D > 29) { Y++; M = 1; D -= 29; }
+			if (M > 6 && M != 12 && D > 30) { M++; D -= 30; }
+			if (M == 12 && D > 29) { Y++; M = 1; D -= 29; }
 
 			Lessons less(ex.getID(),ex.getName(), ex.getTeacherName(), ex.getStudents(), ex.getStartTime().Huor, ex.getStartTime().Minute, ex.getDurationTime().Huor, ex.getDurationTime().Minute, ex.getData().WeekDay, ex.getVideoProjector(), Y, M, D);
-
+			less.setString(ex.getName_S(),ex.getTeacherName_S());
+			less.setFoq(true);
 			Gextraclass.push_back(less);
+
+			D += 7;
 
 		}
 
@@ -603,8 +771,19 @@ vector <Lessons> ToSplitExtraClass(ExtraLessons ex) {
 	}
 
 
+bool isEnglishchar(String^ str) {
 
+	string Str = ToLower(StringConvert(str));
 
+	for (auto ch : Str) {
+
+		if (ch > 96 && ch < 123)
+			return true;
+	}
+
+	return false;
+}
+	
 void TextSave(String^ FilePatch) {
 
 	ofstream File(StringConvert(FilePatch) + "//Golestan.txt", ios::out);
