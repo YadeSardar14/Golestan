@@ -2498,7 +2498,7 @@ private: System::Void BTTaiid3Foq_Click(System::Object^ sender, System::EventArg
 
 
     HideFoq3();
-    ShowMeno();
+    ShowMeno(); 
 
 }
 

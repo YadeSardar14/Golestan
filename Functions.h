@@ -666,8 +666,7 @@ void AutoSetLocation_ByData_WDay(vector<Lessons>& lessons, vector<Classes> class
 						}
 					}
 				}
-			}
-
+			} 
 
 			if (Interference)
 				continue;

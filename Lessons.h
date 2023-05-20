@@ -199,7 +199,7 @@ public:
 				return false;
 
 	}
-
+	 
 
 	bool CheckVideoProjector(Classes cl) {
 		if (VideoProjector == cl.getVideoProjector())
