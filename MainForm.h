@@ -2125,7 +2125,7 @@ private: System::Void BTAuto_Click(System::Object^ sender, System::EventArgs^ e)
 
 
             SortLessons(SumLess);
-            AutoSetLocation_ByWDay(SumLess,classes);
+            AutoSetLocation_ByData_WDay(SumLess,classes);
 
 for each (auto var in SumLess)
             {
@@ -2474,16 +2474,28 @@ private: System::Void BTTaiid2Foq_Click(System::Object^ sender, System::EventArg
 private: System::Void BTTaiid3Foq_Click(System::Object^ sender, System::EventArgs^ e) {
 
     LAErorFoq3->ForeColor = Color::FromArgb(255, 128, 128);
-    if(StList.size()<2) { LAErorFoq3->Text = L"کلاس باید حداقل ۲ دانشجو داشته باشد !"; return; }
+    if (StList.size() < 2) { LAErorFoq3->Text = L"کلاس باید حداقل ۲ دانشجو داشته باشد !"; return; }
     else
         LAErorFoq3->Text = "";
 
-    
-    ExtraLessons test((int)VAJalaseFoq->Value,StringConvert(TXLessonIDFoq->Text), StringConvert(TXLessonNameFoq->Text), StringConvert(TXTeacherNameFoq->Text),StList,(int)VAHFoq->Value, (int)VAMFoq->Value, (int)VAH1Foq->Value, (int)VAM1Foq->Value,WeekDay,BOVideoProjectorFoq->Checked,1402, (int)VAMahFoq->Value, (int)VARozFoq->Value);
+
+    ExtraLessons test((int)VAJalaseFoq->Value, StringConvert(TXLessonIDFoq->Text), StringConvert(TXLessonNameFoq->Text), StringConvert(TXTeacherNameFoq->Text), StList, (int)VAHFoq->Value, (int)VAMFoq->Value, (int)VAH1Foq->Value, (int)VAM1Foq->Value, WeekDay, BOVideoProjectorFoq->Checked, 1402, (int)VAMahFoq->Value, (int)VARozFoq->Value);
     test.setString(TXLessonNameFoq->Text, TXTeacherNameFoq->Text);
     extraclass.push_back(test);
-   
-    StList.clear();
+
+
+
+    {  vector <Lessons> SplitEX = ToSplitExtraClass(extraclass);
+    vector <Lessons> SumLess = lessons;
+
+    for (Lessons Sp : SplitEX)
+        SumLess.push_back(Sp);
+
+    Golestan::SumLess = SumLess; }
+
+
+    StList.clear(); 
+
 
     HideFoq3();
     ShowMeno();

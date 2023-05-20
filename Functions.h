@@ -635,6 +635,94 @@ void AutoSetLocation_ByWDay(vector<Lessons>& lessons, vector<Classes> classes) {
 }
 
 
+
+void AutoSetLocation_ByData_WDay(vector<Lessons>& lessons, vector<Classes> classes) {
+
+
+
+
+	for (size_t n = 0; n < lessons.size(); n++)
+	{
+
+		for (size_t m = 0; m < classes.size(); m++)
+		{
+
+			if (!(lessons.at(n).CheckVideoProjector(classes.at(m))))
+				continue;
+			if (lessons.at(n).OverCapacity(classes.at(m)))
+				continue;
+
+			bool Interference = false;
+			for (int f = 0;f < lessons.size();f++) {
+
+				if (f == n)
+					continue;
+
+				if (lessons.at(f).PlaceInterference(classes.at(m))) {
+					if (lessons.at(f).DataInterference_W_D(lessons.at(n))) {
+						if (lessons.at(f).ClockInterference(lessons.at(n)))
+						{
+							Interference = true; break;
+						}
+					}
+				}
+			}
+
+
+			if (Interference)
+				continue;
+
+			lessons.at(n).setClassLocation(classes.at(m));
+
+
+		}
+	}
+
+	for (size_t n = 0; n < lessons.size(); n++) {
+
+		if (lessons.at(n).getClassLocation() != 0)
+			continue;
+
+		for (size_t m = 0; m < classes.size(); m++)
+		{
+
+			if (lessons.at(n).getVideoProjector() && !classes.at(m).getVideoProjector())
+				continue;
+			if (lessons.at(n).OverCapacity(classes.at(m)))
+				continue;
+
+			bool Interference = false;
+			for (int f = 0;f < lessons.size();f++) {
+
+				if (f == n)
+					continue;
+
+				if (lessons.at(f).PlaceInterference(classes.at(m))) {
+					if (lessons.at(f).DataInterference(lessons.at(n), false)) {
+						if (lessons.at(f).ClockInterference(lessons.at(n)))
+						{
+							Interference = true; break;
+						}
+					}
+				}
+			}
+
+
+			if (Interference)
+				continue;
+
+			lessons.at(n).setClassLocation(classes.at(m));
+
+
+		}
+	}
+
+
+}
+
+
+
+
 bool CheckTimeInterference(Lessons less, Classes cla) {
 	
 	for (size_t n = 0; n < lessons.size(); n++)

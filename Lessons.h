@@ -190,6 +190,16 @@ public:
 	}
 
 
+	bool DataInterference_W_D(Lessons less)
+	{
+		
+			if ((Foq && (StartDay.WeekDay == less.StartDay.WeekDay) && (StartDay.Day == less.StartDay.Day) && (StartDay.Month == less.StartDay.Month)) ||  (!Foq && (StartDay.WeekDay == less.StartDay.WeekDay) ) )
+				return true;
+			else
+				return false;
+
+	}
+
 
 	bool CheckVideoProjector(Classes cl) {
 		if (VideoProjector == cl.getVideoProjector())
