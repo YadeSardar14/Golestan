@@ -79,11 +79,16 @@ public:
 	void setClassLocation(Classes cl)
 	{
 		ClassLocation = cl.getID();
+		cl.Fill = true;
 	}
 
 	void setClassLocation(int cl_lo)
 	{
 		ClassLocation = cl_lo;
+		//for (size_t n = 0; n < classes.size(); n++)
+		//{
+		//	if (classes.at(n).getID() == cl_lo) { classes.at(n).Fill = true; break; }
+		//}
 	}
 
 	void setStartTime(int h, int m = 0) { Start.Huor = h; Start.Minute = m; }
@@ -193,12 +198,29 @@ public:
 	bool DataInterference_W_D(Lessons less)
 	{
 		
-			if ((Foq && (StartDay.WeekDay == less.StartDay.WeekDay) && (StartDay.Day == less.StartDay.Day) && (StartDay.Month == less.StartDay.Month)) ||  (!Foq && (StartDay.WeekDay == less.StartDay.WeekDay) ) )
+			if  ((!Foq && !less.Foq && (StartDay.WeekDay == less.StartDay.WeekDay))  
+			||  ((!Foq && less.Foq) && (StartDay.WeekDay == less.StartDay.WeekDay) && (less.DayCount() >= DayCount()))
+			||	((Foq && !less.Foq) && (StartDay.WeekDay == less.StartDay.WeekDay) && (DayCount() >= less.DayCount()))
+			||  ((Foq && less.Foq) && (StartDay.WeekDay == less.StartDay.WeekDay) && (StartDay.Day == less.StartDay.Day) && (StartDay.Month == less.StartDay.Month)) )
 				return true;
 			else
 				return false;
 
 	}
+
+	bool DataInterference_W_D(int WeekD, int M , int D, bool foq)
+	{
+
+		if ((!Foq && !foq && (StartDay.WeekDay == WeekD))
+			|| ((!Foq && foq) && (StartDay.WeekDay == WeekD) && (DayCount(M,D) >= DayCount()))
+			|| ((Foq && !foq) && (StartDay.WeekDay == WeekD) && (DayCount() >= DayCount(M, D)))
+			|| ((Foq && foq) && (StartDay.WeekDay == WeekD) && (StartDay.Day == D) && (StartDay.Month == M)))
+			return true;
+		else
+			return false;
+
+	}
+
 	 
 
 	bool CheckVideoProjector(Classes cl) {
@@ -218,6 +240,26 @@ public:
 
 	}
 
+
+	int DayCount() {
+
+
+		if (StartDay.Month < 7)
+			return ((StartDay.Month - 1) * 31 + StartDay.Day);
+		else if (StartDay.Month > 6)
+			return (6 * 31 + (StartDay.Month - 6 - 1) * 30 + StartDay.Day);
+
+	}
+
+	int DayCount(int M , int D) {
+
+
+		if (M < 7)
+			return ((M - 1) * 31 +D);
+		else if (M > 6)
+			return (6 * 31 + (M - 6 - 1) * 30 + D);
+
+	}
 
 	void operator ++() {
 

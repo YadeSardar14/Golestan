@@ -71,13 +71,28 @@ Classes FindClass(String^ id) {
 	}
 }
 
-Lessons FindLesson(String^ id) {
+
+ExtraLessons FindLesson(String^ id, vector <ExtraLessons> lessons) {
 	for (size_t n = 0;n < lessons.size();n++) {
 		if (id == StringConvert(lessons.at(n).getID()))
 			return lessons.at(n);
 	}
 }
 
+Lessons FindLesson(String^ id, vector <Lessons> lessons) {
+	for (size_t n = 0;n < lessons.size();n++) {
+		if (id == StringConvert(lessons.at(n).getID()))
+			return lessons.at(n);
+	}
+}
+
+
+Lessons FindLesson(String^ id) {
+	for (size_t n = 0;n < lessons.size();n++) {
+		if (id == StringConvert(lessons.at(n).getID()))
+			return lessons.at(n);
+	}
+}
 
 int FindClassIndex(String^ id) {
 	for (size_t n = 0;n < classes.size();n++) {
@@ -87,6 +102,14 @@ int FindClassIndex(String^ id) {
 }
 
 int FindLessonIndex(String^ id) {
+	for (size_t n = 0;n < lessons.size();n++) {
+		if (id == StringConvert(lessons.at(n).getID()))
+			return n;
+	}
+}
+
+
+int FindLessonIndex(String^ id , vector <Lessons> lessons) {
 	for (size_t n = 0;n < lessons.size();n++) {
 		if (id == StringConvert(lessons.at(n).getID()))
 			return n;
@@ -143,6 +166,17 @@ String^ NumPerConvert(int Num) {
 		}
 
 		return UTF8Convert(StringConvert(Pnum));
+}
+
+
+
+bool isintiger_char(char ch)
+{
+
+		if ((ch < 58 && ch >= 48))
+			return true;
+		else 
+			return false;
 }
 
 
@@ -657,11 +691,14 @@ void AutoSetLocation_ByData_WDay(vector<Lessons>& lessons, vector<Classes> class
 
 				if (f == n)
 					continue;
-
+				//MessageBox::Show(StringConvert(lessons.at(f).getID()+" vs "+ lessons.at(n).getID()));
 				if (lessons.at(f).PlaceInterference(classes.at(m))) {
+					//MessageBox::Show("1");
 					if (lessons.at(f).DataInterference_W_D(lessons.at(n))) {
+					//	MessageBox::Show("2");
 						if (lessons.at(f).ClockInterference(lessons.at(n)))
 						{
+							//MessageBox::Show("3");
 							Interference = true; break;
 						}
 					}
@@ -697,7 +734,7 @@ void AutoSetLocation_ByData_WDay(vector<Lessons>& lessons, vector<Classes> class
 					continue;
 
 				if (lessons.at(f).PlaceInterference(classes.at(m))) {
-					if (lessons.at(f).DataInterference(lessons.at(n), false)) {
+					if (lessons.at(f).DataInterference_W_D(lessons.at(n))) {
 						if (lessons.at(f).ClockInterference(lessons.at(n)))
 						{
 							Interference = true; break;
@@ -722,14 +759,14 @@ void AutoSetLocation_ByData_WDay(vector<Lessons>& lessons, vector<Classes> class
 
 
 
-bool CheckTimeInterference(Lessons less, Classes cla) {
+bool CheckTimeInterference(Lessons less, Classes cla,vector <Lessons> lessons = ::lessons) {
 	
 	for (size_t n = 0; n < lessons.size(); n++)
 	{
 		if (lessons.at(n).getID() == less.getID())
 			continue;
-		//MessageBox::Show(UTF8Convert(lessons.at(n).getName()) + "   " + StringConvert(to_string(lessons.at(n).PlaceInterference(cla))+" "+ to_string(lessons.at(n).DataInterference(less))+" "+ to_string(lessons.at(n).ClockInterference(less))));
-		if (lessons.at(n).PlaceInterference(cla) && lessons.at(n).DataInterference(less,false) && lessons.at(n).ClockInterference(less)) 
+		//MessageBox::Show(UTF8Convert(lessons.at(n).getName()) +" vs "+ UTF8Convert(less.getName()) + "  in  "+ StringConvert(to_string(cla.getID()))+"        place inm :  " + StringConvert(to_string(lessons.at(n).PlaceInterference(cla)) + " data in : " + to_string(lessons.at(n).DataInterference_W_D(less)) + " clack   in ; " + to_string(lessons.at(n).ClockInterference(less))));
+		if (lessons.at(n).PlaceInterference(cla) && lessons.at(n).DataInterference_W_D(less) && lessons.at(n).ClockInterference(less)) 
 			return true;
 	
 			}
@@ -871,23 +908,23 @@ bool isEnglishchar(String^ str) {
 	return false;
 }
 	
-void TextSave(String^ FilePatch) {
+void TextSave(String^ FilePatch , vector <Lessons> SumLess) {
 
 	ofstream File(StringConvert(FilePatch) + "//Golestan.txt", ios::out);
 
 	File << "Students List :\n\n\n";
-	File << "ID" << setw(25) << "Name\n\n";
+	File << "ID" << "               " << "Name\n\n";
 	for (auto st : students) {
 
 		if(st.Name.at(0)>= 97 && st.Name.at(0) <= 122)
-		File << left << setw(20) << st.ID << setw(20) << st.Name << endl;
+			File  << st.ID << "          " << st.Name << endl;
 		else
 		{
-			File <<endl<<left<< setw(20) << st.ID << setw(20+st.Name.size()) << st.Name<<endl;
+			File << st.ID << "            " << st.Name << endl;
 		}
 	}
 
-
+	File << left;
 	File << "\n\n\n\n\n\nTeachers List :\n\n\n";
 	
 	for (auto te : teachers)
@@ -934,6 +971,72 @@ void TextSave(String^ FilePatch) {
 		
 
 	}
+
+
+
+
+
+
+	if (extraclass.size() == 0)
+		return;
+
+
+	File << "\n\n\n\n\n\nExtra Lessons List :\n\n\n";
+
+
+	File << setw(25) << "ID" << setw(25) << "WeekDay" << setw(25) << "Time" << setw(25) << "Meetings" << setw(25) << "Class" << setw(25) << "StudentNumber" << setw(25) << "VideoProjector" << setw(25) << "Teacher" << setw(25) << "Name" << "\n\n\n";
+
+
+	for (auto less : extraclass)
+	{
+		string WeekDay = "";
+
+		switch (less.getData().WeekDay) {
+
+		case 0:
+			WeekDay = "Saturday";
+			break;
+		case 1:
+			WeekDay = "Sunday";
+			break;
+		case 2:
+			WeekDay = "Monday";
+			break;
+		case 3:
+			WeekDay = "Tuesday";
+			break;
+		case 4:
+			WeekDay = "Wednesday";
+			break;
+		case 5:
+			WeekDay = "Thursday";
+			break;
+
+		}
+		string VideoProjector = "NO";
+		if (less.getVideoProjector())
+			VideoProjector = "YES";
+
+		File << "\n\n" << endl << setw(25) << less.getID() << setw(25) << WeekDay << setw(25) << to_string(less.getStartTime().Huor) + ":" + to_string(less.getStartTime().Minute) + "|" + to_string(FinalTime(less).Huor) + ":" + to_string(FinalTime(less).Minute) << setw(25) << less.getMeetingsNum() << setw(25) << less.getClassLocation() << setw(25) << less.getStudents().size() << setw(25) << VideoProjector << setw(25 + less.getName().size()) << less.getName() << setw(25 + less.getTeacherName().size()) << less.getTeacherName() + "\n";
+
+		File << "\n{ \n";
+
+		int meet = 0;
+		for (auto less : ToSplitExtraClass(less)) {
+			meet++;
+
+			for each (auto sum in SumLess)
+			{
+				if (sum.getID() == less.getID() && DayCount(sum) == DayCount(less))
+					less.setClassLocation(sum.getClassLocation());
+			}
+
+			File << endl << setw(25) << less.getID() << setw(25) << WeekDay << setw(25) << to_string(less.getStartTime().Huor) + ":" + to_string(less.getStartTime().Minute) + "|" + to_string(FinalTime(less).Huor) + ":" + to_string(FinalTime(less).Minute) << setw(25) << meet << setw(25) << less.getClassLocation() << setw(25) << less.getStudents().size() << setw(25) << VideoProjector << setw(25 + less.getName().size()) << less.getName() << setw(25 + less.getTeacherName().size()) << less.getTeacherName() + "\n";
+		}
+
+		File << "\n} \n";
+	}
+
 
 }
   

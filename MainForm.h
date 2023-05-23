@@ -45,6 +45,7 @@ namespace Golestan {
 
 
     private: System::Windows::Forms::Button^ BTBack;
+    private: System::Windows::Forms::Button^ BTDengerFill;
 
 
 
@@ -315,6 +316,7 @@ namespace Golestan {
             TXStNameFoq->Hide();
             TXStNumFoq->Hide();
             LAErorFoq3->Hide();
+            BTDengerFill->Hide();
         }
 
 
@@ -677,6 +679,132 @@ namespace Golestan {
 
        
 
+
+        void SetTable(Lessons less, vector <Classes> classes, int WeekCycle, bool Manual) {
+
+            EmptyTable();
+            //MessageBox::Show(StringConvert(to_string(StartDayLesson(lessons).getData().WeekDay) + " :  "+ to_string(StartDayLesson(lessons).getData().Month) + " / " + to_string(StartDayLesson(lessons).getData().Day)));
+
+            int ScoopStart = DayCount(StartDayLesson(lessons, Manual));
+
+            int ScoopEnd = ScoopStart + 7;
+
+            if (StartDayLesson(lessons, Manual).getData().WeekDay != 0 && StartDayLesson(lessons, Manual).getData().WeekDay != 6) {
+
+                if (WeekCycle == 0) {
+                    ScoopStart = DayCount(StartDayLesson(lessons, Manual));
+                    ScoopEnd = ScoopStart + (7 - (StartDayLesson(lessons, Manual).getData().WeekDay));
+
+                }
+
+                else
+                {
+
+                    ScoopStart = DayCount(StartDayLesson(lessons, Manual)) + (7 - (StartDayLesson(lessons, Manual).getData().WeekDay)) + (WeekCycle - 1) * 7 - 7 * WeekCycle;
+
+                    ScoopEnd = ScoopStart + 7;
+
+                }
+
+            }
+
+
+
+            //Start Set :
+
+
+
+            for (size_t n = 0;n < classes.size();n++) {
+               
+                if (!(DayCount(less) >= ScoopStart && DayCount(less) < ScoopEnd))
+                        continue;
+
+                    if (less.getClassLocation() == classes.at(n).getID()) {
+
+
+                        switch (less.getData().WeekDay) {
+
+                        case 0:
+
+
+                            if (!(Tabel->Rows[n]->Cells[1]->Value == ""))
+                                Tabel->Rows[n]->Cells[1]->Value += " \n";
+                            if (less.getFoq())
+                                Tabel->Rows[n]->Cells[1]->Value += less.getName_S() + L"، " + less.getTeacherName_S() + " \n(" + NumPerConvert(less.getStartTime().Minute) + " : " + NumPerConvert(less.getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[1]->Value += UTF8Convert(less.getName()) + L"، " + UTF8Convert(less.getTeacherName()) + " \n(" + NumPerConvert(less.getStartTime().Minute) + " : " + NumPerConvert(less.getStartTime().Huor) + " )";
+                            break;
+
+
+                        case 1:
+
+
+                            if (!(Tabel->Rows[n]->Cells[2]->Value == ""))
+                                Tabel->Rows[n]->Cells[2]->Value += " \n";
+                            if (less.getFoq())
+                                Tabel->Rows[n]->Cells[2]->Value += less.getName_S() + L"، " + less.getTeacherName_S() + " \n(" + NumPerConvert(less.getStartTime().Minute) + " : " + NumPerConvert(less.getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[2]->Value += UTF8Convert(less.getName()) + L"، " + UTF8Convert(less.getTeacherName()) + " \n(" + NumPerConvert(less.getStartTime().Minute) + " : " + NumPerConvert(less.getStartTime().Huor) + " )";
+                            break;
+
+
+                        case 2:
+
+
+                            if (!(Tabel->Rows[n]->Cells[3]->Value == ""))
+                                Tabel->Rows[n]->Cells[3]->Value += " \n";
+                            if (less.getFoq())
+                                Tabel->Rows[n]->Cells[3]->Value += less.getName_S() + L"، " + less.getTeacherName_S() + " \n(" + NumPerConvert(less.getStartTime().Minute) + " : " + NumPerConvert(less.getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[3]->Value += UTF8Convert(less.getName()) + L"، " + UTF8Convert(less.getTeacherName()) + " \n(" + NumPerConvert(less.getStartTime().Minute) + " : " + NumPerConvert(less.getStartTime().Huor) + " )";
+                            break;
+
+
+                        case 3:
+
+
+                            if (!(Tabel->Rows[n]->Cells[4]->Value == ""))
+                                Tabel->Rows[n]->Cells[4]->Value += " \n";
+                            if (less.getFoq())
+                                Tabel->Rows[n]->Cells[4]->Value += less.getName_S() + L"، " + less.getTeacherName_S() + " \n(" + NumPerConvert(less.getStartTime().Minute) + " : " + NumPerConvert(less.getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[4]->Value += UTF8Convert(less.getName()) + L"، " + UTF8Convert(less.getTeacherName()) + " \n(" + NumPerConvert(less.getStartTime().Minute) + " : " + NumPerConvert(less.getStartTime().Huor) + " )";
+                            break;
+
+
+                        case 4:
+
+
+                            if (!(Tabel->Rows[n]->Cells[5]->Value == ""))
+                                Tabel->Rows[n]->Cells[5]->Value += " \n";
+                            if (less.getFoq())
+                                Tabel->Rows[n]->Cells[5]->Value += less.getName_S() + L"، " + less.getTeacherName_S() + " \n(" + NumPerConvert(less.getStartTime().Minute) + " : " + NumPerConvert(less.getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[5]->Value += UTF8Convert(less.getName()) + L"، " + UTF8Convert(less.getTeacherName()) + " \n(" + NumPerConvert(less.getStartTime().Minute) + " : " + NumPerConvert(less.getStartTime().Huor) + " )";
+                            break;
+
+
+                        case 5:
+
+
+                            if (!(Tabel->Rows[n]->Cells[6]->Value == ""))
+                                Tabel->Rows[n]->Cells[6]->Value += " \n";
+                            if (less.getFoq())
+                                Tabel->Rows[n]->Cells[6]->Value += less.getName_S() + L"، " + less.getTeacherName_S() + " \n(" + NumPerConvert(less.getStartTime().Minute) + " : " + NumPerConvert(less.getStartTime().Huor) + " )";
+                            else
+                                Tabel->Rows[n]->Cells[6]->Value += UTF8Convert(less.getName()) + L"، " + UTF8Convert(less.getTeacherName()) + " \n(" + NumPerConvert(less.getStartTime().Minute) + " : " + NumPerConvert(less.getStartTime().Huor) + " )";
+                            break;
+
+
+                        }
+
+
+                    
+                }
+            }
+        }
+
+
         void SetTable_ClassName() { 
 
             for (size_t n = 0;n < classes.size();n++) {
@@ -880,6 +1008,7 @@ private: System::ComponentModel::IContainer^ components;
             this->LAWeekCycle = (gcnew System::Windows::Forms::Label());
             this->BTNext = (gcnew System::Windows::Forms::Button());
             this->BTBack = (gcnew System::Windows::Forms::Button());
+            this->BTDengerFill = (gcnew System::Windows::Forms::Button());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAJalaseFoq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAM1Foq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAH1Foq))->BeginInit();
@@ -1863,11 +1992,11 @@ private: System::ComponentModel::IContainer^ components;
             this->LAErorFoq3->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->LAErorFoq3->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-            this->LAErorFoq3->Location = System::Drawing::Point(156, 341);
+            this->LAErorFoq3->Location = System::Drawing::Point(-1, 341);
             this->LAErorFoq3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
             this->LAErorFoq3->Name = L"LAErorFoq3";
             this->LAErorFoq3->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->LAErorFoq3->Size = System::Drawing::Size(505, 79);
+            this->LAErorFoq3->Size = System::Drawing::Size(662, 79);
             this->LAErorFoq3->TabIndex = 185;
             this->LAErorFoq3->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
             // 
@@ -1945,12 +2074,29 @@ private: System::ComponentModel::IContainer^ components;
             this->BTBack->UseVisualStyleBackColor = false;
             this->BTBack->Click += gcnew System::EventHandler(this, &MainForm::BTBack_Click);
             // 
+            // BTDengerFill
+            // 
+            this->BTDengerFill->AutoEllipsis = true;
+            this->BTDengerFill->BackColor = System::Drawing::Color::OrangeRed;
+            this->BTDengerFill->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->BTDengerFill->Font = (gcnew System::Drawing::Font(L"Impact", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(178)));
+            this->BTDengerFill->ForeColor = System::Drawing::SystemColors::Info;
+            this->BTDengerFill->Location = System::Drawing::Point(526, 438);
+            this->BTDengerFill->Name = L"BTDengerFill";
+            this->BTDengerFill->Size = System::Drawing::Size(160, 35);
+            this->BTDengerFill->TabIndex = 188;
+            this->BTDengerFill->Text = L"در هر صورت ادامه  بده";
+            this->BTDengerFill->UseVisualStyleBackColor = false;
+            this->BTDengerFill->Click += gcnew System::EventHandler(this, &MainForm::BTDengerFill_Click_1);
+            // 
             // MainForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::Aquamarine;
             this->ClientSize = System::Drawing::Size(704, 512);
+            this->Controls->Add(this->BTDengerFill);
             this->Controls->Add(this->BTBack);
             this->Controls->Add(this->BTNext);
             this->Controls->Add(this->LAWeekCycle);
@@ -2052,6 +2198,9 @@ private: System::ComponentModel::IContainer^ components;
         LAErorIm->Hide();
         lessons.clear();
         classes.clear();
+        SumLess.clear();
+
+        LAErorIm->Text = "";
 
         if (XmlAdres->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
 
@@ -2126,12 +2275,12 @@ private: System::Void BTAuto_Click(System::Object^ sender, System::EventArgs^ e)
 
             SortLessons(SumLess);
             AutoSetLocation_ByData_WDay(SumLess,classes);
-
-for each (auto var in SumLess)
-            {
-                MessageBox::Show(StringConvert(to_string(var.getClassLocation()) + " :  " + to_string(var.getData().Month) + " / " + to_string(var.getData().Day)));
-
-            }
+//
+//for each (auto var in SumLess)
+//            {
+//                MessageBox::Show(StringConvert(to_string(var.getClassLocation()) + " :  " + to_string(var.getData().Month) + " / " + to_string(var.getData().Day)));
+//
+//            }
             vector <Lessons> SplitEX2;
 
             for (Lessons sum : SumLess) {
@@ -2178,6 +2327,7 @@ private: System::Void BTTanzinBarname_Click(System::Object^ sender, System::Even
 
 
 private: System::Void TXClassID_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+
     
     if (StringConvert(TXLessonID->Text).size() > 1 && StringConvert(TXClassID->Text).size() > 1) LAEror->Text = "";
    
@@ -2217,22 +2367,58 @@ private: System::Void TXLessonID_TextChanged(System::Object^ sender, System::Eve
     if (StringConvert(TXLessonID->Text).size() > 1) {
 
         Bles = false;
-        for (size_t n = 0;n < lessons.size();n++) {
-            if (TXLessonID->Text == StringConvert( lessons.at(n).getID() )) {
 
-                Bles = true;
+        if (extraclass.size()) {
 
-                if (lessons.at(n).getVideoProjector())
-                    LATanzimLessonInfo->Text = L"🎦  " + UTF8Convert(lessons.at(n).getName()) + L" (دانشجویان : " + NumPerConvert(lessons.at(n).getStudents().size()) + ")";
-                
-                else 
-                    LATanzimLessonInfo->Text = UTF8Convert(lessons.at(n).getName()) + L" (دانشجویان : " + NumPerConvert(lessons.at(n).getStudents().size()) + ")";
-                
 
-                break;
+            for(auto less : SumLess) {
+                if (TXLessonID->Text == StringConvert(less.getID())) {
+
+                    Bles = true;
+
+                    String^ Name = "";
+
+                    if (less.getFoq())
+                        Name = less.getName_S();
+                    else
+                        Name = UTF8Convert(less.getName());
+
+                    if (less.getVideoProjector())
+                        LATanzimLessonInfo->Text = L"🎦  " + Name + L" (دانشجویان : " + NumPerConvert(less.getStudents().size()) + ")";
+
+                    else
+                        LATanzimLessonInfo->Text = Name + L" (دانشجویان : " + NumPerConvert(less.getStudents().size()) + ")";
+
+
+                    break;
+                }
+                else
+                    LATanzimLessonInfo->Text = "";
             }
-            else
-                LATanzimLessonInfo->Text = "";
+
+
+        }
+
+
+        else {
+
+            for each (auto less in lessons) {
+                if (TXLessonID->Text == StringConvert(less.getID())) {
+
+                    Bles = true;
+
+                    if (less.getVideoProjector())
+                        LATanzimLessonInfo->Text = L"🎦  " + UTF8Convert(less.getName()) + L" (دانشجویان : " + NumPerConvert(less.getStudents().size()) + ")";
+
+                    else
+                        LATanzimLessonInfo->Text = UTF8Convert(less.getName()) + L" (دانشجویان : " + NumPerConvert(less.getStudents().size()) + ")";
+
+
+                    break;
+                }
+                else
+                    LATanzimLessonInfo->Text = "";
+            }
         }
     }
     else
@@ -2262,6 +2448,81 @@ private: System::Void BTTaiid_Click(System::Object^ sender, System::EventArgs^ e
         LAEror->Text = L"کلاس مورد نظر یافت نشد !"; return;
     }
 
+
+    if (extraclass.size()) {
+
+
+        if (FindLesson(TXLessonID->Text,SumLess).OverCapacity(FindClass(TXClassID->Text)))
+        {
+            LAEror->Text = L"ظرفیت کلاس کافی نیست !"; return;
+        }
+
+        if (FindLesson(TXLessonID->Text,SumLess).getVideoProjector() && !FindClass(TXClassID->Text).getVideoProjector())
+        {
+            LAEror->Text = L"این درس نیاز به ویدیوپرژکتور دارد !"; return;
+        }
+
+
+        if (FindLesson(TXLessonID->Text, SumLess).getFoq()) {
+
+            for (auto sp : ToSplitExtraClass(FindLesson(TXLessonID->Text, extraclass))) {
+                if (CheckTimeInterference(sp, FindClass(TXClassID->Text),SumLess))
+                {
+                    LAEror->Text = L"تداخل ساعات دروس در کلاس وجود دارد  !"; return;
+
+                }
+            }
+        }
+        else
+        {
+            if (CheckTimeInterference(FindLesson(TXLessonID->Text, SumLess), FindClass(TXClassID->Text)) )
+            {
+                LAEror->Text = L"تداخل ساعات دروس در کلاس وجود دارد  !"; return;
+
+            }
+        }
+
+
+        SumLess.at(FindLessonIndex(TXLessonID->Text, SumLess)).setClassLocation(FindClass(TXClassID->Text));
+
+
+        if (FindLesson(TXLessonID->Text, SumLess).getFoq()) {
+            for (size_t n = 0; n < SumLess.size(); n++) {
+
+                if(SumLess.at(n).getID() == StringConvert(TXLessonID->Text))
+                    SumLess.at(n).setClassLocation(FindClass(TXClassID->Text));
+            }
+        }
+
+
+
+        { vector <Lessons> SplitEX2;
+
+        for (Lessons sum : SumLess) {
+            if (sum.getFoq())
+                SplitEX2.push_back(sum);
+        }
+
+
+        for (Lessons sum : SumLess) {
+            for (size_t n = 0; n < lessons.size(); n++) {
+                if (sum.getID() == lessons.at(n).getID())
+                    lessons.at(n).setClassLocation(sum.getClassLocation());
+
+            }
+        }
+        Golestan::SplitEX = SplitEX2;
+        EmptyTable();
+
+        SetTable(lessons, SplitEX2, classes, Week_Cycle, false); }
+       
+    }
+
+
+    else {
+
+
+
     if(FindLesson(TXLessonID->Text).OverCapacity( FindClass(TXClassID->Text)))
     {
         LAEror->Text = L"ظرفیت کلاس کافی نیست !"; return;
@@ -2272,14 +2533,16 @@ private: System::Void BTTaiid_Click(System::Object^ sender, System::EventArgs^ e
         LAEror->Text = L"این درس نیاز به ویدیوپرژکتور دارد !"; return;
     }
 
-    if(CheckTimeInterference(FindLesson(TXLessonID->Text), FindClass(TXClassID->Text))&&FindLesson(TXLessonID->Text).getClassLocation()!=0)
+    if(CheckTimeInterference(FindLesson(TXLessonID->Text), FindClass(TXClassID->Text)))
     {
         LAEror->Text = L"تداخل ساعات دروس در کلاس وجود دارد  !"; return;
 
     }
 
-    lessons.at(FindLessonIndex(TXLessonID->Text)).setClassLocation(FindClass(TXClassID->Text));
-    SetTable(lessons,classes,Week_Cycle,true);
+  
+        lessons.at(FindLessonIndex(TXLessonID->Text)).setClassLocation(FindClass(TXClassID->Text));
+        SetTable(lessons, classes, Week_Cycle, true);
+    }
 
     HideTanzimBarname();
     ShowMeno();
@@ -2303,7 +2566,7 @@ private: System::Void BTSave_Click(System::Object^ sender, System::EventArgs^ e)
     {
         String^ FilePatch= TxtSave->SelectedPath;
         
-        TextSave(FilePatch);
+        TextSave(FilePatch,SumLess);
     }
 
 }
@@ -2326,19 +2589,34 @@ private: System::Void BTTaiid1Foq_Click(System::Object^ sender, System::EventArg
     //MessageBox::Show(UTF8Convert(StringConvert(TXLessonNameFoq->Text)));
     //if (!(TXLessonIDFoq->Text == "" || TXLessonNameFoq->Text == "" || TXTeacherNameFoq->Text == "")) LAEror->Text = "";
 
+    LAErorFoq->Text = "";
+
     if (TXLessonIDFoq->Text == "" || TXLessonNameFoq->Text == "" || TXTeacherNameFoq->Text == "") { LAErorFoq->Text = L"لطفا همه فیلد ها را پر کنید !"; return; }
 
     else
         LAErorFoq->Text = "";
 
-    if(isnot_ABC_or_123(TXLessonIDFoq->Text)) { LAErorFoq->Text = L"آدرس درس معتبر نیست !"; return; }
+    if(isnot_ABC_or_123(TXLessonIDFoq->Text)) { LAErorFoq->Text = L"آدرس درس تنها میتواند شامل اعداد و حروف لاتین باشد ."; return; }
 
-    for (auto id : SumLess) {
-        if(id.getID()==StringConvert(TXLessonIDFoq->Text))
-        {
-            LAErorFoq->Text = L"نشانی وارد شده از قبل وجود دارد لطفا نشانی دیگری وارد کنید !"; return;
+
+    if (extraclass.size()) {
+        for (auto id : SumLess) {
+            if (id.getID() == StringConvert(TXLessonIDFoq->Text))
+            {
+                LAErorFoq->Text = L"نشانی وارد شده از قبل وجود دارد لطفا نشانی دیگری وارد کنید !"; return;
+            }
         }
     }
+    else
+    {
+        for (auto id : lessons) {
+            if (id.getID() == StringConvert(TXLessonIDFoq->Text))
+            {
+                LAErorFoq->Text = L"نشانی وارد شده از قبل وجود دارد لطفا نشانی دیگری وارد کنید !"; return;
+            }
+        }
+    }
+
 
     if (isintiger(StringConvert(TXTeacherNameFoq->Text))) { LAErorFoq->Text = L"لطفا نام استاد را به درستی وارد کنید ."; return; }
 
@@ -2373,10 +2651,23 @@ private: System::Void TXLessonIDFoq_TextChanged(System::Object^ sender, System::
 private: System::Void TXLessonNameFoq_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 
     if (!(TXLessonIDFoq->Text == "" || TXLessonNameFoq->Text == "" || TXTeacherNameFoq->Text == "")) LAErorFoq->Text = "";if (!(TXLessonIDFoq->Text == "" || TXLessonNameFoq->Text == "" || TXTeacherNameFoq->Text == "")) LAEror->Text = "";
+
+   
+        //MessageBox::Show(TXLessonNameFoq->Text[TXLessonNameFoq->Text->Length - 1] + "");
+       
+    if (isEnglishchar(TXLessonNameFoq->Text)) { LAErorFoq->Text = L"لطفا نام درس را فارسی وارد کنید ."; TXLessonNameFoq->Text=""; return; }
+    
+
+
+    
 }
 private: System::Void TXTeacherNameFoq_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-
+  //  MessageBox::Show(StringConvert(to_string(         (TXTeacherNameFoq->Text) == UTF8Convert(lessons.at(0).getTeacherName())         )));
     if (!(TXLessonIDFoq->Text == "" || TXLessonNameFoq->Text == "" || TXTeacherNameFoq->Text == "")) LAErorFoq->Text = "";
+
+
+    if (isEnglishchar(TXTeacherNameFoq->Text)) { LAErorFoq->Text = L"لطفا نام استاد را فارسی وارد کنید ."; TXTeacherNameFoq->Text = ""; return; }
+    
 
 }
 
@@ -2396,20 +2687,20 @@ private: System::Void BTTaiid2Foq_Click(System::Object^ sender, System::EventArg
 
     LAErorFoq2->Text = "";
     LAErorFoq2->ForeColor = Color::FromArgb(255, 128, 128);
-   // if (VAMahFoq->Value == 0 || VARozFoq->Value == 0 || VAMahFoq->Value >12 || VARozFoq->Value > 31) { LAErorFoq2->Text = L"لطفا تاریخ شروع کلاس را به درستی وارد کنید."; return; }
+    // if (VAMahFoq->Value == 0 || VARozFoq->Value == 0 || VAMahFoq->Value >12 || VARozFoq->Value > 31) { LAErorFoq2->Text = L"لطفا تاریخ شروع کلاس را به درستی وارد کنید."; return; }
 
-    if(VAMahFoq->Value > 6 && VARozFoq->Value == 31) { LAErorFoq2->Text = L" این ماه کمتر از ۳۱ روز دارد!"; return; }
+    if (VAMahFoq->Value > 6 && VARozFoq->Value == 31) { LAErorFoq2->Text = L" این ماه کمتر از ۳۱ روز دارد!"; return; }
 
-    if(VAMahFoq->Value<StartDayLesson(lessons).getData().Month||(VAMahFoq->Value == StartDayLesson(lessons).getData().Month && VARozFoq->Value < StartDayLesson(lessons).getData().Day))
+    if (VAMahFoq->Value < StartDayLesson(lessons).getData().Month || (VAMahFoq->Value == StartDayLesson(lessons).getData().Month && VARozFoq->Value < StartDayLesson(lessons).getData().Day))
     {
         LAErorFoq2->Text = L"    اولین کلاس اصلی در مرکز در تاریخ  " + NumPerConvert(StartDayLesson(lessons).getData().Day) + " / " + NumPerConvert(StartDayLesson(lessons).getData().Month) + L" برگزار میشود، لطفا تاریخ شروع را پس از این تاریخ وارد کنید    .";  return;
     }
 
-    if(VAH1Foq->Value == 0 && VAM1Foq->Value == 0) { LAErorFoq2->Text = L"مدت زمان کلاس نمی تواند صفر باشد!"; return; }
+    if (VAH1Foq->Value == 0 && VAM1Foq->Value == 0) { LAErorFoq2->Text = L"مدت زمان کلاس نمی تواند صفر باشد!"; return; }
 
-    if (VAH1Foq->Value ==0 && VAM1Foq->Value < 15) { LAErorFoq2->Text = L"مدت زمان کلاس باید بیشتر از ۱۵ دقیقه باشد."; return; }
+    if (VAH1Foq->Value == 0 && VAM1Foq->Value < 15) { LAErorFoq2->Text = L"مدت زمان کلاس باید بیشتر از ۱۵ دقیقه باشد."; return; }
 
-    if (TXWeekDayFoq->Text=="") { LAErorFoq2->Text = L"لطفا روز شروع را وارد کنید."; return; }
+    if (TXWeekDayFoq->Text == "") { LAErorFoq2->Text = L"لطفا روز شروع را وارد کنید."; return; }
 
     if (TXWeekDayFoq->Text == L"جمعه") { LAErorFoq2->Text = L"کلاس نمیتواند در روز تعطیل برگزار شود!"; return; }
 
@@ -2418,7 +2709,7 @@ private: System::Void BTTaiid2Foq_Click(System::Object^ sender, System::EventArg
     switch (TXWeekDayFoq->Text[0])
     {
     case L'ش':
-        WeekDay=0;
+        WeekDay = 0;
         break;
     case L'ی':
         WeekDay = 1;
@@ -2444,23 +2735,47 @@ private: System::Void BTTaiid2Foq_Click(System::Object^ sender, System::EventArg
         break;
     }
 
-    
 
-    for (auto less : lessons) {
-        
-        if (TXTeacherNameFoq->Text == UTF8Convert(less.getTeacherName())) {
-           
-            if (less.getData().WeekDay == WeekDay)
-               
-            if (less.getData().WeekDay == WeekDay && less.ClockInterference((int)VAHFoq->Value, (int)VAMFoq->Value, (int)VAH1Foq->Value, (int)VAM1Foq->Value))
-            {
-               
-                LAErorFoq2->Text = L"استاد مورد نظر در این بازه زمانی، کلاس دیگری دارد!";
-                return;
+    if (extraclass.size()) {
+
+
+        for (auto less : SumLess) {
+
+            if (TXTeacherNameFoq->Text == UTF8Convert(less.getTeacherName())) {
+
+             //   if (less.getData().WeekDay == WeekDay)
+
+                    if (less.DataInterference_W_D(WeekDay,(int)VAMahFoq->Value,(int)VARozFoq->Value,true) && less.ClockInterference((int)VAHFoq->Value, (int)VAMFoq->Value, (int)VAH1Foq->Value, (int)VAM1Foq->Value))
+                    {
+
+                        LAErorFoq2->Text = L"استاد مورد نظر در این بازه زمانی، کلاس دیگری دارد!";
+                        return;
+                    }
             }
+
         }
 
     }
+
+    else{
+
+
+    for (auto less : lessons) {
+
+        if ((TXTeacherNameFoq->Text) == UTF8Convert(less.getTeacherName())) {
+
+         //   if (less.getData().WeekDay == WeekDay)
+
+                if (less.getData().WeekDay == WeekDay && less.ClockInterference((int)VAHFoq->Value, (int)VAMFoq->Value, (int)VAH1Foq->Value, (int)VAM1Foq->Value))
+                {
+
+                    LAErorFoq2->Text = L"استاد مورد نظر در این بازه زمانی، کلاس دیگری دارد!";
+                    return;
+                }
+        }
+
+    }
+}
    
 
     HideFoq2();
@@ -2474,16 +2789,49 @@ private: System::Void BTTaiid2Foq_Click(System::Object^ sender, System::EventArg
 private: System::Void BTTaiid3Foq_Click(System::Object^ sender, System::EventArgs^ e) {
 
     LAErorFoq3->ForeColor = Color::FromArgb(255, 128, 128);
+    LAErorFoq3->Text = "";
     if (StList.size() < 2) { LAErorFoq3->Text = L"کلاس باید حداقل ۲ دانشجو داشته باشد !"; return; }
     else
         LAErorFoq3->Text = "";
+
+    
+    {
+        ExtraLessons test((int)VAJalaseFoq->Value, StringConvert(TXLessonIDFoq->Text), StringConvert(TXLessonNameFoq->Text), StringConvert(TXTeacherNameFoq->Text), StList, (int)VAHFoq->Value, (int)VAMFoq->Value, (int)VAH1Foq->Value, (int)VAM1Foq->Value, WeekDay, BOVideoProjectorFoq->Checked, 1402, (int)VAMahFoq->Value, (int)VARozFoq->Value);
+        test.setString(TXLessonNameFoq->Text, TXTeacherNameFoq->Text);
+       
+        vector <ExtraLessons> EXtest = extraclass;
+        EXtest.push_back(test);
+
+        vector <Lessons> SplitEX = ToSplitExtraClass(EXtest);
+        vector <Lessons> SumLess = lessons;
+
+    for (Lessons Sp : SplitEX)
+        SumLess.push_back(Sp);
+
+
+    SortLessons(SumLess);
+    AutoSetLocation_ByData_WDay(SumLess, classes);
+    for (auto less : SumLess) {
+      
+        if (less.getClassLocation() == 0) {
+
+            LAErorFoq3->Text =  L"کلاسی متناسب با درس شما برای همه جلسات یافت نشد، ممکن است برخی یا همه جلسات نادیده گر فته شوند."; 
+            BTTaiid3Foq->Hide();
+            BTDengerFill->Show();
+            return; 
+        }
+    }
+    }
+
+
+
 
 
     ExtraLessons test((int)VAJalaseFoq->Value, StringConvert(TXLessonIDFoq->Text), StringConvert(TXLessonNameFoq->Text), StringConvert(TXTeacherNameFoq->Text), StList, (int)VAHFoq->Value, (int)VAMFoq->Value, (int)VAH1Foq->Value, (int)VAM1Foq->Value, WeekDay, BOVideoProjectorFoq->Checked, 1402, (int)VAMahFoq->Value, (int)VARozFoq->Value);
     test.setString(TXLessonNameFoq->Text, TXTeacherNameFoq->Text);
     extraclass.push_back(test);
-
-
+    SetStudent(students, test);
+    SetTeacher(teachers, test);
 
     {  vector <Lessons> SplitEX = ToSplitExtraClass(extraclass);
     vector <Lessons> SumLess = lessons;
@@ -2493,7 +2841,7 @@ private: System::Void BTTaiid3Foq_Click(System::Object^ sender, System::EventArg
 
     Golestan::SumLess = SumLess; }
 
-
+    
     StList.clear(); 
 
 
@@ -2509,6 +2857,7 @@ private: System::Void BTTaiid3Foq_Click(System::Object^ sender, System::EventArg
 private: System::Void BTAfzodanFoq_Click(System::Object^ sender, System::EventArgs^ e) {
 
     LAErorFoq3->ForeColor = Color::FromArgb(255, 128, 128);
+    LAErorFoq3->Text = "";
 
     if (StList.size() == 40) { LAErorFoq3->Text = L"اضافه کردن بیش از چهل دانشجو امکان پذیر نیست !"; return; }
 
@@ -2527,20 +2876,41 @@ private: System::Void BTAfzodanFoq_Click(System::Object^ sender, System::EventAr
     }
 
 
+    if (extraclass.size()) {
 
-    for (auto less : lessons) {
+        for (auto less : SumLess) {
 
-        for (auto st : less.getStudents()) {
+            for (auto st : less.getStudents()) {
 
-            if ((st.ID == StringConvert(TXStNumFoq->Text)) && less.getData().WeekDay == WeekDay && less.ClockInterference((int)VAHFoq->Value, (int)VAMFoq->Value, (int)VAH1Foq->Value, (int)VAM1Foq->Value)) {
+                if ((st.ID == StringConvert(TXStNumFoq->Text)) && less.getData().WeekDay == WeekDay && less.ClockInterference((int)VAHFoq->Value, (int)VAMFoq->Value, (int)VAH1Foq->Value, (int)VAM1Foq->Value)) {
 
-                LAErorFoq3->Text = L"دانشجو مدنظر در این بازه زمانی کلاس دیگری دارد!"; return;
+                    LAErorFoq3->Text = L"دانشجو مدنظر در این بازه زمانی کلاس دیگری دارد!"; return;
 
+                }
+                else
+                    LAErorFoq3->Text = "";
             }
-            else
-                LAErorFoq3->Text = "";
+
         }
 
+    }
+
+    else {
+
+        for (auto less : lessons) {
+
+            for (auto st : less.getStudents()) {
+
+                if ((st.ID == StringConvert(TXStNumFoq->Text)) && less.getData().WeekDay == WeekDay && less.ClockInterference((int)VAHFoq->Value, (int)VAMFoq->Value, (int)VAH1Foq->Value, (int)VAM1Foq->Value)) {
+
+                    LAErorFoq3->Text = L"دانشجو مدنظر در این بازه زمانی کلاس دیگری دارد!"; return;
+
+                }
+                else
+                    LAErorFoq3->Text = "";
+            }
+
+        }
     }
 
     
@@ -2663,6 +3033,33 @@ private: System::Void BTBack_Click(System::Object^ sender, System::EventArgs^ e)
       SetTable(lessons, SplitEX, classes, Week_Cycle, false);
 
 
+}
+
+
+private: System::Void BTDengerFill_Click_1(System::Object^ sender, System::EventArgs^ e) {
+
+
+
+    ExtraLessons test((int)VAJalaseFoq->Value, StringConvert(TXLessonIDFoq->Text), StringConvert(TXLessonNameFoq->Text), StringConvert(TXTeacherNameFoq->Text), StList, (int)VAHFoq->Value, (int)VAMFoq->Value, (int)VAH1Foq->Value, (int)VAM1Foq->Value, WeekDay, BOVideoProjectorFoq->Checked, 1402, (int)VAMahFoq->Value, (int)VARozFoq->Value);
+    test.setString(TXLessonNameFoq->Text, TXTeacherNameFoq->Text);
+    extraclass.push_back(test);
+    SetStudent(students, test);
+    SetTeacher(teachers, test);
+
+    {  vector <Lessons> SplitEX = ToSplitExtraClass(extraclass);
+    vector <Lessons> SumLess = lessons;
+
+    for (Lessons Sp : SplitEX)
+        SumLess.push_back(Sp);
+
+    Golestan::SumLess = SumLess; }
+
+
+    StList.clear();
+
+    BTDengerFill->Hide();
+    HideFoq3();
+    ShowMeno();
 }
 };
 }

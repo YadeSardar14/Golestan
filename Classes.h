@@ -23,6 +23,9 @@ private:
 	bool VideoProjector = 0;
 
 public:
+
+	bool Fill = false;
+
 	Classes(int id, int capacity, bool videoprojector = 0)
 	{
 		ID = id;
