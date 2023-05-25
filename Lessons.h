@@ -213,7 +213,7 @@ public:
 
 		if ((!Foq && !foq && (StartDay.WeekDay == WeekD))
 			|| ((!Foq && foq) && (StartDay.WeekDay == WeekD) && (DayCount(M,D) >= DayCount()))
-			|| ((Foq && !foq) && (StartDay.WeekDay == WeekD) && (DayCount() >= DayCount(M, D)))
+			|| ((Foq && !foq) && (StartDay.WeekDay == WeekD) && (DayCount() <= DayCount(M, D)))
 			|| ((Foq && foq) && (StartDay.WeekDay == WeekD) && (StartDay.Day == D) && (StartDay.Month == M)))
 			return true;
 		else

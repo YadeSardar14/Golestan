@@ -46,6 +46,11 @@ namespace Golestan {
 
     private: System::Windows::Forms::Button^ BTBack;
     private: System::Windows::Forms::Button^ BTDengerFill;
+    private: System::Windows::Forms::Button^ BTBazgashtList;
+    private: System::Windows::Forms::ListBox^ LITeacherList;
+    private: System::Windows::Forms::Label^ LATeacherList;
+    private: System::Windows::Forms::ListBox^ LIStudentList;
+    private: System::Windows::Forms::Label^ LAStudentList;
 
 
 
@@ -83,7 +88,9 @@ namespace Golestan {
             HideMeno();
             HideTable();
             HideTanzimBarname();
+            HideInfo();
             ShowImportPage();
+
            
 		}
 
@@ -317,6 +324,25 @@ namespace Golestan {
             TXStNumFoq->Hide();
             LAErorFoq3->Hide();
             BTDengerFill->Hide();
+        }
+
+
+        void ShowInfo() {
+
+            LAStudentList->Show();
+            LATeacherList->Show();
+            LITeacherList->Show();
+            LIStudentList->Show();
+            BTBazgashtList->Show();
+        }
+
+        void HideInfo() {
+
+            LAStudentList->Hide();
+            LATeacherList->Hide();
+            LITeacherList->Hide();
+            LIStudentList->Hide();
+            BTBazgashtList->Hide();
         }
 
 
@@ -1009,6 +1035,11 @@ private: System::ComponentModel::IContainer^ components;
             this->BTNext = (gcnew System::Windows::Forms::Button());
             this->BTBack = (gcnew System::Windows::Forms::Button());
             this->BTDengerFill = (gcnew System::Windows::Forms::Button());
+            this->BTBazgashtList = (gcnew System::Windows::Forms::Button());
+            this->LITeacherList = (gcnew System::Windows::Forms::ListBox());
+            this->LATeacherList = (gcnew System::Windows::Forms::Label());
+            this->LIStudentList = (gcnew System::Windows::Forms::ListBox());
+            this->LAStudentList = (gcnew System::Windows::Forms::Label());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAJalaseFoq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAM1Foq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAH1Foq))->BeginInit();
@@ -1670,7 +1701,7 @@ private: System::ComponentModel::IContainer^ components;
             this->Column->MinimumWidth = 6;
             this->Column->Name = L"Column";
             this->Column->ReadOnly = true;
-            this->Column->Width = 86;
+            this->Column->Width = 101;
             // 
             // R0
             // 
@@ -1678,7 +1709,7 @@ private: System::ComponentModel::IContainer^ components;
             this->R0->MinimumWidth = 6;
             this->R0->Name = L"R0";
             this->R0->ReadOnly = true;
-            this->R0->Width = 103;
+            this->R0->Width = 102;
             // 
             // R1
             // 
@@ -1686,7 +1717,7 @@ private: System::ComponentModel::IContainer^ components;
             this->R1->MinimumWidth = 6;
             this->R1->Name = L"R1";
             this->R1->ReadOnly = true;
-            this->R1->Width = 103;
+            this->R1->Width = 101;
             // 
             // R2
             // 
@@ -1694,7 +1725,7 @@ private: System::ComponentModel::IContainer^ components;
             this->R2->MinimumWidth = 6;
             this->R2->Name = L"R2";
             this->R2->ReadOnly = true;
-            this->R2->Width = 103;
+            this->R2->Width = 102;
             // 
             // R3
             // 
@@ -1702,7 +1733,7 @@ private: System::ComponentModel::IContainer^ components;
             this->R3->MinimumWidth = 6;
             this->R3->Name = L"R3";
             this->R3->ReadOnly = true;
-            this->R3->Width = 103;
+            this->R3->Width = 101;
             // 
             // R4
             // 
@@ -1710,7 +1741,7 @@ private: System::ComponentModel::IContainer^ components;
             this->R4->MinimumWidth = 6;
             this->R4->Name = L"R4";
             this->R4->ReadOnly = true;
-            this->R4->Width = 103;
+            this->R4->Width = 102;
             // 
             // R5
             // 
@@ -1718,7 +1749,7 @@ private: System::ComponentModel::IContainer^ components;
             this->R5->MinimumWidth = 6;
             this->R5->Name = L"R5";
             this->R5->ReadOnly = true;
-            this->R5->Width = 103;
+            this->R5->Width = 101;
             // 
             // BTFoqBarname
             // 
@@ -1895,6 +1926,7 @@ private: System::ComponentModel::IContainer^ components;
             this->BTBishtarImTable->Text = L"...بیشتر";
             this->BTBishtarImTable->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
             this->BTBishtarImTable->UseVisualStyleBackColor = false;
+            this->BTBishtarImTable->Click += gcnew System::EventHandler(this, &MainForm::BTBishtarImTable_Click);
             // 
             // LATanzimLessonInfo
             // 
@@ -2090,12 +2122,86 @@ private: System::ComponentModel::IContainer^ components;
             this->BTDengerFill->UseVisualStyleBackColor = false;
             this->BTDengerFill->Click += gcnew System::EventHandler(this, &MainForm::BTDengerFill_Click_1);
             // 
+            // BTBazgashtList
+            // 
+            this->BTBazgashtList->AutoEllipsis = true;
+            this->BTBazgashtList->BackColor = System::Drawing::Color::LightSeaGreen;
+            this->BTBazgashtList->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->BTBazgashtList->Font = (gcnew System::Drawing::Font(L"Impact", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(178)));
+            this->BTBazgashtList->ForeColor = System::Drawing::SystemColors::Info;
+            this->BTBazgashtList->Location = System::Drawing::Point(116, 415);
+            this->BTBazgashtList->Margin = System::Windows::Forms::Padding(4);
+            this->BTBazgashtList->Name = L"BTBazgashtList";
+            this->BTBazgashtList->Size = System::Drawing::Size(96, 43);
+            this->BTBazgashtList->TabIndex = 193;
+            this->BTBazgashtList->Text = L"بازگشت";
+            this->BTBazgashtList->UseVisualStyleBackColor = false;
+            this->BTBazgashtList->Click += gcnew System::EventHandler(this, &MainForm::BTBazgashtList_Click);
+            // 
+            // LITeacherList
+            // 
+            this->LITeacherList->BackColor = System::Drawing::Color::Aquamarine;
+            this->LITeacherList->BorderStyle = System::Windows::Forms::BorderStyle::None;
+            this->LITeacherList->Font = (gcnew System::Drawing::Font(L"B Nazanin", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(178)));
+            this->LITeacherList->FormattingEnabled = true;
+            this->LITeacherList->ItemHeight = 35;
+            this->LITeacherList->Location = System::Drawing::Point(116, 132);
+            this->LITeacherList->Name = L"LITeacherList";
+            this->LITeacherList->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
+            this->LITeacherList->Size = System::Drawing::Size(197, 245);
+            this->LITeacherList->TabIndex = 192;
+            // 
+            // LATeacherList
+            // 
+            this->LATeacherList->AutoSize = true;
+            this->LATeacherList->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->LATeacherList->ForeColor = System::Drawing::Color::DarkOliveGreen;
+            this->LATeacherList->Location = System::Drawing::Point(228, 27);
+            this->LATeacherList->Name = L"LATeacherList";
+            this->LATeacherList->Size = System::Drawing::Size(103, 92);
+            this->LATeacherList->TabIndex = 191;
+            this->LATeacherList->Text = L" :  اساتید";
+            // 
+            // LIStudentList
+            // 
+            this->LIStudentList->BackColor = System::Drawing::Color::Aquamarine;
+            this->LIStudentList->BorderStyle = System::Windows::Forms::BorderStyle::None;
+            this->LIStudentList->Font = (gcnew System::Drawing::Font(L"B Nazanin", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(178)));
+            this->LIStudentList->FormattingEnabled = true;
+            this->LIStudentList->ItemHeight = 35;
+            this->LIStudentList->Location = System::Drawing::Point(372, 132);
+            this->LIStudentList->Name = L"LIStudentList";
+            this->LIStudentList->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
+            this->LIStudentList->Size = System::Drawing::Size(277, 245);
+            this->LIStudentList->TabIndex = 190;
+            // 
+            // LAStudentList
+            // 
+            this->LAStudentList->AutoSize = true;
+            this->LAStudentList->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->LAStudentList->ForeColor = System::Drawing::Color::DarkOliveGreen;
+            this->LAStudentList->Location = System::Drawing::Point(530, 27);
+            this->LAStudentList->Name = L"LAStudentList";
+            this->LAStudentList->Size = System::Drawing::Size(136, 92);
+            this->LAStudentList->TabIndex = 189;
+            this->LAStudentList->Text = L" :   دانشجویان   ";
+            // 
             // MainForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::Aquamarine;
             this->ClientSize = System::Drawing::Size(704, 512);
+            this->Controls->Add(this->BTBazgashtList);
+            this->Controls->Add(this->LITeacherList);
+            this->Controls->Add(this->LATeacherList);
+            this->Controls->Add(this->LIStudentList);
+            this->Controls->Add(this->LAStudentList);
             this->Controls->Add(this->BTDengerFill);
             this->Controls->Add(this->BTBack);
             this->Controls->Add(this->BTNext);
@@ -2168,7 +2274,6 @@ private: System::ComponentModel::IContainer^ components;
             this->Controls->Add(this->BTBarnameDarsi);
             this->Controls->Add(this->LAXmlFile);
             this->Controls->Add(this->BTImportFile);
-            this->MaximizeBox = false;
             this->Name = L"MainForm";
             this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
             this->Text = L"MainForm";
@@ -2313,7 +2418,11 @@ private: System::Void BTAuto_Click(System::Object^ sender, System::EventArgs^ e)
 
 
 private: System::Void BTBazgashtTable_Click(System::Object^ sender, System::EventArgs^ e) {
-
+    LAErorFoq->Text = "";
+    LAErorFoq2->Text = "";
+    LAErorFoq3->Text = "";
+    LAEror->Text = "";
+    LAErorIm->Text = "";
     HideTable();
     ShowMeno();
 }
@@ -2554,6 +2663,11 @@ private: System::Void BTTaiid_Click(System::Object^ sender, System::EventArgs^ e
 
 private: System::Void BTBazgasht_Click(System::Object^ sender, System::EventArgs^ e) {
 
+    LAErorFoq->Text = "";
+    LAErorFoq2->Text = "";
+    LAErorFoq3->Text = "";
+    LAEror->Text = "";
+    LAErorIm->Text = "";
     //for (auto x : lessons)
     //    MessageBox::Show(UTF8Convert(x.getName())+" : "+StringConvert(to_string(x.getClassLocation())));
 
@@ -2576,7 +2690,11 @@ private: System::Void BTFoqBarname_Click(System::Object^ sender, System::EventAr
     ShowFoq1();
 }
 private: System::Void BTBazgashtFog_Click(System::Object^ sender, System::EventArgs^ e) {
-
+    LAErorFoq->Text = "";
+    LAErorFoq2->Text = "";
+    LAErorFoq3->Text = "";
+    LAEror->Text = "";
+    LAErorIm->Text = "";
     HideFoq1();
     ShowMeno();
 }
@@ -2676,7 +2794,11 @@ private: System::Void TXTeacherNameFoq_TextChanged(System::Object^ sender, Syste
 
       
 private: System::Void BTBazgasht2Foq_Click(System::Object^ sender, System::EventArgs^ e) {
-
+    LAErorFoq->Text = "";
+    LAErorFoq2->Text = "";
+    LAErorFoq3->Text = "";
+    LAEror->Text = "";
+    LAErorIm->Text = "";
     HideFoq2();
     ShowFoq1();
 
@@ -2738,19 +2860,25 @@ private: System::Void BTTaiid2Foq_Click(System::Object^ sender, System::EventArg
 
     if (extraclass.size()) {
 
-
+       
         for (auto less : SumLess) {
 
-            if (TXTeacherNameFoq->Text == UTF8Convert(less.getTeacherName())) {
-
+            if (TXTeacherNameFoq->Text == UTF8Convert(less.getTeacherName()) || TXTeacherNameFoq->Text == (less.getTeacherName_S())) {
+              
              //   if (less.getData().WeekDay == WeekDay)
 
-                    if (less.DataInterference_W_D(WeekDay,(int)VAMahFoq->Value,(int)VARozFoq->Value,true) && less.ClockInterference((int)VAHFoq->Value, (int)VAMFoq->Value, (int)VAH1Foq->Value, (int)VAM1Foq->Value))
+                ExtraLessons test((int)VAJalaseFoq->Value, StringConvert(TXLessonIDFoq->Text), StringConvert(TXLessonNameFoq->Text), StringConvert(TXTeacherNameFoq->Text), StList, (int)VAHFoq->Value, (int)VAMFoq->Value, (int)VAH1Foq->Value, (int)VAM1Foq->Value, WeekDay, BOVideoProjectorFoq->Checked, 1402, (int)VAMahFoq->Value, (int)VARozFoq->Value);
+                test.setString(TXLessonNameFoq->Text, TXTeacherNameFoq->Text);
+                
+                
+                for (auto Ex : ToSplitExtraClass(test)) {
+                    if (less.DataInterference_W_D(Ex) && less.ClockInterference((int)VAHFoq->Value, (int)VAMFoq->Value, (int)VAH1Foq->Value, (int)VAM1Foq->Value))
                     {
-
+                       
                         LAErorFoq2->Text = L"استاد مورد نظر در این بازه زمانی، کلاس دیگری دارد!";
                         return;
                     }
+                }
             }
 
         }
@@ -2933,7 +3061,11 @@ private: System::Void BTAfzodanFoq_Click(System::Object^ sender, System::EventAr
 
 
 private: System::Void BTBazgasht3Foq_Click(System::Object^ sender, System::EventArgs^ e) {
-
+    LAErorFoq->Text = "";
+    LAErorFoq2->Text = "";
+    LAErorFoq3->Text = "";
+    LAEror->Text = "";
+    LAErorIm->Text = "";
     HideFoq3();
     ShowFoq2();
 }
@@ -2960,7 +3092,7 @@ private: System::Void TimeEror_Tick(System::Object^ sender, System::EventArgs^ e
 
 private: System::Void BTNext_Click(System::Object^ sender, System::EventArgs^ e) {
 
-    if (Week_Cycle == 99)
+    if (Week_Cycle == 49)
         return;
    
     Week_Cycle++;
@@ -3061,6 +3193,40 @@ private: System::Void BTDengerFill_Click_1(System::Object^ sender, System::Event
     HideFoq3();
     ShowMeno();
 }
+private: System::Void BTBishtarImTable_Click(System::Object^ sender, System::EventArgs^ e) {
+
+    LITeacherList->BringToFront();
+    LIStudentList->BringToFront();
+    for(auto Te : teachers)
+    LITeacherList->Items->Add(UTF8Convert(Te));
+
+    for (auto St : students) {
+        if (St.Name.at(0) >= 97 && St.Name.at(0) <= 122)
+            LIStudentList->Items->Add(StringConvert(St.Name) + " (" + StringConvert(St.ID) + ") ");
+        else
+            LIStudentList->Items->Add(UTF8Convert(St.Name) + " (" + StringConvert(St.ID) + ") ");
+    }
+   
+   
+    Color scrollBarBackColor = Color::Gray;
+    Color scrollBarForeColor = Color::White;
+
+    LIStudentList->IntegralHeight = false;
+   
+
+    HideTable();
+    ShowInfo();
+
+}
+private: System::Void BTBazgashtList_Click(System::Object^ sender, System::EventArgs^ e) {
+
+    HideInfo();
+    ShowTable();
+
+}
+
+
+
 };
 }
 
