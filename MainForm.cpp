@@ -13,7 +13,6 @@ using namespace System::Drawing;
 using namespace std;
 using namespace rapidxml;
 
-
 [STAThread]
 
 int main() {

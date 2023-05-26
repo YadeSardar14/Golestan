@@ -1,0 +1,23 @@
+﻿  MainForm.cpp
+C:\Private\gg\ProjectT2\New folder\Golestan\Functions.h(100,12): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Private\gg\ProjectT2\New folder\Golestan\Functions.h(107,12): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Private\gg\ProjectT2\New folder\Golestan\Functions.h(115,12): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Private\gg\ProjectT2\New folder\Golestan\Functions.h(122,31): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Private\gg\ProjectT2\New folder\Golestan\MainForm.h(2680,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Private\gg\ProjectT2\New folder\Golestan\MainForm.h(2683,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Private\gg\ProjectT2\New folder\Golestan\MainForm.h(2704,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Private\gg\ProjectT2\New folder\Golestan\MainForm.h(2707,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Private\gg\ProjectT2\New folder\Golestan\MainForm.h(3237,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Private\gg\ProjectT2\New folder\Golestan\Lessons.h(252): warning C4715: 'Lessons::DayCount': not all control paths return a value
+C:\Private\gg\ProjectT2\New folder\Golestan\Functions.h(807): warning C4715: 'DayCount': not all control paths return a value
+C:\Private\gg\ProjectT2\New folder\Golestan\Functions.h(72): warning C4715: 'FindClass': not all control paths return a value
+C:\Private\gg\ProjectT2\New folder\Golestan\Functions.h(102): warning C4715: 'FindClassIndex': not all control paths return a value
+C:\Private\gg\ProjectT2\New folder\Golestan\Functions.h(109): warning C4715: 'FindLessonIndex': not all control paths return a value
+C:\Private\gg\ProjectT2\New folder\Golestan\Functions.h(796): warning C4715: 'DayCount': not all control paths return a value
+C:\Private\gg\ProjectT2\New folder\Golestan\Lessons.h(195): warning C4715: 'Lessons::DataInterference': not all control paths return a value
+C:\Private\gg\ProjectT2\New folder\Golestan\Functions.h(95): warning C4715: 'FindLesson': not all control paths return a value
+C:\Private\gg\ProjectT2\New folder\Golestan\Functions.h(80): warning C4715: 'FindLesson': not all control paths return a value
+C:\Private\gg\ProjectT2\New folder\Golestan\Functions.h(87): warning C4715: 'FindLesson': not all control paths return a value
+C:\Private\gg\ProjectT2\New folder\Golestan\Functions.h(117): warning C4715: 'FindLessonIndex': not all control paths return a value
+  MainForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  Golestan.vcxproj -> C:\Private\gg\ProjectT2\New folder\Golestan\x64\Debug\Golestan.exe

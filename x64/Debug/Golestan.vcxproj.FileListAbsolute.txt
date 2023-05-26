@@ -1,0 +1,5 @@
+C:\Private\gg\ProjectT2\New folder\Golestan\x64\Debug\Golestan.vcxproj.AssemblyReference.cache
+C:\Private\gg\ProjectT2\New folder\Golestan\x64\Debug\Golestan.vcxproj.SuggestedBindingRedirects.cache
+C:\Private\gg\ProjectT2\New folder\Golestan\x64\Debug\Golestan.exe
+C:\Private\gg\ProjectT2\New folder\Golestan\x64\Debug\Golestan.MainForm.resources
+C:\Private\gg\ProjectT2\New folder\Golestan\x64\Debug\Golestan.vcxproj.GenerateResource.cache

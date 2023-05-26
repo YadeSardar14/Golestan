@@ -51,6 +51,23 @@ namespace Golestan {
     private: System::Windows::Forms::Label^ LATeacherList;
     private: System::Windows::Forms::ListBox^ LIStudentList;
     private: System::Windows::Forms::Label^ LAStudentList;
+    private: System::Windows::Forms::Label^ LAHeder;
+
+    private: System::Windows::Forms::Panel^ PALogo;
+    private: System::Windows::Forms::Panel^ LOGO;
+    private: System::Windows::Forms::Label^ LALogoKaver;
+    private: System::Windows::Forms::Timer^ TimeLogo;
+    private: System::Windows::Forms::Button^ BTNewIm;
+
+    private: System::Windows::Forms::Button^ BTExit;
+
+
+
+
+
+
+
+
 
 
 
@@ -65,7 +82,9 @@ namespace Golestan {
 		{
 			InitializeComponent();
 
-
+            PALogo->Show();
+            TimeLogo->Enabled = true;
+           
             XmlAdres = gcnew OpenFileDialog();
             XmlAdres->Filter = "XML files (*.xml)|*.xml";
             XmlAdres->Title = "Select a File";
@@ -130,6 +149,8 @@ namespace Golestan {
             BTBarnameDarsi->Show();
             BTTanzinBarname->Show();
             BTFoqBarname->Show();
+            BTExit->Show();
+            BTNewIm->Show();
 
         }
 
@@ -138,11 +159,16 @@ namespace Golestan {
             BTBarnameDarsi->Hide();
             BTTanzinBarname->Hide();
             BTFoqBarname->Hide();
-
+            BTExit->Hide();
+            BTNewIm->Hide();
         }
+
+        bool Showtable = false;
 
         void ShowTable() {
 
+            this->MaximizeBox = true;
+            Showtable = true;
             BTBack->BringToFront();
             BTNext->BringToFront();
             LAWeekCycle->BringToFront();
@@ -162,6 +188,9 @@ namespace Golestan {
 
         void HideTable() {
 
+            this->MaximizeBox = false;
+            Showtable = false;
+            LAHeder->Hide();
             Tabel->Hide();
             BTAuto->Hide();
             BTSave->Hide();
@@ -955,6 +984,7 @@ private: System::ComponentModel::IContainer^ components;
             System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
             System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
             System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
             this->TXWeekDayFoq = (gcnew System::Windows::Forms::TextBox());
             this->LAWeekDayFoq = (gcnew System::Windows::Forms::Label());
             this->TXStNumFoq = (gcnew System::Windows::Forms::TextBox());
@@ -1040,6 +1070,13 @@ private: System::ComponentModel::IContainer^ components;
             this->LATeacherList = (gcnew System::Windows::Forms::Label());
             this->LIStudentList = (gcnew System::Windows::Forms::ListBox());
             this->LAStudentList = (gcnew System::Windows::Forms::Label());
+            this->LAHeder = (gcnew System::Windows::Forms::Label());
+            this->PALogo = (gcnew System::Windows::Forms::Panel());
+            this->LOGO = (gcnew System::Windows::Forms::Panel());
+            this->LALogoKaver = (gcnew System::Windows::Forms::Label());
+            this->BTExit = (gcnew System::Windows::Forms::Button());
+            this->BTNewIm = (gcnew System::Windows::Forms::Button());
+            this->TimeLogo = (gcnew System::Windows::Forms::Timer(this->components));
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAJalaseFoq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAM1Foq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAH1Foq))->BeginInit();
@@ -1048,10 +1085,13 @@ private: System::ComponentModel::IContainer^ components;
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VARozFoq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAMahFoq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Tabel))->BeginInit();
+            this->PALogo->SuspendLayout();
+            this->LOGO->SuspendLayout();
             this->SuspendLayout();
             // 
             // TXWeekDayFoq
             // 
+            this->TXWeekDayFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->TXWeekDayFoq->BackColor = System::Drawing::Color::MediumAquamarine;
             this->TXWeekDayFoq->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXWeekDayFoq->Font = (gcnew System::Drawing::Font(L"B Nazanin", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -1066,6 +1106,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LAWeekDayFoq
             // 
+            this->LAWeekDayFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LAWeekDayFoq->AutoSize = true;
             this->LAWeekDayFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 26, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1078,6 +1119,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // TXStNumFoq
             // 
+            this->TXStNumFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->TXStNumFoq->BackColor = System::Drawing::Color::Aquamarine;
             this->TXStNumFoq->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXStNumFoq->Font = (gcnew System::Drawing::Font(L"Eras Demi ITC", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -1090,6 +1132,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // TXStNameFoq
             // 
+            this->TXStNameFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->TXStNameFoq->BackColor = System::Drawing::Color::Aquamarine;
             this->TXStNameFoq->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXStNameFoq->Font = (gcnew System::Drawing::Font(L"Eras Demi ITC", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -1103,6 +1146,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // BTAfzodanFoq
             // 
+            this->BTAfzodanFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->BTAfzodanFoq->AutoEllipsis = true;
             this->BTAfzodanFoq->BackColor = System::Drawing::Color::LightSeaGreen;
             this->BTAfzodanFoq->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -1119,6 +1163,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // PAStNumFoq
             // 
+            this->PAStNumFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->PAStNumFoq->BackColor = System::Drawing::Color::DarkGreen;
             this->PAStNumFoq->Location = System::Drawing::Point(183, 298);
             this->PAStNumFoq->Name = L"PAStNumFoq";
@@ -1127,6 +1172,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // PAStNameFoq
             // 
+            this->PAStNameFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->PAStNameFoq->BackColor = System::Drawing::Color::DarkGreen;
             this->PAStNameFoq->Location = System::Drawing::Point(183, 214);
             this->PAStNameFoq->Name = L"PAStNameFoq";
@@ -1135,6 +1181,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // BTTaiid3Foq
             // 
+            this->BTTaiid3Foq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->BTTaiid3Foq->AutoEllipsis = true;
             this->BTTaiid3Foq->BackColor = System::Drawing::Color::ForestGreen;
             this->BTTaiid3Foq->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -1151,6 +1198,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LAStNumFoq
             // 
+            this->LAStNumFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LAStNumFoq->AutoSize = true;
             this->LAStNumFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 34, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1163,6 +1211,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LAStNameFoq
             // 
+            this->LAStNameFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LAStNameFoq->AutoSize = true;
             this->LAStNameFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 34, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1175,6 +1224,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LADaneshjoFoq
             // 
+            this->LADaneshjoFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LADaneshjoFoq->AutoSize = true;
             this->LADaneshjoFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 38, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1187,6 +1237,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // BTTaiid2Foq
             // 
+            this->BTTaiid2Foq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->BTTaiid2Foq->AutoEllipsis = true;
             this->BTTaiid2Foq->BackColor = System::Drawing::Color::LightSeaGreen;
             this->BTTaiid2Foq->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -1203,6 +1254,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // VAJalaseFoq
             // 
+            this->VAJalaseFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->VAJalaseFoq->BackColor = System::Drawing::Color::MediumAquamarine;
             this->VAJalaseFoq->Location = System::Drawing::Point(401, 304);
             this->VAJalaseFoq->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 50, 0, 0, 0 });
@@ -1215,6 +1267,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LAJalaseFoq
             // 
+            this->LAJalaseFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LAJalaseFoq->AutoSize = true;
             this->LAJalaseFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 34, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1227,6 +1280,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // VAM1Foq
             // 
+            this->VAM1Foq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->VAM1Foq->BackColor = System::Drawing::Color::MediumAquamarine;
             this->VAM1Foq->Location = System::Drawing::Point(188, 225);
             this->VAM1Foq->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 59, 0, 0, 0 });
@@ -1237,6 +1291,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // VAH1Foq
             // 
+            this->VAH1Foq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->VAH1Foq->BackColor = System::Drawing::Color::MediumAquamarine;
             this->VAH1Foq->Location = System::Drawing::Point(335, 224);
             this->VAH1Foq->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 10, 0, 0, 0 });
@@ -1247,6 +1302,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LAM1Foq
             // 
+            this->LAM1Foq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LAM1Foq->AutoSize = true;
             this->LAM1Foq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 26, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1259,6 +1315,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LAH1Foq
             // 
+            this->LAH1Foq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LAH1Foq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 26, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LAH1Foq->ForeColor = System::Drawing::Color::DarkOliveGreen;
@@ -1270,6 +1327,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LATimeToolFoq
             // 
+            this->LATimeToolFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LATimeToolFoq->AutoSize = true;
             this->LATimeToolFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 34, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1282,6 +1340,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // VAMFoq
             // 
+            this->VAMFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->VAMFoq->BackColor = System::Drawing::Color::MediumAquamarine;
             this->VAMFoq->Location = System::Drawing::Point(188, 152);
             this->VAMFoq->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 59, 0, 0, 0 });
@@ -1292,6 +1351,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // VAHFoq
             // 
+            this->VAHFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->VAHFoq->BackColor = System::Drawing::Color::MediumAquamarine;
             this->VAHFoq->Location = System::Drawing::Point(335, 151);
             this->VAHFoq->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 23, 0, 0, 0 });
@@ -1302,6 +1362,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // VARozFoq
             // 
+            this->VARozFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->VARozFoq->BackColor = System::Drawing::Color::MediumAquamarine;
             this->VARozFoq->Location = System::Drawing::Point(188, 79);
             this->VARozFoq->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 31, 0, 0, 0 });
@@ -1314,6 +1375,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // VAMahFoq
             // 
+            this->VAMahFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->VAMahFoq->BackColor = System::Drawing::Color::MediumAquamarine;
             this->VAMahFoq->Location = System::Drawing::Point(335, 79);
             this->VAMahFoq->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 12, 0, 0, 0 });
@@ -1326,6 +1388,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LAMFoq
             // 
+            this->LAMFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LAMFoq->AutoSize = true;
             this->LAMFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 26, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1338,6 +1401,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LAHFoq
             // 
+            this->LAHFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LAHFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 26, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->LAHFoq->ForeColor = System::Drawing::Color::DarkOliveGreen;
@@ -1349,6 +1413,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LATimeFoq
             // 
+            this->LATimeFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LATimeFoq->AutoSize = true;
             this->LATimeFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 34, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1361,6 +1426,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LARozFoq
             // 
+            this->LARozFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LARozFoq->AutoSize = true;
             this->LARozFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 26, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1373,6 +1439,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LAMahFoq
             // 
+            this->LAMahFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LAMahFoq->AutoSize = true;
             this->LAMahFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 26, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1385,6 +1452,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LADateFoq
             // 
+            this->LADateFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LADateFoq->AutoSize = true;
             this->LADateFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1413,6 +1481,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // BOVideoProjectorFoq
             // 
+            this->BOVideoProjectorFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->BOVideoProjectorFoq->AutoSize = true;
             this->BOVideoProjectorFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1426,6 +1495,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // TXLessonNameFoq
             // 
+            this->TXLessonNameFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->TXLessonNameFoq->BackColor = System::Drawing::Color::Aquamarine;
             this->TXLessonNameFoq->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXLessonNameFoq->Font = (gcnew System::Drawing::Font(L"Eras Demi ITC", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -1440,6 +1510,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // TXLessonIDFoq
             // 
+            this->TXLessonIDFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->TXLessonIDFoq->BackColor = System::Drawing::Color::Aquamarine;
             this->TXLessonIDFoq->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXLessonIDFoq->Font = (gcnew System::Drawing::Font(L"Eras Demi ITC", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -1453,6 +1524,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LALessonNameFoq
             // 
+            this->LALessonNameFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LALessonNameFoq->AutoSize = true;
             this->LALessonNameFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1465,6 +1537,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // PALessonNameFoq
             // 
+            this->PALessonNameFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->PALessonNameFoq->BackColor = System::Drawing::Color::DarkGreen;
             this->PALessonNameFoq->Location = System::Drawing::Point(174, 186);
             this->PALessonNameFoq->Name = L"PALessonNameFoq";
@@ -1473,6 +1546,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LALessonIDFoq
             // 
+            this->LALessonIDFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LALessonIDFoq->AutoSize = true;
             this->LALessonIDFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1485,6 +1559,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // PALessonIDFoq
             // 
+            this->PALessonIDFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->PALessonIDFoq->BackColor = System::Drawing::Color::DarkGreen;
             this->PALessonIDFoq->Location = System::Drawing::Point(174, 123);
             this->PALessonIDFoq->Name = L"PALessonIDFoq";
@@ -1493,6 +1568,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // TXTeacherNameFoq
             // 
+            this->TXTeacherNameFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->TXTeacherNameFoq->BackColor = System::Drawing::Color::Aquamarine;
             this->TXTeacherNameFoq->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->TXTeacherNameFoq->Font = (gcnew System::Drawing::Font(L"Eras Demi ITC", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -1507,6 +1583,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // BTTaiid1Foq
             // 
+            this->BTTaiid1Foq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->BTTaiid1Foq->AutoEllipsis = true;
             this->BTTaiid1Foq->BackColor = System::Drawing::Color::LightSeaGreen;
             this->BTTaiid1Foq->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -1523,6 +1600,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LATeacherNameFoq
             // 
+            this->LATeacherNameFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LATeacherNameFoq->AutoSize = true;
             this->LATeacherNameFoq->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1535,6 +1613,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // PATeacherNameFoq
             // 
+            this->PATeacherNameFoq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->PATeacherNameFoq->BackColor = System::Drawing::Color::DarkGreen;
             this->PATeacherNameFoq->Location = System::Drawing::Point(175, 255);
             this->PATeacherNameFoq->Name = L"PATeacherNameFoq";
@@ -1649,10 +1728,14 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // Tabel
             // 
-            this->Tabel->Anchor = System::Windows::Forms::AnchorStyles::None;
+            this->Tabel->AllowUserToAddRows = false;
+            this->Tabel->AllowUserToDeleteRows = false;
+            this->Tabel->AllowUserToResizeColumns = false;
+            this->Tabel->AllowUserToResizeRows = false;
+            this->Tabel->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
             this->Tabel->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
-            this->Tabel->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
-            dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleRight;
+            this->Tabel->BackgroundColor = System::Drawing::SystemColors::ButtonFace;
+            dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
             dataGridViewCellStyle1->BackColor = System::Drawing::Color::MediumAquamarine;
             dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -1701,7 +1784,6 @@ private: System::ComponentModel::IContainer^ components;
             this->Column->MinimumWidth = 6;
             this->Column->Name = L"Column";
             this->Column->ReadOnly = true;
-            this->Column->Width = 101;
             // 
             // R0
             // 
@@ -1709,7 +1791,6 @@ private: System::ComponentModel::IContainer^ components;
             this->R0->MinimumWidth = 6;
             this->R0->Name = L"R0";
             this->R0->ReadOnly = true;
-            this->R0->Width = 102;
             // 
             // R1
             // 
@@ -1717,7 +1798,6 @@ private: System::ComponentModel::IContainer^ components;
             this->R1->MinimumWidth = 6;
             this->R1->Name = L"R1";
             this->R1->ReadOnly = true;
-            this->R1->Width = 101;
             // 
             // R2
             // 
@@ -1725,7 +1805,6 @@ private: System::ComponentModel::IContainer^ components;
             this->R2->MinimumWidth = 6;
             this->R2->Name = L"R2";
             this->R2->ReadOnly = true;
-            this->R2->Width = 102;
             // 
             // R3
             // 
@@ -1733,7 +1812,6 @@ private: System::ComponentModel::IContainer^ components;
             this->R3->MinimumWidth = 6;
             this->R3->Name = L"R3";
             this->R3->ReadOnly = true;
-            this->R3->Width = 101;
             // 
             // R4
             // 
@@ -1741,7 +1819,6 @@ private: System::ComponentModel::IContainer^ components;
             this->R4->MinimumWidth = 6;
             this->R4->Name = L"R4";
             this->R4->ReadOnly = true;
-            this->R4->Width = 102;
             // 
             // R5
             // 
@@ -1749,7 +1826,6 @@ private: System::ComponentModel::IContainer^ components;
             this->R5->MinimumWidth = 6;
             this->R5->Name = L"R5";
             this->R5->ReadOnly = true;
-            this->R5->Width = 101;
             // 
             // BTFoqBarname
             // 
@@ -1852,6 +1928,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // BTAuto
             // 
+            this->BTAuto->Anchor = System::Windows::Forms::AnchorStyles::Top;
             this->BTAuto->AutoEllipsis = true;
             this->BTAuto->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
@@ -1872,6 +1949,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // BTSave
             // 
+            this->BTSave->Anchor = System::Windows::Forms::AnchorStyles::Top;
             this->BTSave->AutoEllipsis = true;
             this->BTSave->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
@@ -1892,16 +1970,17 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // BTBazgashtTable
             // 
+            this->BTBazgashtTable->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
             this->BTBazgashtTable->AutoEllipsis = true;
             this->BTBazgashtTable->BackColor = System::Drawing::Color::Gainsboro;
             this->BTBazgashtTable->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->BTBazgashtTable->Font = (gcnew System::Drawing::Font(L"B Nazanin", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
             this->BTBazgashtTable->ForeColor = System::Drawing::Color::DarkGoldenrod;
-            this->BTBazgashtTable->Location = System::Drawing::Point(622, 34);
+            this->BTBazgashtTable->Location = System::Drawing::Point(606, 34);
             this->BTBazgashtTable->Margin = System::Windows::Forms::Padding(1);
             this->BTBazgashtTable->Name = L"BTBazgashtTable";
-            this->BTBazgashtTable->Size = System::Drawing::Size(81, 31);
+            this->BTBazgashtTable->Size = System::Drawing::Size(97, 31);
             this->BTBazgashtTable->TabIndex = 3;
             this->BTBazgashtTable->TabStop = false;
             this->BTBazgashtTable->Text = L"بازگشت";
@@ -1911,16 +1990,17 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // BTBishtarImTable
             // 
+            this->BTBishtarImTable->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
             this->BTBishtarImTable->AutoEllipsis = true;
             this->BTBishtarImTable->BackColor = System::Drawing::Color::Gainsboro;
             this->BTBishtarImTable->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->BTBishtarImTable->Font = (gcnew System::Drawing::Font(L"B Nazanin", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
             this->BTBishtarImTable->ForeColor = System::Drawing::Color::DarkGoldenrod;
-            this->BTBishtarImTable->Location = System::Drawing::Point(622, 67);
+            this->BTBishtarImTable->Location = System::Drawing::Point(606, 67);
             this->BTBishtarImTable->Margin = System::Windows::Forms::Padding(1);
             this->BTBishtarImTable->Name = L"BTBishtarImTable";
-            this->BTBishtarImTable->Size = System::Drawing::Size(81, 31);
+            this->BTBishtarImTable->Size = System::Drawing::Size(97, 31);
             this->BTBishtarImTable->TabIndex = 4;
             this->BTBishtarImTable->TabStop = false;
             this->BTBishtarImTable->Text = L"...بیشتر";
@@ -1930,6 +2010,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LATanzimLessonInfo
             // 
+            this->LATanzimLessonInfo->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LATanzimLessonInfo->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
             this->LATanzimLessonInfo->Location = System::Drawing::Point(-1, 89);
@@ -1941,6 +2022,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LATanzimClassInfo
             // 
+            this->LATanzimClassInfo->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LATanzimClassInfo->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
             this->LATanzimClassInfo->Location = System::Drawing::Point(-1, 198);
@@ -2002,6 +2084,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // BTBazgasht2Foq
             // 
+            this->BTBazgasht2Foq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->BTBazgasht2Foq->AutoEllipsis = true;
             this->BTBazgasht2Foq->BackColor = System::Drawing::Color::LightSeaGreen;
             this->BTBazgasht2Foq->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -2034,6 +2117,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // BTBazgasht3Foq
             // 
+            this->BTBazgasht3Foq->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->BTBazgasht3Foq->AutoEllipsis = true;
             this->BTBazgasht3Foq->BackColor = System::Drawing::Color::LightSeaGreen;
             this->BTBazgasht3Foq->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -2054,6 +2138,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LAWeekCycle
             // 
+            this->LAWeekCycle->Anchor = System::Windows::Forms::AnchorStyles::Top;
             this->LAWeekCycle->BackColor = System::Drawing::Color::Goldenrod;
             this->LAWeekCycle->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
             this->LAWeekCycle->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -2088,6 +2173,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // BTBack
             // 
+            this->BTBack->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
             this->BTBack->AutoEllipsis = true;
             this->BTBack->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
@@ -2108,6 +2194,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // BTDengerFill
             // 
+            this->BTDengerFill->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->BTDengerFill->AutoEllipsis = true;
             this->BTDengerFill->BackColor = System::Drawing::Color::OrangeRed;
             this->BTDengerFill->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -2124,6 +2211,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // BTBazgashtList
             // 
+            this->BTBazgashtList->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->BTBazgashtList->AutoEllipsis = true;
             this->BTBazgashtList->BackColor = System::Drawing::Color::LightSeaGreen;
             this->BTBazgashtList->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -2141,6 +2229,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LITeacherList
             // 
+            this->LITeacherList->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LITeacherList->BackColor = System::Drawing::Color::Aquamarine;
             this->LITeacherList->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->LITeacherList->Font = (gcnew System::Drawing::Font(L"B Nazanin", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -2155,6 +2244,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LATeacherList
             // 
+            this->LATeacherList->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LATeacherList->AutoSize = true;
             this->LATeacherList->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -2167,6 +2257,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LIStudentList
             // 
+            this->LIStudentList->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LIStudentList->BackColor = System::Drawing::Color::Aquamarine;
             this->LIStudentList->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->LIStudentList->Font = (gcnew System::Drawing::Font(L"B Nazanin", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -2181,6 +2272,7 @@ private: System::ComponentModel::IContainer^ components;
             // 
             // LAStudentList
             // 
+            this->LAStudentList->Anchor = System::Windows::Forms::AnchorStyles::None;
             this->LAStudentList->AutoSize = true;
             this->LAStudentList->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
@@ -2191,12 +2283,98 @@ private: System::ComponentModel::IContainer^ components;
             this->LAStudentList->TabIndex = 189;
             this->LAStudentList->Text = L" :   دانشجویان   ";
             // 
+            // LAHeder
+            // 
+            this->LAHeder->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+            this->LAHeder->Dock = System::Windows::Forms::DockStyle::Top;
+            this->LAHeder->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 16, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->LAHeder->ForeColor = System::Drawing::Color::DarkGoldenrod;
+            this->LAHeder->Location = System::Drawing::Point(0, 0);
+            this->LAHeder->Name = L"LAHeder";
+            this->LAHeder->Size = System::Drawing::Size(704, 39);
+            this->LAHeder->TabIndex = 194;
+            this->LAHeder->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+            // 
+            // PALogo
+            // 
+            this->PALogo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(192)));
+            this->PALogo->Controls->Add(this->LOGO);
+            this->PALogo->Location = System::Drawing::Point(-1, 0);
+            this->PALogo->Name = L"PALogo";
+            this->PALogo->Size = System::Drawing::Size(705, 523);
+            this->PALogo->TabIndex = 196;
+            // 
+            // LOGO
+            // 
+            this->LOGO->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"LOGO.BackgroundImage")));
+            this->LOGO->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+            this->LOGO->Controls->Add(this->LALogoKaver);
+            this->LOGO->Location = System::Drawing::Point(122, 20);
+            this->LOGO->Name = L"LOGO";
+            this->LOGO->Size = System::Drawing::Size(456, 465);
+            this->LOGO->TabIndex = 0;
+            // 
+            // LALogoKaver
+            // 
+            this->LALogoKaver->Location = System::Drawing::Point(10, 19);
+            this->LALogoKaver->Name = L"LALogoKaver";
+            this->LALogoKaver->Size = System::Drawing::Size(443, 415);
+            this->LALogoKaver->TabIndex = 0;
+            // 
+            // BTExit
+            // 
+            this->BTExit->Anchor = System::Windows::Forms::AnchorStyles::None;
+            this->BTExit->AutoEllipsis = true;
+            this->BTExit->BackColor = System::Drawing::Color::Aquamarine;
+            this->BTExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->BTExit->Font = (gcnew System::Drawing::Font(L"Impact", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(178)));
+            this->BTExit->ForeColor = System::Drawing::SystemColors::Info;
+            this->BTExit->Location = System::Drawing::Point(354, 480);
+            this->BTExit->Margin = System::Windows::Forms::Padding(4);
+            this->BTExit->Name = L"BTExit";
+            this->BTExit->Size = System::Drawing::Size(122, 25);
+            this->BTExit->TabIndex = 198;
+            this->BTExit->Text = L"خروج";
+            this->BTExit->UseVisualStyleBackColor = false;
+            this->BTExit->Click += gcnew System::EventHandler(this, &MainForm::BTExit_Click);
+            // 
+            // BTNewIm
+            // 
+            this->BTNewIm->Anchor = System::Windows::Forms::AnchorStyles::None;
+            this->BTNewIm->AutoEllipsis = true;
+            this->BTNewIm->BackColor = System::Drawing::Color::Aquamarine;
+            this->BTNewIm->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->BTNewIm->Font = (gcnew System::Drawing::Font(L"Impact", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(178)));
+            this->BTNewIm->ForeColor = System::Drawing::SystemColors::Info;
+            this->BTNewIm->Location = System::Drawing::Point(222, 480);
+            this->BTNewIm->Margin = System::Windows::Forms::Padding(4);
+            this->BTNewIm->Name = L"BTNewIm";
+            this->BTNewIm->Size = System::Drawing::Size(118, 25);
+            this->BTNewIm->TabIndex = 197;
+            this->BTNewIm->Text = L"فایل جدید";
+            this->BTNewIm->UseVisualStyleBackColor = false;
+            this->BTNewIm->Click += gcnew System::EventHandler(this, &MainForm::BTNewIm_Click);
+            // 
+            // TimeLogo
+            // 
+            this->TimeLogo->Interval = 20;
+            this->TimeLogo->Tick += gcnew System::EventHandler(this, &MainForm::TimeLogo_Tick);
+            // 
             // MainForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::Aquamarine;
             this->ClientSize = System::Drawing::Size(704, 512);
+            this->Controls->Add(this->BTNewIm);
+            this->Controls->Add(this->BTExit);
+            this->Controls->Add(this->PALogo);
+            this->Controls->Add(this->LAHeder);
             this->Controls->Add(this->BTBazgashtList);
             this->Controls->Add(this->LITeacherList);
             this->Controls->Add(this->LATeacherList);
@@ -2274,10 +2452,13 @@ private: System::ComponentModel::IContainer^ components;
             this->Controls->Add(this->BTBarnameDarsi);
             this->Controls->Add(this->LAXmlFile);
             this->Controls->Add(this->BTImportFile);
+            this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+            this->MaximizeBox = false;
             this->Name = L"MainForm";
             this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
             this->Text = L"MainForm";
             this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
+            this->Resize += gcnew System::EventHandler(this, &MainForm::MainForm_Resize);
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAJalaseFoq))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAM1Foq))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAH1Foq))->EndInit();
@@ -2286,6 +2467,8 @@ private: System::ComponentModel::IContainer^ components;
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VARozFoq))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAMahFoq))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Tabel))->EndInit();
+            this->PALogo->ResumeLayout(false);
+            this->LOGO->ResumeLayout(false);
             this->ResumeLayout(false);
             this->PerformLayout();
 
@@ -2340,7 +2523,8 @@ private: System::ComponentModel::IContainer^ components;
         }
     }
 private: System::Void BTBarnameDarsi_Click(System::Object^ sender, System::EventArgs^ e) {
-
+    
+   
     HideMeno();
     ShowTable();
 
@@ -3197,6 +3381,10 @@ private: System::Void BTBishtarImTable_Click(System::Object^ sender, System::Eve
 
     LITeacherList->BringToFront();
     LIStudentList->BringToFront();
+
+    LITeacherList->Items->Clear();
+    LIStudentList->Items->Clear();
+
     for(auto Te : teachers)
     LITeacherList->Items->Add(UTF8Convert(Te));
 
@@ -3227,6 +3415,60 @@ private: System::Void BTBazgashtList_Click(System::Object^ sender, System::Event
 
 
 
+private: System::Void MainForm_Resize(System::Object^ sender, System::EventArgs^ e) {
+    //Tabel->Dock = DockStyle::Fill;
+    Tabel->Size = System::Drawing::Size(this->Size.Width + 46, this->Size.Height);
+
+    if (this->Size.Width > 720) {
+
+        LAHeder->Show();
+        BTBazgashtTable->Hide();
+        BTBishtarImTable->Hide();
+
+
+    }
+    else {
+        
+        if (Showtable) {
+
+            BTBazgashtTable->Show();
+            BTBishtarImTable->Show();
+        }
+    }
+}
+
+
+private: int opacity = 255;
+private: System::Void TimeLogo_Tick(System::Object^ sender, System::EventArgs^ e) {
+
+    if (opacity > 200)
+        opacity--;
+    else if (opacity > 150)
+        opacity -= 3;
+    else
+        opacity -= 5;
+
+    if (opacity > 0)
+        LALogoKaver->BackColor = Color::FromArgb(opacity, 192, 255, 192);
+
+
+    if (opacity < -100) {
+        TimeEror->Enabled = false;
+        timesikl = 0;
+        PALogo->Hide();
+    }
+}
+private: System::Void BTNewIm_Click(System::Object^ sender, System::EventArgs^ e) {
+    Application::Restart();
+    HideMeno();
+    ShowImportPage();
+
+  
+}
+private: System::Void BTExit_Click(System::Object^ sender, System::EventArgs^ e) {
+
+    this->Close();
+}
 };
 }
 

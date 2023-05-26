@@ -1039,6 +1039,6 @@ void TextSave(String^ FilePatch , vector <Lessons> SumLess) {
 
 
 }
-  
+ 
 
 #endif
