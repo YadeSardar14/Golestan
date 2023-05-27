@@ -109,7 +109,7 @@ namespace Golestan {
             HideTanzimBarname();
             HideInfo();
             ShowImportPage();
-
+          
            
 		}
 
@@ -141,7 +141,7 @@ namespace Golestan {
 
             BTImportFile->Hide();
             LAXmlFile->Hide();
-            LAErorIm->Hide();
+            LAErorIm->Hide();  
         }
 
         void ShowMeno() {
@@ -418,7 +418,8 @@ namespace Golestan {
 
             //Start Set :
 
-           
+            //MessageBox::Show( StringConvert(to_string(ScoopStart) + " >>>> " + to_string(ScoopEnd) ));
+
 
             for (size_t n = 0;n < classes.size();n++) {
                 for (size_t m = 0;m < lessons.size();m++) {
@@ -3279,6 +3280,7 @@ private: System::Void BTNext_Click(System::Object^ sender, System::EventArgs^ e)
     if (Week_Cycle == 49)
         return;
    
+
     Week_Cycle++;
 
 
@@ -3295,9 +3297,17 @@ private: System::Void BTNext_Click(System::Object^ sender, System::EventArgs^ e)
        
     for (size_t n = 0; n < lessons.size(); n++) {
       
-        
+        if (lessons.at(n).getData().Month == 12 && lessons.at(n).getData().Day > 21)
+        {
+            Week_Cycle--; return;
+        }
+
+
         if (ScoopStart > DayCount(lessons.at(n)) && !lessons.at(n).getFoq())
             ++lessons.at(n);
+        else if(lessons.at(n).getData().Month == 12 && lessons.at(n).getData().Day > 22 )
+            ++lessons.at(n);
+
     }
 
     LAWeekCycle->Text = NumPerConvert(Week_Cycle + 1);
@@ -3308,13 +3318,16 @@ private: System::Void BTNext_Click(System::Object^ sender, System::EventArgs^ e)
     if (AutoSet && extraclass.size() == 0)
         SetTable(lessons, classes, Week_Cycle, false);
     else if (AutoSet && extraclass.size() > 0)
-       SetTable(lessons, SplitEX, classes, Week_Cycle, false); 
+       SetTable(lessons, SplitEX, classes, Week_Cycle, false);
 
+   // MessageBox::Show(UTF8Convert(lessons.at(0).getName()) + "  in  :" + StringConvert(to_string(lessons.at(0).getData().WeekDay) + " : " + to_string(lessons.at(0).getData().Day) + " vs " + to_string(lessons.at(0).getConstData().Day)));
 
-    
 
   
 }
+
+
+
 private: System::Void BTBack_Click(System::Object^ sender, System::EventArgs^ e) {
 
     if (Week_Cycle == 1)
@@ -3337,8 +3350,10 @@ private: System::Void BTBack_Click(System::Object^ sender, System::EventArgs^ e)
     for (size_t n = 0; n < lessons.size(); n++) {
 
 
-        if (ScoopEnd > DayCount(lessons.at(n)) && DayCount(SaveStartDate.at(n)) < DayCount(lessons.at(n)) && !lessons.at(n).getFoq())
+         if (ScoopEnd > DayCount(lessons.at(n)) && DayCount(SaveStartDate.at(n)) < DayCount(lessons.at(n)) && !lessons.at(n).getFoq())
             --lessons.at(n);
+       
+    
     }
 
     LAWeekCycle->Text = NumPerConvert(Week_Cycle + 1);

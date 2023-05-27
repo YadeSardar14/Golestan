@@ -401,6 +401,7 @@ void ReadFileLessons(vector<Lessons>& lessons, vector<Student>& students, vector
 				lessons.at(n - RapidCount).StartDay.Day = stoi(less->first_node("Date")->first_node("Day")->value());
 				lessons.at(n - RapidCount).VideoProjector = stoi(less->first_node("VideoProjector")->value());
 				lessons.at(n - RapidCount).Teacher = less->first_node("Teacher")->value();
+				lessons.at(n - RapidCount).CoStartDay = lessons.at(n - RapidCount).StartDay;
 
 				SetStudent(students, lessons.at(n - RapidCount));
 				SetTeacher(teacher, lessons.at(n - RapidCount));

@@ -37,12 +37,12 @@ protected:
 	gcroot <String^> name;
 	gcroot <String^> teacher;
 	Date StartDay;
+	Date CoStartDay;
 	Time Start;
 	Time Duration;
 	bool VideoProjector = 0;
 	bool Foq = 0;
-	//bool FirstShow = false;
-
+	
 
 public:
 	
@@ -67,6 +67,7 @@ public:
 		StartDay.Year = StartDay_y;
 		StartDay.Month = StartDay_m;
 		StartDay.Day = StartDay_d;
+		CoStartDay = StartDay;
 		this->ID = ID;
 		this->Name = Name;
 		this->Teacher = Teacher;
@@ -85,19 +86,15 @@ public:
 	void setClassLocation(int cl_lo)
 	{
 		ClassLocation = cl_lo;
-		//for (size_t n = 0; n < classes.size(); n++)
-		//{
-		//	if (classes.at(n).getID() == cl_lo) { classes.at(n).Fill = true; break; }
-		//}
+		
 	}
 
 	void setStartTime(int h, int m = 0) { Start.Huor = h; Start.Minute = m; }
 	void setDurationTime(int h, int m = 0) { Duration.Huor = h; Duration.Minute = m; }
-	void setData(int d, int m, int y) { StartDay.Day = d; StartDay.Month = m; StartDay.Year = y; }
+	void setData(int d, int m, int y) { StartDay.Day = d; StartDay.Month = m; StartDay.Year = y; CoStartDay.Year = y; CoStartDay.Month = m;	CoStartDay.Day = d; }
 	void setFoq(bool foq) { Foq = foq; }
 	void setString(String^ Na, String^ Tich) { name = Na; teacher = Tich; }
-	//void setFirstShow(bool show) { FirstShow = show; }
-
+	
 	string getName() { return Name; }
 	string getID() { return ID; }
 	string getTeacherName() { return Teacher; }
@@ -109,6 +106,7 @@ public:
 	Time getStartTime() { return Start; }
 	Time getDurationTime() { return Duration; }
 	Date getData() { return StartDay; }
+	Date getConstData() { return CoStartDay; }
 	vector<Student> getStudents() { return Students; }
 
 
@@ -265,15 +263,15 @@ public:
 
 			StartDay.Day += 7;
 			if (StartDay.Month < 7 && StartDay.Day>31) { StartDay.Month++; StartDay.Day -= 31; }
-			else if (StartDay.Month > 6 && StartDay.Month != 12 && StartDay.Day > 30) { StartDay.Month++; StartDay.Day -= 30; }
-			else if (StartDay.Month == 12 && StartDay.Day > 29) { StartDay.Year++; StartDay.Month = 1; StartDay.Day -= 29; }
-		
+			else if (StartDay.Month > 6 && StartDay.Month < 12 && StartDay.Day > 30) { StartDay.Month++; StartDay.Day -= 30; }
+			else if (StartDay.Month == 12 && StartDay.Day > 29) {  StartDay.Year++; StartDay.Month = 1; StartDay.Day -= 29; 	}
+			
 	}
 
 
 	void operator --() {
 		int w = false;
-
+		
 		StartDay.Day -= 7;
 		if (StartDay.Day < 1) {
 			StartDay.Month--;
@@ -283,6 +281,7 @@ public:
 			StartDay.Year--;
 			StartDay.Month = 12;
 			w = true;
+			
 		}
 		
 		if (w) {
@@ -290,6 +289,7 @@ public:
 			if (StartDay.Month < 7) { StartDay.Day += 31; }
 			else if (StartDay.Month > 6 && StartDay.Month != 12 ) { StartDay.Day += 30; }
 			else if (StartDay.Month == 12) { StartDay.Day += 29; }
+			
 		}
 	}
 
