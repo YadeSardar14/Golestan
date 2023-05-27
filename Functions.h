@@ -1042,4 +1042,28 @@ void TextSave(String^ FilePatch , vector <Lessons> SumLess) {
 }
  
 
+
+int FindDayWeek(Lessons First, Date less) {
+
+	int DayWeek = First.getData().WeekDay-1;
+
+	if (DayCount(First) > DayCount(less))
+		return 7;
+
+	for (int n = DayCount(First); n <= DayCount(less); n++) {
+
+		DayWeek++;
+
+		if (DayWeek > 6) {
+
+			DayWeek = 0;
+		}
+
+	}
+
+	return DayWeek;
+
+}
+
+
 #endif

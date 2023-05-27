@@ -53,13 +53,20 @@ namespace Golestan {
     private: System::Windows::Forms::Label^ LAStudentList;
     private: System::Windows::Forms::Label^ LAHeder;
 
-    private: System::Windows::Forms::Panel^ PALogo;
-    private: System::Windows::Forms::Panel^ LOGO;
-    private: System::Windows::Forms::Label^ LALogoKaver;
+
+
+
     private: System::Windows::Forms::Timer^ TimeLogo;
     private: System::Windows::Forms::Button^ BTNewIm;
 
     private: System::Windows::Forms::Button^ BTExit;
+    private: System::Windows::Forms::Panel^ PAFileErorr;
+    private: System::Windows::Forms::Label^ LAErorrFile;
+    private: System::Windows::Forms::Button^ BTNewFile2;
+    private: System::Windows::Forms::Button^ BTDenger2;
+    private: System::Windows::Forms::Panel^ PALogo;
+    private: System::Windows::Forms::Panel^ LOGO;
+    private: System::Windows::Forms::Label^ LALogoKaver;
 
 
 
@@ -134,6 +141,7 @@ namespace Golestan {
             BTImportFile->Show();
             LAXmlFile->Show();
             LAErorIm->Hide();
+            PAFileErorr->Hide();
 
         }
 
@@ -142,6 +150,7 @@ namespace Golestan {
             BTImportFile->Hide();
             LAXmlFile->Hide();
             LAErorIm->Hide();  
+            PAFileErorr->Hide();
         }
 
         void ShowMeno() {
@@ -873,6 +882,45 @@ namespace Golestan {
         }
 
 
+
+
+        String^ WeekDayConvert(int Week) {
+
+
+
+            switch (Week)
+            {
+            case 0:
+                return L"شنبه";
+                break;
+            case 1:
+                return L"یکشنبه";
+                break;
+            case 2:
+                return L"دوشنبه";
+                break;
+            case 3:
+                return L"سه شنبه";
+                break;
+            case 4:
+                return L"چهارشنبه";
+                break;
+            case 5:
+                return L"پنجشنبه";
+                break;
+            case 6:
+                return L"جمعه";
+                break;
+
+            default:
+
+               
+                return  L"شنبه";
+
+                break;
+            }
+
+    }
      
 
     private: System::Windows::Forms::TextBox^ TXWeekDayFoq;
@@ -982,9 +1030,9 @@ private: System::ComponentModel::IContainer^ components;
 		void InitializeComponent(void)
 		{
             this->components = (gcnew System::ComponentModel::Container());
-            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle7 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle8 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle9 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
             System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
             this->TXWeekDayFoq = (gcnew System::Windows::Forms::TextBox());
             this->LAWeekDayFoq = (gcnew System::Windows::Forms::Label());
@@ -1072,12 +1120,16 @@ private: System::ComponentModel::IContainer^ components;
             this->LIStudentList = (gcnew System::Windows::Forms::ListBox());
             this->LAStudentList = (gcnew System::Windows::Forms::Label());
             this->LAHeder = (gcnew System::Windows::Forms::Label());
-            this->PALogo = (gcnew System::Windows::Forms::Panel());
-            this->LOGO = (gcnew System::Windows::Forms::Panel());
-            this->LALogoKaver = (gcnew System::Windows::Forms::Label());
             this->BTExit = (gcnew System::Windows::Forms::Button());
             this->BTNewIm = (gcnew System::Windows::Forms::Button());
             this->TimeLogo = (gcnew System::Windows::Forms::Timer(this->components));
+            this->PAFileErorr = (gcnew System::Windows::Forms::Panel());
+            this->LAErorrFile = (gcnew System::Windows::Forms::Label());
+            this->BTNewFile2 = (gcnew System::Windows::Forms::Button());
+            this->BTDenger2 = (gcnew System::Windows::Forms::Button());
+            this->PALogo = (gcnew System::Windows::Forms::Panel());
+            this->LOGO = (gcnew System::Windows::Forms::Panel());
+            this->LALogoKaver = (gcnew System::Windows::Forms::Label());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAJalaseFoq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAM1Foq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAH1Foq))->BeginInit();
@@ -1086,6 +1138,7 @@ private: System::ComponentModel::IContainer^ components;
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VARozFoq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAMahFoq))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Tabel))->BeginInit();
+            this->PAFileErorr->SuspendLayout();
             this->PALogo->SuspendLayout();
             this->LOGO->SuspendLayout();
             this->SuspendLayout();
@@ -1373,6 +1426,7 @@ private: System::ComponentModel::IContainer^ components;
             this->VARozFoq->TabIndex = 151;
             this->VARozFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             this->VARozFoq->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
+            this->VARozFoq->ValueChanged += gcnew System::EventHandler(this, &MainForm::VARozFoq_ValueChanged);
             // 
             // VAMahFoq
             // 
@@ -1386,6 +1440,7 @@ private: System::ComponentModel::IContainer^ components;
             this->VAMahFoq->TabIndex = 150;
             this->VAMahFoq->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             this->VAMahFoq->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
+            this->VAMahFoq->ValueChanged += gcnew System::EventHandler(this, &MainForm::VAMahFoq_ValueChanged);
             // 
             // LAMFoq
             // 
@@ -1736,45 +1791,45 @@ private: System::ComponentModel::IContainer^ components;
             this->Tabel->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
             this->Tabel->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
             this->Tabel->BackgroundColor = System::Drawing::SystemColors::ButtonFace;
-            dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-            dataGridViewCellStyle1->BackColor = System::Drawing::Color::MediumAquamarine;
-            dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle7->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+            dataGridViewCellStyle7->BackColor = System::Drawing::Color::MediumAquamarine;
+            dataGridViewCellStyle7->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            dataGridViewCellStyle1->ForeColor = System::Drawing::Color::ForestGreen;
-            dataGridViewCellStyle1->NullValue = nullptr;
-            dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::Aquamarine;
-            dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::Desktop;
-            dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->Tabel->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7->ForeColor = System::Drawing::Color::ForestGreen;
+            dataGridViewCellStyle7->NullValue = nullptr;
+            dataGridViewCellStyle7->SelectionBackColor = System::Drawing::Color::Aquamarine;
+            dataGridViewCellStyle7->SelectionForeColor = System::Drawing::SystemColors::Desktop;
+            dataGridViewCellStyle7->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->Tabel->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this->Tabel->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
             this->Tabel->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
                 this->Column, this->R0,
                     this->R1, this->R2, this->R3, this->R4, this->R5
             });
             this->Tabel->Cursor = System::Windows::Forms::Cursors::Cross;
-            dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-            dataGridViewCellStyle2->BackColor = System::Drawing::Color::Beige;
-            dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle8->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+            dataGridViewCellStyle8->BackColor = System::Drawing::Color::Beige;
+            dataGridViewCellStyle8->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
-            dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::Desktop;
-            dataGridViewCellStyle2->SelectionBackColor = System::Drawing::Color::DarkKhaki;
-            dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-            dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->Tabel->DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8->ForeColor = System::Drawing::SystemColors::Desktop;
+            dataGridViewCellStyle8->SelectionBackColor = System::Drawing::Color::DarkKhaki;
+            dataGridViewCellStyle8->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+            dataGridViewCellStyle8->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->Tabel->DefaultCellStyle = dataGridViewCellStyle8;
             this->Tabel->GridColor = System::Drawing::Color::DarkKhaki;
             this->Tabel->Location = System::Drawing::Point(-6, 30);
             this->Tabel->Name = L"Tabel";
             this->Tabel->ReadOnly = true;
             this->Tabel->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-            dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
-            dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle9->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+            dataGridViewCellStyle9->BackColor = System::Drawing::SystemColors::Control;
+            dataGridViewCellStyle9->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
-            dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-            dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-            dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->Tabel->RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9->ForeColor = System::Drawing::SystemColors::WindowText;
+            dataGridViewCellStyle9->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+            dataGridViewCellStyle9->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+            dataGridViewCellStyle9->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->Tabel->RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this->Tabel->RowHeadersWidth = 51;
             this->Tabel->Size = System::Drawing::Size(763, 483);
             this->Tabel->TabIndex = 122;
@@ -1918,11 +1973,11 @@ private: System::ComponentModel::IContainer^ components;
             this->LAErorIm->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->LAErorIm->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-            this->LAErorIm->Location = System::Drawing::Point(-81, 320);
+            this->LAErorIm->Location = System::Drawing::Point(-81, 296);
             this->LAErorIm->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
             this->LAErorIm->Name = L"LAErorIm";
             this->LAErorIm->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->LAErorIm->Size = System::Drawing::Size(639, 212);
+            this->LAErorIm->Size = System::Drawing::Size(639, 98);
             this->LAErorIm->TabIndex = 173;
             this->LAErorIm->Text = L"ارور";
             this->LAErorIm->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -2240,7 +2295,7 @@ private: System::ComponentModel::IContainer^ components;
             this->LITeacherList->Location = System::Drawing::Point(116, 132);
             this->LITeacherList->Name = L"LITeacherList";
             this->LITeacherList->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->LITeacherList->Size = System::Drawing::Size(197, 245);
+            this->LITeacherList->Size = System::Drawing::Size(197, 210);
             this->LITeacherList->TabIndex = 192;
             // 
             // LATeacherList
@@ -2268,7 +2323,7 @@ private: System::ComponentModel::IContainer^ components;
             this->LIStudentList->Location = System::Drawing::Point(372, 132);
             this->LIStudentList->Name = L"LIStudentList";
             this->LIStudentList->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->LIStudentList->Size = System::Drawing::Size(277, 245);
+            this->LIStudentList->Size = System::Drawing::Size(277, 210);
             this->LIStudentList->TabIndex = 190;
             // 
             // LAStudentList
@@ -2297,33 +2352,6 @@ private: System::ComponentModel::IContainer^ components;
             this->LAHeder->Size = System::Drawing::Size(704, 39);
             this->LAHeder->TabIndex = 194;
             this->LAHeder->TextAlign = System::Drawing::ContentAlignment::TopCenter;
-            // 
-            // PALogo
-            // 
-            this->PALogo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
-                static_cast<System::Int32>(static_cast<System::Byte>(192)));
-            this->PALogo->Controls->Add(this->LOGO);
-            this->PALogo->Location = System::Drawing::Point(-1, 0);
-            this->PALogo->Name = L"PALogo";
-            this->PALogo->Size = System::Drawing::Size(705, 523);
-            this->PALogo->TabIndex = 196;
-            // 
-            // LOGO
-            // 
-            this->LOGO->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"LOGO.BackgroundImage")));
-            this->LOGO->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-            this->LOGO->Controls->Add(this->LALogoKaver);
-            this->LOGO->Location = System::Drawing::Point(122, 20);
-            this->LOGO->Name = L"LOGO";
-            this->LOGO->Size = System::Drawing::Size(456, 465);
-            this->LOGO->TabIndex = 0;
-            // 
-            // LALogoKaver
-            // 
-            this->LALogoKaver->Location = System::Drawing::Point(10, 19);
-            this->LALogoKaver->Name = L"LALogoKaver";
-            this->LALogoKaver->Size = System::Drawing::Size(443, 415);
-            this->LALogoKaver->TabIndex = 0;
             // 
             // BTExit
             // 
@@ -2366,15 +2394,104 @@ private: System::ComponentModel::IContainer^ components;
             this->TimeLogo->Interval = 20;
             this->TimeLogo->Tick += gcnew System::EventHandler(this, &MainForm::TimeLogo_Tick);
             // 
+            // PAFileErorr
+            // 
+            this->PAFileErorr->Controls->Add(this->LAErorrFile);
+            this->PAFileErorr->Controls->Add(this->BTNewFile2);
+            this->PAFileErorr->Controls->Add(this->BTDenger2);
+            this->PAFileErorr->Location = System::Drawing::Point(-6, 89);
+            this->PAFileErorr->Name = L"PAFileErorr";
+            this->PAFileErorr->Size = System::Drawing::Size(710, 319);
+            this->PAFileErorr->TabIndex = 199;
+            // 
+            // LAErorrFile
+            // 
+            this->LAErorrFile->Anchor = System::Windows::Forms::AnchorStyles::None;
+            this->LAErorrFile->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->LAErorrFile->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+            this->LAErorrFile->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+            this->LAErorrFile->Location = System::Drawing::Point(72, 55);
+            this->LAErorrFile->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+            this->LAErorrFile->Name = L"LAErorrFile";
+            this->LAErorrFile->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
+            this->LAErorrFile->Size = System::Drawing::Size(553, 89);
+            this->LAErorrFile->TabIndex = 195;
+            this->LAErorrFile->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+            // 
+            // BTNewFile2
+            // 
+            this->BTNewFile2->Anchor = System::Windows::Forms::AnchorStyles::None;
+            this->BTNewFile2->AutoEllipsis = true;
+            this->BTNewFile2->BackColor = System::Drawing::Color::LightSeaGreen;
+            this->BTNewFile2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->BTNewFile2->Font = (gcnew System::Drawing::Font(L"Impact", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(178)));
+            this->BTNewFile2->ForeColor = System::Drawing::SystemColors::Info;
+            this->BTNewFile2->Location = System::Drawing::Point(144, 192);
+            this->BTNewFile2->Margin = System::Windows::Forms::Padding(4);
+            this->BTNewFile2->Name = L"BTNewFile2";
+            this->BTNewFile2->Size = System::Drawing::Size(219, 35);
+            this->BTNewFile2->TabIndex = 194;
+            this->BTNewFile2->Text = L"فایل جدید";
+            this->BTNewFile2->UseVisualStyleBackColor = false;
+            this->BTNewFile2->Click += gcnew System::EventHandler(this, &MainForm::BTNewFile2_Click);
+            // 
+            // BTDenger2
+            // 
+            this->BTDenger2->Anchor = System::Windows::Forms::AnchorStyles::None;
+            this->BTDenger2->AutoEllipsis = true;
+            this->BTDenger2->BackColor = System::Drawing::Color::OrangeRed;
+            this->BTDenger2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->BTDenger2->Font = (gcnew System::Drawing::Font(L"Impact", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(178)));
+            this->BTDenger2->ForeColor = System::Drawing::SystemColors::Info;
+            this->BTDenger2->Location = System::Drawing::Point(378, 192);
+            this->BTDenger2->Name = L"BTDenger2";
+            this->BTDenger2->Size = System::Drawing::Size(222, 35);
+            this->BTDenger2->TabIndex = 189;
+            this->BTDenger2->Text = L"در هر صورت ادامه  بده";
+            this->BTDenger2->UseVisualStyleBackColor = false;
+            this->BTDenger2->Click += gcnew System::EventHandler(this, &MainForm::BTDenger2_Click);
+            // 
+            // PALogo
+            // 
+            this->PALogo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(192)));
+            this->PALogo->Controls->Add(this->LOGO);
+            this->PALogo->Location = System::Drawing::Point(-1, 0);
+            this->PALogo->Name = L"PALogo";
+            this->PALogo->Size = System::Drawing::Size(705, 513);
+            this->PALogo->TabIndex = 197;
+            // 
+            // LOGO
+            // 
+            this->LOGO->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"LOGO.BackgroundImage")));
+            this->LOGO->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+            this->LOGO->Controls->Add(this->LALogoKaver);
+            this->LOGO->Location = System::Drawing::Point(143, 50);
+            this->LOGO->Name = L"LOGO";
+            this->LOGO->Size = System::Drawing::Size(382, 423);
+            this->LOGO->TabIndex = 0;
+            // 
+            // LALogoKaver
+            // 
+            this->LALogoKaver->Location = System::Drawing::Point(-14, 8);
+            this->LALogoKaver->Name = L"LALogoKaver";
+            this->LALogoKaver->Size = System::Drawing::Size(438, 394);
+            this->LALogoKaver->TabIndex = 0;
+            // 
             // MainForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::Aquamarine;
             this->ClientSize = System::Drawing::Size(704, 512);
+            this->Controls->Add(this->PALogo);
+            this->Controls->Add(this->PAFileErorr);
             this->Controls->Add(this->BTNewIm);
             this->Controls->Add(this->BTExit);
-            this->Controls->Add(this->PALogo);
             this->Controls->Add(this->LAHeder);
             this->Controls->Add(this->BTBazgashtList);
             this->Controls->Add(this->LITeacherList);
@@ -2468,6 +2585,7 @@ private: System::ComponentModel::IContainer^ components;
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VARozFoq))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAMahFoq))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Tabel))->EndInit();
+            this->PAFileErorr->ResumeLayout(false);
             this->PALogo->ResumeLayout(false);
             this->LOGO->ResumeLayout(false);
             this->ResumeLayout(false);
@@ -2501,10 +2619,28 @@ private: System::ComponentModel::IContainer^ components;
 
         	if (classes.size() == 0 || lessons.size() == 0) 
             {
-                LAErorIm->Text = L"فایل معتبر نیست،\n لطفا فایل با چهارچوب معتبر انتخاب کنید!"; LAErorIm->Show(); return;
+                LAErorIm->Text = L"فایل معتبر نیست، لطفا فایل با چهارچوب معتبر انتخاب کنید!"; LAErorIm->Show(); return;
             }
         	else
         	{   
+                vector <Lessons> lesstest = lessons;
+                vector <Classes> clatest = classes;
+                SortClases(clatest);
+                SortLessons(lesstest);
+                AutoSetLocation_ByWDay(lesstest, clatest);
+
+                for (auto less : lesstest) {
+                    
+                    if (less.getClassLocation() == 0) {
+                        
+                        PAFileErorr->Show();
+                       
+                        LAErorrFile->Text = L" طبق داده های شما کلاس  کافی برای برگزاری همه دورس وجود ندارد! ";
+                        return;
+                    }
+                }
+
+
                 SortLessons(lessons);
                 SortClases(classes);
         		HideImportPage();
@@ -2984,12 +3120,17 @@ private: System::Void BTBazgasht2Foq_Click(System::Object^ sender, System::Event
     LAErorFoq3->Text = "";
     LAEror->Text = "";
     LAErorIm->Text = "";
+
+    WeekErorr = 0;
+
     HideFoq2();
     ShowFoq1();
 
 }
 
 private: int WeekDay = 7;
+private: int WeekErorr = 0;
+
 private: System::Void BTTaiid2Foq_Click(System::Object^ sender, System::EventArgs^ e) {
 
     LAErorFoq2->Text = "";
@@ -3040,6 +3181,19 @@ private: System::Void BTTaiid2Foq_Click(System::Object^ sender, System::EventArg
         return;
 
         break;
+    }
+
+    Date test;
+    test.Day = int(VARozFoq->Value);
+    test.Month = int(VAMahFoq->Value);
+    if (WeekDay != (FindDayWeek(StartDayLesson(lessons), test))) {
+
+        if(WeekErorr < 3) {
+            WeekErorr++;
+            LAErorFoq2->Text = L"لطفا روز هفته را متناسب با تاریخ وارد کنید.";
+            return;
+        }
+    
     }
 
 
@@ -3251,6 +3405,8 @@ private: System::Void BTBazgasht3Foq_Click(System::Object^ sender, System::Event
     LAErorFoq3->Text = "";
     LAEror->Text = "";
     LAErorIm->Text = "";
+
+    WeekErorr = 0;
     HideFoq3();
     ShowFoq2();
 }
@@ -3474,6 +3630,7 @@ private: System::Void TimeLogo_Tick(System::Object^ sender, System::EventArgs^ e
     }
 }
 private: System::Void BTNewIm_Click(System::Object^ sender, System::EventArgs^ e) {
+
     Application::Restart();
     HideMeno();
     ShowImportPage();
@@ -3483,6 +3640,43 @@ private: System::Void BTNewIm_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void BTExit_Click(System::Object^ sender, System::EventArgs^ e) {
 
     this->Close();
+}
+
+private: System::Void BTDenger2_Click(System::Object^ sender, System::EventArgs^ e) {
+
+    PAFileErorr->Hide();
+
+    SortLessons(lessons);
+    SortClases(classes);
+    HideImportPage();
+    ShowMeno();
+
+
+    SetTable_ClassName();
+
+
+    for (size_t n = 0; n < lessons.size(); n++)
+        SaveStartDate.push_back(lessons.at(n).getData());
+
+}
+private: System::Void BTNewFile2_Click(System::Object^ sender, System::EventArgs^ e) {
+
+    Application::Restart();
+
+}
+private: System::Void VAMahFoq_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+
+    Date test;
+    test.Day = int(VARozFoq->Value);
+    test.Month = int(VAMahFoq->Value);
+    TXWeekDayFoq->Text = WeekDayConvert(FindDayWeek(StartDayLesson(lessons),test));
+}
+private: System::Void VARozFoq_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+
+    Date test;
+    test.Day = int(VARozFoq->Value);
+    test.Month = int(VAMahFoq->Value);
+    TXWeekDayFoq->Text = WeekDayConvert(FindDayWeek(StartDayLesson(lessons), test));
 }
 };
 }
