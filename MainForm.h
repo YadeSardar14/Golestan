@@ -1030,9 +1030,9 @@ private: System::ComponentModel::IContainer^ components;
 		void InitializeComponent(void)
 		{
             this->components = (gcnew System::ComponentModel::Container());
-            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle7 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle8 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle9 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
             System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
             this->TXWeekDayFoq = (gcnew System::Windows::Forms::TextBox());
             this->LAWeekDayFoq = (gcnew System::Windows::Forms::Label());
@@ -1791,45 +1791,45 @@ private: System::ComponentModel::IContainer^ components;
             this->Tabel->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
             this->Tabel->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
             this->Tabel->BackgroundColor = System::Drawing::SystemColors::ButtonFace;
-            dataGridViewCellStyle7->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-            dataGridViewCellStyle7->BackColor = System::Drawing::Color::MediumAquamarine;
-            dataGridViewCellStyle7->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+            dataGridViewCellStyle1->BackColor = System::Drawing::Color::MediumAquamarine;
+            dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            dataGridViewCellStyle7->ForeColor = System::Drawing::Color::ForestGreen;
-            dataGridViewCellStyle7->NullValue = nullptr;
-            dataGridViewCellStyle7->SelectionBackColor = System::Drawing::Color::Aquamarine;
-            dataGridViewCellStyle7->SelectionForeColor = System::Drawing::SystemColors::Desktop;
-            dataGridViewCellStyle7->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->Tabel->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1->ForeColor = System::Drawing::Color::ForestGreen;
+            dataGridViewCellStyle1->NullValue = nullptr;
+            dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::Aquamarine;
+            dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::Desktop;
+            dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->Tabel->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this->Tabel->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
             this->Tabel->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
                 this->Column, this->R0,
                     this->R1, this->R2, this->R3, this->R4, this->R5
             });
             this->Tabel->Cursor = System::Windows::Forms::Cursors::Cross;
-            dataGridViewCellStyle8->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-            dataGridViewCellStyle8->BackColor = System::Drawing::Color::Beige;
-            dataGridViewCellStyle8->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+            dataGridViewCellStyle2->BackColor = System::Drawing::Color::Beige;
+            dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(178)));
-            dataGridViewCellStyle8->ForeColor = System::Drawing::SystemColors::Desktop;
-            dataGridViewCellStyle8->SelectionBackColor = System::Drawing::Color::DarkKhaki;
-            dataGridViewCellStyle8->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-            dataGridViewCellStyle8->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->Tabel->DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::Desktop;
+            dataGridViewCellStyle2->SelectionBackColor = System::Drawing::Color::DarkKhaki;
+            dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+            dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->Tabel->DefaultCellStyle = dataGridViewCellStyle2;
             this->Tabel->GridColor = System::Drawing::Color::DarkKhaki;
             this->Tabel->Location = System::Drawing::Point(-6, 30);
             this->Tabel->Name = L"Tabel";
             this->Tabel->ReadOnly = true;
             this->Tabel->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            dataGridViewCellStyle9->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-            dataGridViewCellStyle9->BackColor = System::Drawing::SystemColors::Control;
-            dataGridViewCellStyle9->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+            dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
+            dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"IranNastaliq", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            dataGridViewCellStyle9->ForeColor = System::Drawing::SystemColors::WindowText;
-            dataGridViewCellStyle9->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-            dataGridViewCellStyle9->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-            dataGridViewCellStyle9->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->Tabel->RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
+            dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+            dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+            dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->Tabel->RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this->Tabel->RowHeadersWidth = 51;
             this->Tabel->Size = System::Drawing::Size(763, 483);
             this->Tabel->TabIndex = 122;
@@ -2275,7 +2275,7 @@ private: System::ComponentModel::IContainer^ components;
                 static_cast<System::Byte>(178)));
             this->BTBazgashtList->ForeColor = System::Drawing::SystemColors::Info;
             this->BTBazgashtList->Location = System::Drawing::Point(116, 415);
-            this->BTBazgashtList->Margin = System::Windows::Forms::Padding(4);
+            this->BTBazgashtList->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->BTBazgashtList->Name = L"BTBazgashtList";
             this->BTBazgashtList->Size = System::Drawing::Size(96, 43);
             this->BTBazgashtList->TabIndex = 193;
@@ -2295,7 +2295,7 @@ private: System::ComponentModel::IContainer^ components;
             this->LITeacherList->Location = System::Drawing::Point(116, 132);
             this->LITeacherList->Name = L"LITeacherList";
             this->LITeacherList->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->LITeacherList->Size = System::Drawing::Size(197, 210);
+            this->LITeacherList->Size = System::Drawing::Size(197, 175);
             this->LITeacherList->TabIndex = 192;
             // 
             // LATeacherList
@@ -2323,7 +2323,7 @@ private: System::ComponentModel::IContainer^ components;
             this->LIStudentList->Location = System::Drawing::Point(372, 132);
             this->LIStudentList->Name = L"LIStudentList";
             this->LIStudentList->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-            this->LIStudentList->Size = System::Drawing::Size(277, 210);
+            this->LIStudentList->Size = System::Drawing::Size(277, 175);
             this->LIStudentList->TabIndex = 190;
             // 
             // LAStudentList
@@ -2363,7 +2363,7 @@ private: System::ComponentModel::IContainer^ components;
                 static_cast<System::Byte>(178)));
             this->BTExit->ForeColor = System::Drawing::SystemColors::Info;
             this->BTExit->Location = System::Drawing::Point(354, 480);
-            this->BTExit->Margin = System::Windows::Forms::Padding(4);
+            this->BTExit->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->BTExit->Name = L"BTExit";
             this->BTExit->Size = System::Drawing::Size(122, 25);
             this->BTExit->TabIndex = 198;
@@ -2381,7 +2381,7 @@ private: System::ComponentModel::IContainer^ components;
                 static_cast<System::Byte>(178)));
             this->BTNewIm->ForeColor = System::Drawing::SystemColors::Info;
             this->BTNewIm->Location = System::Drawing::Point(222, 480);
-            this->BTNewIm->Margin = System::Windows::Forms::Padding(4);
+            this->BTNewIm->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->BTNewIm->Name = L"BTNewIm";
             this->BTNewIm->Size = System::Drawing::Size(118, 25);
             this->BTNewIm->TabIndex = 197;
@@ -2430,7 +2430,7 @@ private: System::ComponentModel::IContainer^ components;
                 static_cast<System::Byte>(178)));
             this->BTNewFile2->ForeColor = System::Drawing::SystemColors::Info;
             this->BTNewFile2->Location = System::Drawing::Point(144, 192);
-            this->BTNewFile2->Margin = System::Windows::Forms::Padding(4);
+            this->BTNewFile2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->BTNewFile2->Name = L"BTNewFile2";
             this->BTNewFile2->Size = System::Drawing::Size(219, 35);
             this->BTNewFile2->TabIndex = 194;
@@ -2571,10 +2571,11 @@ private: System::ComponentModel::IContainer^ components;
             this->Controls->Add(this->LAXmlFile);
             this->Controls->Add(this->BTImportFile);
             this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+            this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
             this->MaximizeBox = false;
             this->Name = L"MainForm";
             this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-            this->Text = L"MainForm";
+            this->Text = L"Golestan";
             this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
             this->Resize += gcnew System::EventHandler(this, &MainForm::MainForm_Resize);
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->VAJalaseFoq))->EndInit();
